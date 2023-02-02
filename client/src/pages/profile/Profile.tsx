@@ -19,7 +19,24 @@ export default function Profile() {
           </div>
           <div className="profileBlockBottom">
             <div className="feeds">Feeds</div>
-            <div className="profileRightBlock">Right</div>
+            <div className="profileRightBlock">
+              <div className="profileDescriptions">
+                <h4 className="profileDescriptionInfo">User info</h4>
+                <div className="profileDescription">
+                  <span className="profileDescriptionName">City:</span>
+                  <span className="profileDescriptionValue">Minsk</span>
+                </div>
+                <div className="profileDescription">
+                  <span className="profileDescriptionName">Country:</span>
+                  <span className="profileDescriptionValue">Belarus</span>
+                </div>
+                <div className="profileDescription">
+                  <span className="profileDescriptionName">Family status:</span>
+                  <span className="profileDescriptionValue">Married</span>
+                </div>
+              </div>
+              <div className="followers">Followers</div>
+            </div>
           </div>
         </div>
       </div>
