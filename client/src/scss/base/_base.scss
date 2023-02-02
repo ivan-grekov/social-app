@@ -1,7 +1,23 @@
 // Basic classes
 
-.container {
-  margin: 0 auto;
+.body {
   width: 100%;
-  padding: 0 15px 0 15px;
+  height: 100vh;
+  font-family: $base-font;
+}
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1400px !default;
+$container-padding: 15px !default;
+$padding-edge-screen: 15px !default; // отступ от края экрана мобильных устройств
+
+.container {
+  max-width: $max-width + ($container-padding * 2) ;//+ ($padding-edge-screen * 2); /* 1 */
+  margin-left: auto; /* 2 */
+  margin-right: auto; /* 2 */
+  padding-left: $padding-edge-screen; /* 3 */
+  padding-right: $padding-edge-screen; /* 3 */
+  width: 100%; /* 1 */
+  // border: 1px solid green;
 }
