@@ -5,7 +5,7 @@ export default function Header() {
     <div className="header">
       <div className="container">
         <div className="headerWrapper">
-        <div className="headerLeft">logo</div>
+        <div className="headerLeft"><span className="logo">Social App</span></div>
         <div className="headerCenter">search</div>
         <div className="headerRight">user</div>
         </div>
