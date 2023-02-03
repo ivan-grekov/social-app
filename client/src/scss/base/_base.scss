@@ -1,14 +1,15 @@
 // Basic classes
 
 .body {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   font-family: $base-font;
+  margin: 0 auto;
 }
 
 /// Container's maximum width
 /// @type Length
-$max-width: 1400px !default;
+$max-width: 1200px !default;
 $container-padding: 15px !default;
 $padding-edge-screen: 15px !default; // отступ от края экрана мобильных устройств
 
