@@ -3,3 +3,13 @@
 
 @import 'base/reset';
 @import 'base/base';
+
+@font-face {
+  font-family: "Nunito-Italic";
+  src: local("Nunito-Italic"), url("../assets/fonts/Nunito-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: local("Nunito"), url("../assets/fonts/Nunito-VariableFont_wght.ttf") format("truetype");
+}
