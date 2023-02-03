@@ -1,7 +1,11 @@
 import "./follower.scss";
 import React from "react";
 
-const Follower = (ava: string, userName: string) => {
+interface propsFollower {
+  ava: string;
+  userName: string;
+}
+const Follower = ({ava, userName}: propsFollower) => {
   return (
     <>
       <div className="follower">

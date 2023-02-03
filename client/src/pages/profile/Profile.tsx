@@ -7,6 +7,7 @@ import ava03 from "../../assets/images/followers/ava03.png";
 import ava04 from "../../assets/images/followers/ava04.png";
 import Header from "../../components/header/Header";
 import React from "react";
+import Follower from "../../components/follower/Follower";
 
 export default function Profile(): JSX.Element {
   return (
@@ -44,22 +45,10 @@ export default function Profile(): JSX.Element {
               <div className="followersBlock">
                 <h4 className="profileDescriptionInfo">Followers</h4>
                 <div className="followers">
-                  <div className="follower">
-                    <img className={"followerImg"} src={ava01} alt={"follower 01"}/>
-                    <span className="followerName">Abram Gustov</span>
-                  </div>
-                  <div className="follower">
-                    <img className={"followerImg"} src={ava02} alt={"follower 01"}/>
-                    <span className="followerName">Gregory Chestor</span>
-                  </div>
-                  <div className="follower">
-                    <img className={"followerImg"} src={ava03} alt={"follower 01"}/>
-                    <span className="followerName">Ivan Ivanov</span>
-                  </div>
-                  <div className="follower">
-                    <img className={"followerImg"} src={ava04} alt={"follower 01"}/>
-                    <span className="followerName">Federico Augustino</span>
-                  </div>
+                  <Follower ava={ava01} userName={"Abram Gustov"}/>
+                  <Follower ava={ava02} userName={"Gregory Chestor"}/>
+                  <Follower ava={ava03} userName={"Ivan Ivanov"}/>
+                  <Follower ava={ava04} userName={"Federico Augustino"}/>
                 </div>
               </div>
             </div>
