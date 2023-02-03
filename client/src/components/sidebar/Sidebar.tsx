@@ -4,7 +4,7 @@ export default function Sidebar() {
 
     return (
       <div className='sidebar'>
-      Sidebar
+      <div className="sideWrapper">rrrrr</div>
       </div>
     );
 
