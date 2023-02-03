@@ -1,0 +1,16 @@
+// Sass Mixins
+
+@mixin font($size: 1.8rem, $weight: 400, $family: $base-font, $style: normal) {
+  font: {
+    family: $family;
+    style: $style;
+    weight: $weight;
+    size: $size;
+  }
+}
+
+@mixin font-logo {
+  @include font(2.0rem, bold, $base-font, normal);
+  line-height: 91.666667%; /* 22px/24 */
+  margin: 0px 0px 0px 20px;
+}
