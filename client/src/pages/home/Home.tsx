@@ -1,6 +1,12 @@
 import './home.scss';
-import  Header  from '../../components/header/Header';
+import Header from '../../components/header/Header';
+import Main from '../../components/main/Main';
 
-export default function Home(): JSX.Element {
-  return <Header />;
+export default function Home() {
+  return (
+    <>
+      <Header />
+      <Main />
+    </>
+  );
 }
