@@ -1,0 +1,17 @@
+.follower {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .followerImg {
+    width: 100px;
+    border-radius: 50%;
+  }
+
+  .followerName {
+    font-size: 1em;
+    text-align: center;
+  }
+}
