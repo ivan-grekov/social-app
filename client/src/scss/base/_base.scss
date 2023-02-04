@@ -1,5 +1,7 @@
 // Basic classes
-
+html{
+  overflow-x:  hidden;
+}
 .body {
   width: 100vw;
   height: 100vh;
@@ -9,7 +11,7 @@
 
 /// Container's maximum width
 /// @type Length
-$max-width: 3840px !default;
+$max-width: 1900px !default;
 $container-padding: 15px !default;
 $padding-edge-screen: 15px !default; // отступ от края экрана мобильных устройств
 
