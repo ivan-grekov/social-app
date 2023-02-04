@@ -5,6 +5,7 @@
   display: flex;
   background-color: $color-bacgraund-header;
   position: sticky;
+  z-index: 99;
   top: 0;
 }
 .headerWrapper {
