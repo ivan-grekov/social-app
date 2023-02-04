@@ -1,15 +1,15 @@
 import './share.scss';
 import { PermMedia, Label, EmojiEmotions, Room } from '@mui/icons-material';
 import Follower from '../follower/Follower';
-import ava02 from '../../assets/images/followers/ava02.jpg';
+import ava01 from '../../assets/images/followers/ava01.jpg';
 
 function Share() {
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <Follower ava={ava02} userName={''} />
-          <input placeholder="Wat's in your mind Safak?" className="shareInput" />
+          <Follower ava={ava01} userName={''} />
+          <input placeholder="Wat's in your mind Abram?" className="shareInput" />
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
