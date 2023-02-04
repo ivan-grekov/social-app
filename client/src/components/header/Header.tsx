@@ -11,7 +11,7 @@ export default function Header(): JSX.Element {
       <div className="container">
         <div className="headerWrapper">
           <div className="headerLeft">
-            <span className="logo">Social App</span>
+            <span className="logo">friendsy</span>
           </div>
           <div className="headerCenter">
             <div className="searchbar">
