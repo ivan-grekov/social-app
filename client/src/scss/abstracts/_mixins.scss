@@ -13,4 +13,5 @@
   @include font(2.0rem, bold, $base-font, normal);
   line-height: 91.666667%; /* 22px/24 */
   margin: 0px 0px 0px 20px;
+  text-transform: uppercase;
 }
