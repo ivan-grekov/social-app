@@ -3,8 +3,21 @@
 .sidebar {
   flex: 3;
   height: calc(100vh - 50px);
-
 }
 .sideWrapper {
-  padding: 20px; background-color: yellow !important;
+  padding: 20px;
 }
+
+.sidebarList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sidebarListItem {
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 20px 0px;
+}
+.sidebarIcon{
+  margin: 0px 15px 0px 0px;
+  }
