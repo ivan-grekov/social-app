@@ -5,6 +5,7 @@
   display: flex;
   background-color: $color-bacgraund-header;
   position: sticky;
+  z-index: 99;
   top: 0;
 }
 .headerWrapper {
@@ -94,4 +95,9 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.headerRight .follower .followerImg {
+  width: 30px ;
+  border-radius: 50%;
 }

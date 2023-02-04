@@ -1,5 +1,9 @@
 import './header.scss';
 import { Search, Person, Chat, Notifications } from '@mui/icons-material';
+import Follower from "../../components/follower/Follower";
+import ava01 from '../../assets/images/followers/ava01.jpg';
+
+
 
 export default function Header(): JSX.Element {
   return (
@@ -7,7 +11,7 @@ export default function Header(): JSX.Element {
       <div className="container">
         <div className="headerWrapper">
           <div className="headerLeft">
-            <span className="logo">Social App</span>
+            <span className="logo">friendsy</span>
           </div>
           <div className="headerCenter">
             <div className="searchbar">
@@ -37,11 +41,7 @@ export default function Header(): JSX.Element {
                 <span className="headerIconBadge">1</span>
               </div>
             </div>
-            <img
-              src="./assets/images/person/1.jpg"
-              alt="avatar"
-              className="headerImg"
-            />
+            <Follower ava={ava01} userName={'Abram Gustov'} />
           </div>
         </div>
       </div>
