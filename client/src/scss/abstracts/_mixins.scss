@@ -11,7 +11,15 @@
 
 @mixin font-logo {
   @include font(2.0rem, bold, $base-font, normal);
-  line-height: 91.666667%; /* 22px/24 */
-  margin: 0px 0px 0px 20px;
+  line-height: 91.666667%;
   text-transform: uppercase;
+}
+@mixin font-shareOptionText {
+  @include font(0.875rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+}
+@mixin font-shareBotton {
+  @include font(0.875rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-white;
 }
