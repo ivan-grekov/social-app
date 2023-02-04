@@ -3,15 +3,15 @@
 .sidebar {
   flex: 3;
   height: calc(100vh - 50px);
-  overflow-y: scroll !important;;
+  overflow-y: scroll !important;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 5px;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   background-color: $color-scroll-track;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   background-color: $color-scroll-trumb;
 }
 
