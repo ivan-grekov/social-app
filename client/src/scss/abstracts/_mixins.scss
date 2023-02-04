@@ -29,7 +29,7 @@
   color: $color-black;
 }
 @mixin font-postData {
-  @include font(0.75rem, 400, $base-font, normal);
+  @include font(0.9375rem, 400, $base-font, normal);
   line-height: 91.666667%;
   color: $color-black;
 }
@@ -39,7 +39,12 @@
   color: $color-black;
 }
 @mixin font-postComment {
-  @include font(0.75rem, 400, $base-font, normal);
+  @include font(0.9375rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-black;
+}
+@mixin font-birthdayText {
+  @include font(0.9375rem, 300, $base-font, normal);
   line-height: 91.666667%;
   color: $color-black;
 }
