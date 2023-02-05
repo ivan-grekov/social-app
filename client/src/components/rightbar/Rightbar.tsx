@@ -1,16 +1,16 @@
 import './rightbar.scss';
-import Follower from '../../components/follower/Follower';
-import ava02 from '../../assets/images/followers/ava02.jpg';
+import { Users } from '../../static/Data';
+import OnlineFriend from '../onlineFriend/OnlineFriend';
 
 export default function Rightbar() {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        <div className="birdhdayContainer">
+        <div className="birthdayContainer">
           <img
             src="./assets/images/podarok_0.png"
-            alt="birdhdeyImg"
-            className="birdhdeyImg"
+            alt="birthdayImg"
+            className="birthdayImg"
           />
           <span className="birthdayText">
             <b>Pola Foster</b> and <b>3 other friends</b> hav a birthday today
@@ -24,30 +24,9 @@ export default function Rightbar() {
         />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          <li className="rightbarFriend">
-            <div className="rightbarProfileImgContainer">
-            <Follower ava={ava02} userName={'Abram Gustov'} />
-            <span className="rightbarOnline"> </span>
-            </div>
-          </li>
-          <li className="rightbarFriend">
-            <div className="rightbarProfileImgContainer">
-            <Follower ava={ava02} userName={'Abram Gustov'} />
-            <span className="rightbarOnline"> </span>
-            </div>
-          </li>
-          <li className="rightbarFriend">
-            <div className="rightbarProfileImgContainer">
-            <Follower ava={ava02} userName={'Abram Gustov'} />
-            <span className="rightbarOnline"> </span>
-            </div>
-          </li>
-          <li className="rightbarFriend">
-            <div className="rightbarProfileImgContainer">
-            <Follower ava={ava02} userName={'Abram Gustov'} />
-            <span className="rightbarOnline"> </span>
-            </div>
-          </li>
+          {Users.map((u) => (
+            <OnlineFriend key={u.id} user={u} />
+          ))}
         </ul>
       </div>
     </div>
