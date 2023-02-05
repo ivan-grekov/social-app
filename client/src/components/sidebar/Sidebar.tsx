@@ -10,11 +10,8 @@ import {
   Event,
   School,
 } from '@mui/icons-material';
-import Follower from '../../components/follower/Follower';
-import ava02 from '../../assets/images/followers/ava02.jpg';
-import ava03 from '../../assets/images/followers/ava03.png';
-import ava04 from '../../assets/images/followers/ava04.png';
-import ava05 from '../../assets/images/followers/ava05.jpg';
+import { Users } from '../../static/Data';
+import CloseFriend from '../closeFriend/CloseFriend';
 
 export default function Sidebar() {
   return (
@@ -61,18 +58,9 @@ export default function Sidebar() {
         <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
-          <li className="sidebarFriend">
-            <Follower ava={ava02} userName={'Abram Gustov'} />
-          </li>
-          <li className="sidebarFriend">
-            <Follower ava={ava03} userName={'Abram Gustov'} />
-          </li>
-          <li className="sidebarFriend">
-            <Follower ava={ava04} userName={'Abram Gustov'} />
-          </li>
-          <li className="sidebarFriend">
-            <Follower ava={ava05} userName={'Abram Gustov'} />
-          </li>
+          {Users.map((u) => (
+            <CloseFriend key={u.id} user={u} />
+          ))}
         </ul>
       </div>
     </div>
