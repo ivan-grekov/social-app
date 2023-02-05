@@ -1,12 +1,12 @@
-import './login.scss';
+import './register.scss';
 import React from "react";
 import FormAuth from "../../components/formAuth/FormAuth";
 import Promo from "../../components/promoAuth/Promo";
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
 
-  const handleLogin = (): void => {
-    console.log('work login');
+  const handleRegister = (): void => {
+    console.log('work register');
   }
 
   return (
@@ -16,11 +16,11 @@ const Login: React.FC = () => {
           <Promo />
         </div>
         <div className="formAuth">
-          <FormAuth title={"Login"} isLogin={true} handleClick={handleLogin()}/>
+          <FormAuth title={"Register"} isLogin={false} handleClick={handleRegister()}/>
         </div>
       </div>
     </div>
   )
 }
 
-export default Login;
+export default Register;

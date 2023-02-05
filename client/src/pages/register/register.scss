@@ -1,5 +1,4 @@
 .login {
-  margin: 0;
   background-color: beige;
   font-family: Nunito, sans-serif;
   width: 100%;
@@ -9,11 +8,11 @@
   align-items: center;
 
   .loginWrap {
-    display: flex;
     align-items: center;
     justify-content: center;
     width: 60%;
     height: 60%;
+    display: flex;
 
     .formAuth,
     .loginPromo {
@@ -23,8 +22,8 @@
 
     .formAuth {
       background-color: white;
-      padding: 0 30px;
       border-radius: 15px;
+      padding: 10px 30px;
       display: flex;
       flex-direction: column;
       align-items: center;
