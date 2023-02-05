@@ -1,17 +1,6 @@
-@font-face {
-  font-family: "Nunito-Italic";
-  src: local("Nunito-Italic"), url("../../assets/fonts/Nunito-Italic-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Nunito";
-  src: local("Nunito"), url("../../assets/fonts/Nunito-VariableFont_wght.ttf") format("truetype");
-}
-
+@import '../../scss/main.scss';
 .profile {
-  font-family: "Nunito", sans-serif;
   display: flex;
-  justify-content: space-between;
 
   .profileBlock {
     flex: 9;
@@ -28,6 +17,7 @@
     .profileFonImg {
       width: 100%;
       height: 250px;
+      object-fit: cover;
     }
 
     .profileUserImg {
@@ -40,6 +30,7 @@
       border: 4px solid white;
       margin: auto;
       border-radius: 50%;
+      object-fit: cover;
     }
   }
 
@@ -49,69 +40,17 @@
     text-align: center;
 
     .profileName {
-      font-size: 1.7rem;
+      font-size: 24px;
       padding: 0;
       margin: 0;
     }
 
     .profileStatus {
-      font-size: 1.3em;
+      font-size: 16px;
     }
   }
 
-  .profileBlockBottom {
+  .profileRightBottom {
     display: flex;
-    margin: 0;
-
-    .feeds {
-      flex: 9;
-    }
-
-    .profileRightBlock {
-      margin: 10px 10px 10px 0;
-      flex: 3;
-      padding: 10px;
-
-      .profileDescriptionInfo {
-        text-align: center;
-        font-size: 1.3em;
-        margin-bottom: 10px;
-      }
-
-      .profileDescriptions {
-        height: 170px;
-        padding: 10px;
-        border-radius: 10px;
-        -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
-        -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
-        box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
-
-        .profileDescription {
-          margin-bottom: 10px;
-          font-size: 1.2em;
-
-          .profileDescriptionName {
-            color: cadetblue;
-            font-weight: bold;
-            margin-right: 10px;
-          }
-        }
-      }
-
-      .followersBlock {
-        border-radius: 10px;
-        -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
-        -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
-        box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
-        margin-top: 30px;
-        padding: 10px;
-
-        .followers {
-          display: flex;
-          justify-content: space-between;
-          flex-wrap: wrap;
-        }
-      }
-    }
   }
 }
