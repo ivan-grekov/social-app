@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "MontserratAlt1";
+  src: local("MontserratAlt1"), url("../../assets/fonts/MontserratAlt1-Regular.ttf") format("truetype");
+}
+
+.loginLogo {
+  font-family: 'MontserratAlt1', cursive;
+  margin: 0;
+  font-size: 40px;
+  color: #1877f2;
+  font-weight: bold;
+}
