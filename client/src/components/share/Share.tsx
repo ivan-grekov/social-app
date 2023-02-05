@@ -9,7 +9,10 @@ function Share() {
       <div className="shareWrapper">
         <div className="shareTop">
           <Follower ava={ava01} userName={''} />
-          <input placeholder="Wat's in your mind Abram?" className="shareInput" />
+          <input
+            placeholder="What's in your mind Abram?"
+            className="shareInput"
+          />
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">

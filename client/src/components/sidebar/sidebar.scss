@@ -29,10 +29,10 @@
 .sidebarListItem {
   display: flex;
   align-items: center;
-  margin: 0px 0px 20px 0px;
+  margin: 0 0 20px 0;
 }
 .sidebarIcon {
-  margin: 0px 15px 0px 0px;
+  margin: 0 15px 0 0;
 }
 .sidebarButton {
   width: 150px;
@@ -49,22 +49,4 @@
   padding: 0;
   margin: 0;
   list-style: none;
-}
-.sidebarFriend {
-  display: flex;
-  margin: 0px 0px 15px 0px;
-  & .follower {
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-    & .followerImg {
-      width: 32px;
-      height: 32px;
-      border: 1px solid $color-black;
-      margin: 0 15px 0 0;
-      object-fit: cover;
-    }
-  }
 }

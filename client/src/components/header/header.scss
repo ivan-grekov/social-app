@@ -1,12 +1,13 @@
 @import '../../scss/main.scss';
 
 .header {
+  font-family: Nunito, sans-serif;
   height: 50px;
   display: flex;
   background-color: $color-bacgraund-header;
   position: sticky;
-  z-index: 99;
   top: 0;
+  z-index: 10;
 }
 .headerWrapper {
   width: 100%;
@@ -14,6 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 .headerLeft {
   flex: 3;
@@ -39,7 +41,7 @@
 }
 .searchIcon {
   font-size: 20px !important;
-  margin: 0px 0px 0px 10px;
+  margin: 0 0 0 10px;
 }
 .searchInput {
   border: none;
@@ -59,7 +61,7 @@
 }
 
 .headerLink {
-  margin: 0px 10px 0px 0px;
+  margin: 0 10px 0 0;
   font-size: 14px;
   cursor: pointer;
 }
@@ -69,7 +71,7 @@
 }
 
 .headerIconItem {
-  margin: 0px 10px 0px 0px;
+  margin: 0 10px 0 0;
   cursor: pointer;
   position: relative;
 }
@@ -98,6 +100,6 @@
 }
 
 .headerRight .follower .followerImg {
-  width: 30px ;
+  width: 30px;
   border-radius: 50%;
 }
