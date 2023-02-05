@@ -3,6 +3,65 @@
 .sidebar {
   flex: 3;
   height: calc(100vh - 50px);
-  background-color: yellow !important;;
+  overflow-y: scroll !important;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: $color-scroll-track;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $color-scroll-trumb;
+}
 
+.sideWrapper {
+  padding: 20px;
+}
+
+.sidebarList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sidebarListItem {
+  display: flex;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+.sidebarIcon {
+  margin: 0 15px 0 0;
+}
+.sidebarButton {
+  width: 150px;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.sidebarHr {
+  margin: 20px 0;
+}
+.sidebarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.sidebarFriend {
+  display: flex;
+  margin: 0 0 15px 0;
+  & .follower {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    & .followerImg {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-black;
+      margin: 0 15px 0 0;
+      object-fit: cover;
+    }
+  }
 }

@@ -3,3 +3,73 @@
 .rightbar {
   flex: 3.5;
 }
+
+.rightbarWrapper {
+  padding: 20px 20px 0 0;
+}
+.birdhdayContainer {
+  display: flex;
+  align-items: center;
+}
+.birdhdeyImg {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px 0 0;
+}
+.birthdayText {
+  @include font-birthdayText;
+}
+.rightbarAd {
+  width: 100%;
+}
+.rightbarAdImg {
+  width: 100%;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+.rightbarTitle{
+  margin: 0 0 20px 0;
+}
+.rightbarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.rightbarFriend {
+  display: flex;
+  align-items: center;
+  margin: 0 0 15px 0;
+}
+.rightbarProfileImgContainer {
+  margin: 0 10px 0 0;
+  position: relative;
+  & .follower {
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+    & .followerImg {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      display: block;
+      position: relative;
+    }
+    & .followerName {
+      @include font-postName;
+      margin: 0 0 0 5px;
+      text-align: start;
+    }
+  }
+}
+.rightbarOnline {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $color-lime;
+  display: block;
+  position: absolute;
+  // z-index: 1;
+  left: 27px;
+  top: 0;
+  border: 2px solid $color-white;
+}
