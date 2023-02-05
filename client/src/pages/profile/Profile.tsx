@@ -8,13 +8,15 @@ import ava04 from "../../assets/images/followers/ava04.png";
 import Header from "../../components/header/Header";
 import React from "react";
 import Follower from "../../components/follower/Follower";
+import Feed from "../../components/feed/Feed";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 export default function Profile(): JSX.Element {
   return (
     <>
       <Header/>
       <div className="profile">
-        <div className="sideBar">Sidebar</div>
+        <Sidebar/>
         <div className="profileBlock">
           <div className="profileBlockTop">
             <img src={background} className="profileFonImg" alt="fon"/>
@@ -25,7 +27,7 @@ export default function Profile(): JSX.Element {
             </div>
           </div>
           <div className="profileBlockBottom">
-            <div className="feeds">Feeds</div>
+            <Feed/>
             <div className="profileRightBlock">
               <div className="profileDescriptions">
                 <h4 className="profileDescriptionInfo">User info</h4>

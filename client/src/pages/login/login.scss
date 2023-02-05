@@ -1,0 +1,34 @@
+.login {
+  margin: 0;
+  background-color: beige;
+  font-family: Nunito, sans-serif;
+  width: 100%;
+  height: 97vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loginWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 60%;
+
+    .formAuth,
+    .loginPromo {
+      width: 100%;
+      flex: 1;
+    }
+
+    .formAuth {
+      background-color: white;
+      padding: 0 30px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

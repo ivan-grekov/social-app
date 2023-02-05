@@ -1,0 +1,47 @@
+.formAuth {
+  height: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  .formAuthTitle {
+    margin: 0 0 20px 0;
+    font-size: 40px;
+    color: gray;
+    font-weight: bold;
+  }
+
+  .input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid gray;
+    padding-left: 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .buttonAuth {
+    cursor: pointer;
+    width: 100%;
+    margin: 10px 0;
+    color: white;
+    height: 50px;
+    border: 1px solid gray;
+    padding-left: 15px;
+    background-color: green;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+
+  .buttonAuth:focus {
+    outline: none;
+  }
+
+  .signLink {
+    cursor: pointer;
+    margin-left: 5px;
+    color: green;
+    font-weight: bold;
+  }
+}

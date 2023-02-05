@@ -8,29 +8,18 @@
   src: local("Nunito"), url("../../assets/fonts/Nunito-VariableFont_wght.ttf") format("truetype");
 }
 
-.topBar {
-  border: 2px solid red;
-}
-
-.sideBar {
-  flex: 3;
-}
-
 .profile {
   font-family: "Nunito", sans-serif;
-  border: 2px solid gray;
   display: flex;
   justify-content: space-between;
 
   .profileBlock {
-    border: 2px solid green;
     flex: 9;
     display: flex;
     flex-direction: column;
   }
 
   .profileBlockTop {
-    border: 2px solid hotpink;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -72,15 +61,16 @@
 
   .profileBlockBottom {
     display: flex;
+    margin: 0;
 
     .feeds {
       flex: 9;
     }
 
     .profileRightBlock {
-      border: 2px solid firebrick;
+      margin: 10px 10px 10px 0;
       flex: 3;
-      padding: 0.5%;
+      padding: 10px;
 
       .profileDescriptionInfo {
         text-align: center;
@@ -88,18 +78,33 @@
         margin-bottom: 10px;
       }
 
-      .profileDescription {
-        margin-bottom: 10px;
-        font-size: 1.2em;
+      .profileDescriptions {
+        height: 170px;
+        padding: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+        -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+        box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
 
-        .profileDescriptionName {
-          color: cadetblue;
-          font-weight: bold;
-          margin-right: 10px;
+        .profileDescription {
+          margin-bottom: 10px;
+          font-size: 1.2em;
+
+          .profileDescriptionName {
+            color: cadetblue;
+            font-weight: bold;
+            margin-right: 10px;
+          }
         }
       }
 
       .followersBlock {
+        border-radius: 10px;
+        -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+        -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+        box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+        margin-top: 30px;
+        padding: 10px;
 
         .followers {
           display: flex;
