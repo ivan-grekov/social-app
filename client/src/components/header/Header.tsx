@@ -2,6 +2,8 @@ import './header.scss';
 import { Search, Person, Chat, Notifications } from '@mui/icons-material';
 import Follower from "../../components/follower/Follower";
 import ava01 from '../../assets/images/followers/ava01.jpg';
+import React from "react";
+import Logo from "../logo/logo";
 
 
 
@@ -11,7 +13,7 @@ export default function Header(): JSX.Element {
       <div className="container">
         <div className="headerWrapper">
           <div className="headerLeft">
-            <span className="logo">friendsy</span>
+            <Logo color={"white"}/>
           </div>
           <div className="headerCenter">
             <div className="searchbar">

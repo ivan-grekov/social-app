@@ -1,10 +1,11 @@
 import React from "react";
 import "./promo.scss"
+import Logo from "../logo/logo";
 
-const Promo: React.FC = () => {
+const Promo = (): JSX.Element => {
   return (
     <div className="loginPromo">
-      <h3 className="loginLogo">FRIENDSY</h3>
+      <Logo color={"#1877f2"}/>
       <div className="loginSlogan">Connecting people</div>
     </div>
   )
