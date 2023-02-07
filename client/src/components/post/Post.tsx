@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { PostProps } from '../../static/types';
 
 const Post: React.FC<PostProps> = ({ post }) => {
+  const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const [like, setLike] = useState(post.like);
   const [isliked, setIsLiked] = useState(false);
 
@@ -33,19 +35,23 @@ const Post: React.FC<PostProps> = ({ post }) => {
         </div>
         <div className="postCenter">
           <span className="postText">{post.desc}</span>
-          <img className="postImg" src={post.photo} alt="post overview" />
+          <img
+            className="postImg"
+            src={publicFolder + post.photo}
+            alt="post overview"
+          />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
             <img
               className="likeIcon"
-              src="./assets/images/like.png"
+              src={`${publicFolder}like.png`}
               alt="like"
               onClick={likeHandler}
             />
             <img
               className="likeIcon"
-              src="./assets/images/heart.png"
+              src={`${publicFolder}heart.png`}
               alt="heart"
               onClick={likeHandler}
             />
