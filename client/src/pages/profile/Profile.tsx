@@ -1,12 +1,11 @@
 import './profile.scss';
-import userPhoto from '../../assets/images/Avatar.jpg';
-import background from '../../assets/images/fon.jpg';
 import Header from '../../components/header/Header';
 import Feed from '../../components/feed/Feed';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Rightbar from '../../components/rightbar/Rightbar';
 
 export default function Profile(): JSX.Element {
+  const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <>
       <Header />
@@ -14,8 +13,16 @@ export default function Profile(): JSX.Element {
         <Sidebar />
         <div className="profileBlock">
           <div className="profileBlockTop">
-            <img src={background} className="profileFonImg" alt="cover view" />
-            <img src={userPhoto} className="profileUserImg" alt="user ava" />
+            <img
+              src={`${publicFolder}fon.jpg`}
+              className="profileFonImg"
+              alt="cover view"
+            />
+            <img
+              src={`${publicFolder}person/6.jpg`}
+              className="profileUserImg"
+              alt="user ava"
+            />
             <div className="profileInfo">
               <h3 className="profileName">Tribis Alexandr</h3>
               <div className="profileStatus">Follow your heart</div>
