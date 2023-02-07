@@ -1,7 +1,8 @@
 // Basic classes
-html{
-  overflow-x:  hidden;
+html {
+  overflow-x: hidden;
 }
+
 .body {
   width: 100vw;
   height: 100vh;
@@ -13,7 +14,7 @@ html{
 /// @type Length
 $max-width: 1900px !default;
 $container-padding: 15px !default;
-$padding-edge-screen: 15px !default; // отступ от края экрана мобильных устройств
+$padding-edge-screen: 15px !default;
 
 .container {
   max-width: $max-width + ($container-padding * 2); //+ ($padding-edge-screen * 2); /* 1 */
@@ -22,5 +23,4 @@ $padding-edge-screen: 15px !default; // отступ от края экрана 
   padding-left: $padding-edge-screen; /* 3 */
   padding-right: $padding-edge-screen; /* 3 */
   width: 100%; /* 1 */
-  // border: 1px solid green;
 }

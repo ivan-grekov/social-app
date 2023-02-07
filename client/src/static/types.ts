@@ -6,14 +6,39 @@ export interface UserProps {
   };
 }
 
+export interface IPost {
+  _id: string;
+  userId: string;
+  desc?: string;
+  img: string;
+  likes: [];
+  createdAt: string;
+}
 export interface PostProps {
-  post: {
-    id: number;
-    desc?: string;
-    photo: string;
-    date: string;
-    userId: number;
-    like: number;
-    comment: number;
-  };
+  post: IPost;
+}
+
+export interface propsFormAuth {
+  title: string;
+  isLogin: boolean;
+  handleClick: void;
+}
+
+export interface IUser {
+  username: string;
+  email: string;
+  password: string;
+  profilePicture?: string;
+  coverPicture?: string;
+  followers: [];
+  followings: [];
+  isAdmin: boolean;
+  desc?: string;
+  city?: string;
+  from?: string;
+  relationship?: number;
+}
+
+export interface FeedProps {
+  username?: string;
 }

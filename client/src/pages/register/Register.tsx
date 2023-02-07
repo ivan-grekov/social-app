@@ -1,13 +1,10 @@
 import './register.scss';
-import React from "react";
-import FormAuth from "../../components/formAuth/FormAuth";
-import Promo from "../../components/promoAuth/Promo";
+import React from 'react';
+import FormAuth from '../../components/formAuth/FormAuth';
+import Promo from '../../components/promoAuth/Promo';
 
 const Register: React.FC = () => {
-
-  const handleRegister = (): void => {
-    console.log('work register');
-  }
+  const handleRegister = (): void => {};
 
   return (
     <div className="login">
@@ -16,11 +13,15 @@ const Register: React.FC = () => {
           <Promo />
         </div>
         <div className="formAuth">
-          <FormAuth title={"Register"} isLogin={false} handleClick={handleRegister()}/>
+          <FormAuth
+            title={'Register'}
+            isLogin={false}
+            handleClick={handleRegister()}
+          />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Register;

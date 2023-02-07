@@ -3,6 +3,7 @@ import { Search, Person, Chat, Notifications } from '@mui/icons-material';
 import React from 'react';
 import Logo from '../logo/logo';
 import userPhoto from '../../assets/images/Avatar.jpg';
+import { Link } from 'react-router-dom';
 
 export default function Header(): JSX.Element {
   return (
@@ -10,7 +11,9 @@ export default function Header(): JSX.Element {
       <div className="container">
         <div className="headerWrapper">
           <div className="headerLeft">
-            <Logo color={'white'} />
+            <Link to="/">
+              <Logo color={'white'} />
+            </Link>
           </div>
           <div className="headerCenter">
             <div className="searchbar">
