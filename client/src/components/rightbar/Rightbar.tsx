@@ -1,12 +1,13 @@
 import './rightbar.scss';
 import { Users } from '../../static/Data';
 import OnlineFriend from '../onlineFriend/OnlineFriend';
+import { IUser } from '../../static/types';
 
 interface RightbarProps {
-  profile?: boolean;
+  user?: IUser;
 }
 
-export default function Rightbar({ profile }: RightbarProps) {
+export default function Rightbar({ user }: RightbarProps) {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const HomeRightbar = () => {
     return (
@@ -33,21 +34,27 @@ export default function Rightbar({ profile }: RightbarProps) {
   };
 
   const ProfileRightbar = () => {
+    const relationStatus =
+      user?.relationship === 1
+        ? 'Single'
+        : user?.relationship === 2
+        ? 'Married'
+        : '-';
     return (
       <>
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">Minsk</span>
+            <span className="rightbarInfoValue">{user?.city}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">Belarus</span>
+            <span className="rightbarInfoValue">{user?.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">Married</span>
+            <span className="rightbarInfoValue">{relationStatus}</span>
           </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>
@@ -84,7 +91,7 @@ export default function Rightbar({ profile }: RightbarProps) {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {profile ? <ProfileRightbar /> : <HomeRightbar />}
+        {user ? <ProfileRightbar /> : <HomeRightbar />}
       </div>
     </div>
   );
