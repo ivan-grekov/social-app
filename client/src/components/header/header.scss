@@ -2,7 +2,7 @@
 
 .header {
   font-family: Nunito, sans-serif;
-  height: 50px;
+  height: 70px;
   display: flex;
   background-color: $color-bacgraund-header;
   position: sticky;
@@ -11,7 +11,7 @@
 }
 .headerWrapper {
   width: 100%;
-  height: 50px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,6 +19,16 @@
 }
 .headerLeft {
   flex: 3;
+  display: flex;
+  & .loginLogo {
+    font-family: 'MontserratAlt1', cursive;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 28px;
+    cursor: pointer;
+  }
 }
 
 .logo {
@@ -101,5 +111,11 @@
 
 .headerRight .follower .followerImg {
   width: 30px;
+  border-radius: 50%;
+}
+
+.headerUserImg {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
