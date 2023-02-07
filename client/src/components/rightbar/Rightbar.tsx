@@ -7,6 +7,7 @@ interface RightbarProps {
 }
 
 export default function Rightbar({ profile }: RightbarProps) {
+  const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const HomeRightbar = () => {
     return (
       <>
@@ -53,7 +54,7 @@ export default function Rightbar({ profile }: RightbarProps) {
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
             <img
-              src={'./assets/images/person/1.jpg'}
+              src={`${publicFolder}person/1.jpg`}
               alt="person"
               className="rightbarFollowingImg"
             />
@@ -61,7 +62,7 @@ export default function Rightbar({ profile }: RightbarProps) {
           </div>
           <div className="rightbarFollowing">
             <img
-              src={'./assets/images/person/2.jpg'}
+              src={`${publicFolder}person/2.jpg`}
               alt="person"
               className="rightbarFollowingImg"
             />
@@ -69,7 +70,7 @@ export default function Rightbar({ profile }: RightbarProps) {
           </div>
           <div className="rightbarFollowing">
             <img
-              src={'./assets/images/person/3.jpg'}
+              src={`${publicFolder}person/3.jpg`}
               alt="person"
               className="rightbarFollowingImg"
             />
