@@ -1,12 +1,8 @@
-import Home from './pages/home/Home';
-import Profile from './pages/profile/Profile';
+import { RouterProvider } from 'react-router-dom';
+import { routes } from './static/routes';
 
 function App(): JSX.Element {
-  return (
-    <>
-      <Profile />
-    </>
-  );
+  return <RouterProvider router={routes} />;
 }
 
 export default App;
