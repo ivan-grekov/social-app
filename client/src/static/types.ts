@@ -17,3 +17,9 @@ export interface PostProps {
     comment: number;
   };
 }
+
+export interface propsFormAuth {
+  title: string;
+  isLogin: boolean;
+  handleClick: void;
+}
