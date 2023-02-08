@@ -4,7 +4,6 @@ import FormAuth from '../../components/formAuth/FormAuth';
 import Promo from '../../components/promoAuth/Promo';
 
 const Login: React.FC = () => {
-  const handleLogin = (): void => {};
   const titleName = 'Log In';
 
   return (
@@ -14,11 +13,7 @@ const Login: React.FC = () => {
           <Promo />
         </div>
         <div className="formAuth">
-          <FormAuth
-            title={titleName}
-            isLogin={true}
-            handleClick={handleLogin()}
-          />
+          <FormAuth title={titleName} isLogin={true} />
         </div>
       </div>
     </div>
