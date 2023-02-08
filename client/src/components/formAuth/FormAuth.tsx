@@ -1,50 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './formAuth.scss';
 import { propsFormAuth } from '../../static/types';
 
-const FormAuth = ({
-  title,
-  isLogin,
-  handleClick,
-}: propsFormAuth): JSX.Element => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [pass, setPass] = useState('');
+const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
+  const minLengthOfLoginPassword = 6;
+  const emailAddress = React.useRef<HTMLInputElement>(null);
+  const password = React.useRef<HTMLInputElement>(null);
+
+  const handleClick = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
 
   return (
     <>
-      <form className="formAuth">
+      <form className="formAuth" onSubmit={handleClick}>
         <h2 className="formAuthTitle">{title}</h2>
         {!isLogin ? (
-          <input
-            className="input"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <input className="input" placeholder="Enter your name" />
         ) : null}
         <input
           className="input"
           placeholder="Enter your email"
-          value={email}
           type="email"
           required
-          onChange={(e) => setEmail(e.target.value)}
+          ref={emailAddress}
         />
         <input
           className="input"
           placeholder="Enter your password"
-          value={pass}
           type="password"
-          onChange={(e) => setPass(e.target.value)}
+          required
+          minLength={minLengthOfLoginPassword}
+          ref={password}
         />
         {!isLogin ? (
           <input
             className="input"
             placeholder="Enter the password again"
-            value={pass}
             type="password"
-            onChange={(e) => setPass(e.target.value)}
+            ref={password}
           />
         ) : null}
         <div className="">
