@@ -1,15 +1,24 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 import './formAuth.scss';
 import { propsFormAuth } from '../../static/types';
+import { loginCall } from '../../apiCalls';
+import { AuthContext } from '../../context/AuthContext';
+import { CircularProgress } from '@mui/material';
 
 const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
   const minLengthOfLoginPassword = 6;
   const emailAddress = React.useRef<HTMLInputElement>(null);
   const password = React.useRef<HTMLInputElement>(null);
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleClick = (e: React.FormEvent) => {
     e.preventDefault();
+    loginCall(
+      { email: emailAddress.current?.value, password: password.current?.value },
+      dispatch
+    );
   };
+  console.log(user);
 
   return (
     <>
@@ -58,7 +67,13 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
             </div>
           )}
         </div>
-        <button className="buttonAuth button">{title}</button>
+        <button className="buttonAuth button">
+          {isFetching ? (
+            <CircularProgress color="secondary" size="30px" />
+          ) : (
+            title
+          )}
+        </button>
       </form>
     </>
   );
