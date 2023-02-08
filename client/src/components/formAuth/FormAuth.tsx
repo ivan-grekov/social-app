@@ -1,9 +1,10 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, {useContext} from 'react';
 import './formAuth.scss';
-import { propsFormAuth } from '../../static/types';
-import { loginCall } from '../../apiCalls';
-import { AuthContext } from '../../context/AuthContext';
-import { CircularProgress } from '@mui/material';
+import {propsFormAuth} from '../../static/types';
+import {loginCall} from '../../apiCalls';
+import {AuthContext} from '../../context/AuthContext';
+import {CircularProgress} from '@mui/material';
+import {Link} from "react-router-dom";
 
 const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
   const minLengthOfLoginPassword = 6;
@@ -54,16 +55,20 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
           {isLogin ? (
             <div>
               No account?
-              <span className="signLink" onClick={() => handleClick}>
-                Sign up
-              </span>
+              <Link to={`/register`}>
+                <span className="signLink" onClick={() => handleClick}>
+                  Sign up
+                </span>
+              </Link>
             </div>
           ) : (
             <div>
               Have an account?
-              <span className="signLink" onClick={() => handleClick}>
-                Sign in
-              </span>
+              <Link to={`/login`}>
+                <span className="signLink" onClick={() => handleClick}>
+                  Sign in
+                </span>
+              </Link>
             </div>
           )}
         </div>
