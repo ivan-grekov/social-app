@@ -5,28 +5,52 @@ import {loginCall} from '../../apiCalls';
 import {AuthContext} from '../../context/AuthContext';
 import {CircularProgress} from '@mui/material';
 import {Link} from "react-router-dom";
+import axios from "axios";
 
-const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
+const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
   const minLengthOfLoginPassword = 6;
+  const username = React.useRef<HTMLInputElement>(null);
   const emailAddress = React.useRef<HTMLInputElement>(null);
   const password = React.useRef<HTMLInputElement>(null);
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const passwordAgain = React.useRef<HTMLInputElement>(null);
+  const {user, isFetching, error, dispatch} = useContext(AuthContext);
 
-  const handleClick = (e: React.FormEvent) => {
+  const handleClickLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     loginCall(
-      { email: emailAddress.current?.value, password: password.current?.value },
+      {email: emailAddress.current?.value, password: password.current?.value},
       dispatch
     );
+  };
+
+  const handleClickRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (passwordAgain.current?.value !== password.current?.value) {
+      passwordAgain.current?.setCustomValidity(`Passwords don't match`);
+    } else {
+      const userRegister = {
+        username: username.current?.value,
+        email: emailAddress.current?.value,
+        password: password.current?.value,
+      }
+      try {
+        await axios.post('/api/auth/register', userRegister);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
   console.log(user);
 
   return (
     <>
-      <form className="formAuth" onSubmit={handleClick}>
+      <form className="formAuth" onSubmit={isLogin ? handleClickLogin : handleClickRegister}>
         <h2 className="formAuthTitle">{title}</h2>
         {!isLogin ? (
-          <input className="input" placeholder="Enter your name" />
+          <input className="input"
+                 placeholder="Enter your name"
+                 ref={username}
+          />
         ) : null}
         <input
           className="input"
@@ -48,7 +72,8 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
             className="input"
             placeholder="Enter the password again"
             type="password"
-            ref={password}
+            required
+            ref={passwordAgain}
           />
         ) : null}
         <div className="">
@@ -56,7 +81,7 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
             <div>
               No account?
               <Link to={`/register`}>
-                <span className="signLink" onClick={() => handleClick}>
+                <span className="signLink">
                   Sign up
                 </span>
               </Link>
@@ -65,16 +90,16 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
             <div>
               Have an account?
               <Link to={`/login`}>
-                <span className="signLink" onClick={() => handleClick}>
+                <span className="signLink">
                   Sign in
                 </span>
               </Link>
             </div>
           )}
         </div>
-        <button className="buttonAuth button">
+        <button className="buttonAuth button" type="submit">
           {isFetching ? (
-            <CircularProgress color="secondary" size="30px" />
+            <CircularProgress color="secondary" size="30px"/>
           ) : (
             title
           )}
