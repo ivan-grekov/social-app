@@ -2,8 +2,10 @@ import './share.scss';
 import { PermMedia, Label, EmojiEmotions, Room } from '@mui/icons-material';
 import Follower from '../follower/Follower';
 import ava01 from '../../assets/images/followers/ava01.jpg';
+// import {AuthContext} from '../../context/AuthContext';
 
 function Share() {
+  // const {user} = userContext(AuthContext)
   return (
     <div className="share">
       <div className="shareWrapper">
