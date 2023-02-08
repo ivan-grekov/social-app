@@ -21,7 +21,6 @@ export interface PostProps {
 export interface propsFormAuth {
   title: string;
   isLogin: boolean;
-  handleClick: void;
 }
 
 export interface IUser {
