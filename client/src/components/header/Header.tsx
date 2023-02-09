@@ -1,13 +1,15 @@
 import './header.scss';
 import { Search, Person, Chat, Notifications } from '@mui/icons-material';
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Logo from '../logo/logo';
 import userPhoto from '../../assets/images/Avatar.jpg';
 import { Link } from 'react-router-dom';
-import {AuthContext} from "../../context/AuthContext";
+import { AuthContext } from '../../context/AuthContext';
+import { UserContext } from '../../static/types';
 
 export default function Header(): JSX.Element {
-  const { user } = useContext(AuthContext);
+  const { user } = React.useContext(AuthContext) as UserContext;
+  const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   console.log('Header user', user);
 
   return (
@@ -47,7 +49,15 @@ export default function Header(): JSX.Element {
                 <span className="headerIconBadge">1</span>
               </div>
             </div>
-            <img src={userPhoto} className="headerUserImg" alt="user ava" />
+            <img
+              src={
+                user?.profilePicture
+                  ? publicFolder + user.profilePicture
+                  : publicFolder + 'person/noAvatar.png'
+              }
+              className="headerUserImg"
+              alt="user ava"
+            />
           </div>
         </div>
       </div>
