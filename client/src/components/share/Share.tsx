@@ -2,20 +2,19 @@ import './share.scss';
 import { PermMedia, Label, EmojiEmotions, Room } from '@mui/icons-material';
 // import Follower from '../follower/Follower';
 // import ava01 from '../../assets/images/followers/ava01.jpg';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../context/AuthContext';
 
 function Share() {
-  const { user } = useContext(AuthContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  // const { user } = useContext(AuthContext);
+  // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  console.log(user);
 
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img
+          {/* <img
             className="shareProfileImg"
             src={
               user.profilePicture
@@ -23,7 +22,7 @@ function Share() {
                 : PF + 'person/noAvatar.png'
             }
             alt=""
-          />
+          /> */}
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
