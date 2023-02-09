@@ -1,29 +1,28 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import './formAuth.scss';
-import {propsFormAuth} from '../../static/types';
-import {loginCall} from '../../apiCalls';
-import {AuthContext} from '../../context/AuthContext';
-import {CircularProgress} from '@mui/material';
-import {Link} from "react-router-dom";
-import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { propsFormAuth } from '../../static/types';
+import { loginCall } from '../../apiCalls';
+import { AuthContext } from '../../context/AuthContext';
+import { CircularProgress } from '@mui/material';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
+const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
   const navigate = useNavigate();
   const minLengthOfLoginPassword = 6;
   const username = React.useRef<HTMLInputElement>(null);
   const emailAddress = React.useRef<HTMLInputElement>(null);
   const password = React.useRef<HTMLInputElement>(null);
   const passwordAgain = React.useRef<HTMLInputElement>(null);
-  const {user, isFetching, error, dispatch} = useContext(AuthContext);
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
 
   const handleClickLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     loginCall(
-      {email: emailAddress.current?.value, password: password.current?.value},
+      { email: emailAddress.current?.value, password: password.current?.value },
       dispatch
     );
-    navigate('/');
   };
 
   const handleClickRegister = async (e: React.FormEvent) => {
@@ -35,7 +34,7 @@ const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
         username: username.current?.value,
         email: emailAddress.current?.value,
         password: password.current?.value,
-      }
+      };
       try {
         console.log('User', userRegister);
         await axios.post('/api/auth/register', userRegister);
@@ -49,12 +48,16 @@ const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
 
   return (
     <>
-      <form className="formAuth" onSubmit={isLogin ? handleClickLogin : handleClickRegister}>
+      <form
+        className="formAuth"
+        onSubmit={isLogin ? handleClickLogin : handleClickRegister}
+      >
         <h2 className="formAuthTitle">{title}</h2>
         {!isLogin ? (
-          <input className="input"
-                 placeholder="Enter your name"
-                 ref={username}
+          <input
+            className="input"
+            placeholder="Enter your name"
+            ref={username}
           />
         ) : null}
         <input
@@ -86,25 +89,21 @@ const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
             <div>
               No account?
               <Link to={`/register`}>
-                <span className="signLink">
-                  Sign up
-                </span>
+                <span className="signLink">Sign up</span>
               </Link>
             </div>
           ) : (
             <div>
               Have an account?
               <Link to={`/login`}>
-                <span className="signLink">
-                  Sign in
-                </span>
+                <span className="signLink">Sign in</span>
               </Link>
             </div>
           )}
         </div>
         <button className="buttonAuth button" type="submit">
           {isFetching ? (
-            <CircularProgress color="secondary" size="30px"/>
+            <CircularProgress color="secondary" size="30px" />
           ) : (
             title
           )}
