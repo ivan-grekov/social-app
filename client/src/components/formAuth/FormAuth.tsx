@@ -9,13 +9,13 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
-  const navigate = useNavigate();
   const minLengthOfLoginPassword = 6;
   const username = React.useRef<HTMLInputElement>(null);
   const emailAddress = React.useRef<HTMLInputElement>(null);
   const password = React.useRef<HTMLInputElement>(null);
   const passwordAgain = React.useRef<HTMLInputElement>(null);
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const history = useNavigate();
 
   const handleClickLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,13 +38,12 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
       try {
         console.log('User', userRegister);
         await axios.post('/api/auth/register', userRegister);
-        navigate('/login');
+        history('/login');
       } catch (err) {
         console.log(err);
       }
     }
   };
-  console.log(user);
 
   return (
     <>
@@ -57,6 +56,7 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
           <input
             className="input"
             placeholder="Enter your name"
+            required
             ref={username}
           />
         ) : null}
@@ -81,6 +81,7 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
             placeholder="Enter the password again"
             type="password"
             required
+            minLength={minLengthOfLoginPassword}
             ref={passwordAgain}
           />
         ) : null}
