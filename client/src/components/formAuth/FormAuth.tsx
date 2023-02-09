@@ -6,8 +6,10 @@ import {AuthContext} from '../../context/AuthContext';
 import {CircularProgress} from '@mui/material';
 import {Link} from "react-router-dom";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
+  const navigate = useNavigate();
   const minLengthOfLoginPassword = 6;
   const username = React.useRef<HTMLInputElement>(null);
   const emailAddress = React.useRef<HTMLInputElement>(null);
@@ -21,6 +23,7 @@ const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
       {email: emailAddress.current?.value, password: password.current?.value},
       dispatch
     );
+    navigate('/');
   };
 
   const handleClickRegister = async (e: React.FormEvent) => {
@@ -34,7 +37,9 @@ const FormAuth = ({title, isLogin}: propsFormAuth): JSX.Element => {
         password: password.current?.value,
       }
       try {
+        console.log('User', userRegister);
         await axios.post('/api/auth/register', userRegister);
+        navigate('/login');
       } catch (err) {
         console.log(err);
       }
