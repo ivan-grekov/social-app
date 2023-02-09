@@ -5,6 +5,7 @@ import Promo from '../../components/promoAuth/Promo';
 
 const Login: React.FC = () => {
   const titleName = 'Log In';
+  const isLogin = true;
 
   return (
     <div className="login">
@@ -13,7 +14,7 @@ const Login: React.FC = () => {
           <Promo />
         </div>
         <div className="formAuth">
-          <FormAuth title={titleName} isLogin={true} />
+          <FormAuth title={titleName} isLogin={isLogin} />
         </div>
       </div>
     </div>

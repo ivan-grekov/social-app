@@ -1,6 +1,9 @@
 import { IUser } from '../static/types';
 
-export const LoginStart = () => ({
+export const LoginStart = (userCredential: {
+  email: string;
+  password: string;
+}) => ({
   type: 'LOGIN_START',
 });
 
@@ -9,7 +12,7 @@ export const LoginSuccess = (user: IUser) => ({
   payload: user,
 });
 
-export const LoginFailure = () => ({
+export const LoginFailure = (error: Error) => ({
   type: 'LOGIN_FAILURE',
 });
 
