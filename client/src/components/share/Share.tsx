@@ -1,19 +1,28 @@
 import './share.scss';
 import { PermMedia, Label, EmojiEmotions, Room } from '@mui/icons-material';
-import Follower from '../follower/Follower';
-import ava01 from '../../assets/images/followers/ava01.jpg';
-// import {AuthContext} from '../../context/AuthContext';
+// import Follower from '../follower/Follower';
+// import ava01 from '../../assets/images/followers/ava01.jpg';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 function Share() {
-  // const {user} = userContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  console.log(user);
+
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <Follower ava={ava01} userName={''} />
-          <input
-            placeholder="What's in your mind Abram?"
-            className="shareInput"
+          <img
+            className="shareProfileImg"
+            src={
+              user.profilePicture
+                ? PF + user.profilePicture
+                : PF + 'person/noAvatar.png'
+            }
+            alt=""
           />
         </div>
         <hr className="shareHr" />
