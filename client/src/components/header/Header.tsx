@@ -1,11 +1,15 @@
 import './header.scss';
 import { Search, Person, Chat, Notifications } from '@mui/icons-material';
-import React from 'react';
+import React, {useContext} from 'react';
 import Logo from '../logo/logo';
 import userPhoto from '../../assets/images/Avatar.jpg';
 import { Link } from 'react-router-dom';
+import {AuthContext} from "../../context/AuthContext";
 
 export default function Header(): JSX.Element {
+  const { user } = useContext(AuthContext);
+  console.log('Header user', user);
+
   return (
     <div className="header">
       <div className="container">
