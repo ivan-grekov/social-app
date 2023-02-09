@@ -42,46 +42,52 @@ export default function Rightbar({ user }: RightbarProps) {
         : '-';
     return (
       <>
-        <h4 className="rightbarTitle">User information</h4>
-        <div className="rightbarInfo">
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">{user?.city}</span>
+        <div className="profileRightBlock">
+          <div className="profileDescriptions">
+            <h4 className="rightbarTitle">User information</h4>
+            <div className="rightbarInfo">
+              <div className="rightbarInfoItem">
+                <span className="rightbarInfoKey">City:</span>
+                <span className="rightbarInfoValue">{user?.city}</span>
+              </div>
+              <div className="rightbarInfoItem">
+                <span className="rightbarInfoKey">From:</span>
+                <span className="rightbarInfoValue">{user?.from}</span>
+              </div>
+              <div className="rightbarInfoItem">
+                <span className="rightbarInfoKey">Relationship:</span>
+                <span className="rightbarInfoValue">{relationStatus}</span>
+              </div>
+            </div>
           </div>
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">{user?.from}</span>
-          </div>
-          <div className="rightbarInfoItem">
-            <span className="rightbarInfoKey">Relationship:</span>
-            <span className="rightbarInfoValue">{relationStatus}</span>
-          </div>
-        </div>
-        <h4 className="rightbarTitle">User friends</h4>
-        <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img
-              src={`${publicFolder}person/1.jpg`}
-              alt="person"
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Sam</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src={`${publicFolder}person/2.jpg`}
-              alt="person"
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Sam</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img
-              src={`${publicFolder}person/3.jpg`}
-              alt="person"
-              className="rightbarFollowingImg"
-            />
-            <span className="rightbarFollowingName">Sam</span>
+          <div className="followersBlock">
+            <h4 className="rightbarTitle">User friends</h4>
+            <div className="rightbarFollowings">
+              <div className="rightbarFollowing">
+                <img
+                  src={`${publicFolder}person/1.jpg`}
+                  alt="person"
+                  className="rightbarFollowingImg"
+                />
+                <span className="rightbarFollowingName">Sam</span>
+              </div>
+              <div className="rightbarFollowing">
+                <img
+                  src={`${publicFolder}person/2.jpg`}
+                  alt="person"
+                  className="rightbarFollowingImg"
+                />
+                <span className="rightbarFollowingName">Sam</span>
+              </div>
+              <div className="rightbarFollowing">
+                <img
+                  src={`${publicFolder}person/3.jpg`}
+                  alt="person"
+                  className="rightbarFollowingImg"
+                />
+                <span className="rightbarFollowingName">Sam</span>
+              </div>
+            </div>
           </div>
         </div>
       </>

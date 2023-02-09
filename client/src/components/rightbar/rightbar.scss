@@ -37,7 +37,8 @@
 
 .rightbarTitle {
   margin: 0 0 20px 0;
-}
+  text-align: center;
+ }
 
 .rightbarFriendList {
   padding: 0;
@@ -104,4 +105,51 @@
 
 .rightbarFollowButton:focus {
   outline: none;
+}
+
+.profileRightBlock {
+  margin: 0 10px 10px 0;
+  flex: 3;
+  padding: 0 10px 10px 10px;
+
+  .profileDescriptionInfo {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+
+  .profileDescriptions {
+    height: 170px;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+
+    .profileDescription {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+
+      .profileDescriptionName {
+        color: cadetblue;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .followersBlock {
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    margin-top: 30px;
+    padding: 10px;
+
+    .followers {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
 }
