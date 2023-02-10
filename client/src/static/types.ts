@@ -41,3 +41,9 @@ export interface IUser {
 export interface FeedProps {
   username?: string;
 }
+
+export interface UserContext {
+  user: IUser | null;
+  isFetching: boolean;
+  error: boolean;
+}
