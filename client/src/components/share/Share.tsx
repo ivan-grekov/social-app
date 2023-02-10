@@ -5,11 +5,14 @@ import { PermMedia, Label, EmojiEmotions, Room } from '@mui/icons-material';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../static/types';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Share() {
   const { user } = useContext(AuthContext) as UserContext;
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  // const name= {
+  //   user?.username==undefined ? '' : user?.username
+  // }
 
   console.log('Share user', user);
   console.log('Share user', user?.username);
@@ -19,19 +22,23 @@ function Share() {
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          {/* <Link to={`profile/${user.username}`}> */}
-          <img
-            className="shareProfileImg"
-            src={
-              user?.profilePicture
-                ? PF + user.profilePicture
-                : PF + 'person/noAvatar.png'
-            }
-            alt=""
-          />
-          {/* </Link> */}
+          <Link to={`profile/${user?.username}`}>
+            <img
+              className="shareProfileImg"
+              src={
+                user?.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + 'person/noAvatar.png'
+              }
+              alt=""
+            />
+          </Link>
           <input
-            placeholder={"What's in your mind " +user?.username + '?'}
+            placeholder={
+              user?.username === undefined
+                ? "What's in your mind?"
+                : "What's in your mind " + user?.username + '?'
+            }
             className="shareInput"
           />
         </div>
