@@ -1,17 +1,23 @@
 import './post.scss';
 import { MoreVert } from '@mui/icons-material';
-import { useState, useEffect } from 'react';
-import { PostProps } from '../../static/types';
+import React, { useState, useEffect } from 'react';
+import { PostProps, UserContext } from '../../static/types';
 import axios from 'axios';
 import { IUser } from '../../static/types';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
+import { AuthContext } from "../../context/AuthContext";
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [like, setLike] = useState(post.likes.length);
-  const [isLiked, setIsLiked] = useState(false);
+  const [like, setLike] = useState<Number>(post.likes.length);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
   const [user, setUser] = useState<IUser>(Object);
+  const { user:currentUser } = React.useContext(AuthContext) as UserContext;
+
+  useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser?._id as string))
+  }, [currentUser?._id, post.likes]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -20,11 +26,17 @@ const Post: React.FC<PostProps> = ({ post }) => {
     };
     fetchUser();
   }, [post.userId]);
+  console.log('Post: ', post);
 
-  // const likeHandler = () => {
-  //   setLike(isliked ? like - 1 : like + 1);
-  //   setIsLiked(!isliked);
-  // };
+  const likeHandler = () => {
+    try {
+      axios.put(`/api/posts/${post._id}/like`, {userId: currentUser?._id})
+    } catch (err) {}
+
+    setLike(isLiked ? Number(like) - 1 : Number(like) + 1);
+    setIsLiked(!isLiked);
+  };
+
   return (
     <div className="post">
       <div className="postWrapper">
@@ -63,12 +75,13 @@ const Post: React.FC<PostProps> = ({ post }) => {
               src={`${publicFolder}like.png`}
               alt="like"
             />
-            <img
+             <img
+              onClick={likeHandler}
               className="likeIcon"
               src={`${publicFolder}heart.png`}
               alt="heart"
             />
-            <span className="postLikeCounter">{like} people liked it</span>
+            <span className="postLikeCounter">{Number(like)} people liked it</span>
           </div>
           <div className="posrBottomRight">
             <span className="postCommentText">comments</span>
