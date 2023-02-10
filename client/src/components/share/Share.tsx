@@ -2,27 +2,38 @@ import './share.scss';
 import { PermMedia, Label, EmojiEmotions, Room } from '@mui/icons-material';
 // import Follower from '../follower/Follower';
 // import ava01 from '../../assets/images/followers/ava01.jpg';
-// import { useContext } from 'react';
-// import { AuthContext } from '../../context/AuthContext';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { UserContext } from '../../static/types';
+// import { Link } from 'react-router-dom';
 
 function Share() {
-  // const { user } = useContext(AuthContext);
-  // const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user } = useContext(AuthContext) as UserContext;
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  console.log('Share user', user);
+  console.log('Share user', user?.username);
+  console.log('Share user', user?.profilePicture);
 
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          {/* <img
+          {/* <Link to={`profile/${user.username}`}> */}
+          <img
             className="shareProfileImg"
             src={
-              user.profilePicture
+              user?.profilePicture
                 ? PF + user.profilePicture
                 : PF + 'person/noAvatar.png'
             }
             alt=""
-          /> */}
+          />
+          {/* </Link> */}
+          <input
+            placeholder={"What's in your mind " +user?.username + '?'}
+            className="shareInput"
+          />
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">
