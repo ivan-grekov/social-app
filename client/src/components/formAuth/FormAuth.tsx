@@ -36,7 +36,6 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
         password: password.current?.value,
       };
       try {
-        console.log('User', userRegister);
         await axios.post('/api/auth/register', userRegister);
         history('/login');
       } catch (err) {
