@@ -110,7 +110,27 @@
 .profileRightBlock {
   margin: 0 10px 10px 0;
   flex: 3;
+  display: flex;
+  flex-direction: column;
   padding: 0 10px 10px 10px;
+
+  .addFollow {
+    cursor: pointer;
+    width: 120px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: $color-logo-logo;
+  }
 
   .profileDescriptionInfo {
     text-align: center;

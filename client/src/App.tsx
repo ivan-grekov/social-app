@@ -1,8 +1,27 @@
-import { RouterProvider } from 'react-router-dom';
-import { routes } from './static/routes';
+import { useContext } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { AuthContext } from './context/AuthContext';
+import Home from './pages/home/Home';
+import Register from './pages/register/Register';
+import Login from './pages/login/Login';
+import Profile from './pages/profile/Profile';
 
 function App(): JSX.Element {
-  return <RouterProvider router={routes} />;
+  const { user } = useContext(AuthContext);
+  return (
+    <Routes>
+      <Route path="/" element={user ? <Home /> : <Register />} />
+      <Route
+        path="/login"
+        element={user ? <Navigate to="/" replace /> : <Login />}
+      />
+      <Route
+        path="/register"
+        element={user ? <Navigate to="/" replace /> : <Register />}
+      />
+      <Route path="/profile/:username" element={<Profile />} />
+    </Routes>
+  );
 }
 
 export default App;
