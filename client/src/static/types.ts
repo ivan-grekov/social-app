@@ -43,6 +43,12 @@ export interface FeedProps {
   username?: string;
 }
 
+export interface IFriends {
+  _id: string;
+  username: string;
+  profilePicture: string;
+}
+
 export interface UserContext {
   user: IUser | null;
   isFetching: boolean;

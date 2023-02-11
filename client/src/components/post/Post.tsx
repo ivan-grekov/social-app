@@ -26,7 +26,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
     };
     fetchUser();
   }, [post.userId]);
-  console.log('Post: ', post);
 
   const likeHandler = () => {
     try {
