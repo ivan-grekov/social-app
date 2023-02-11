@@ -27,7 +27,7 @@ export interface IUser {
   _id: string;
   username: string;
   email: string;
-  password: string;
+  password?: string;
   profilePicture?: string;
   coverPicture?: string;
   followers: [];
@@ -53,4 +53,9 @@ export interface UserContext {
   user: IUser | null;
   isFetching: boolean;
   error: boolean;
+  dispatch: any;
+}
+
+export interface RightbarProps {
+  user?: IUser | null;
 }
