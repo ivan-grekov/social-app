@@ -1,5 +1,11 @@
 import './share.scss';
-import { PermMedia, Label, EmojiEmotions, Room } from '@mui/icons-material';
+import {
+  PermMedia,
+  Label,
+  EmojiEmotions,
+  Room,
+  Cancel,
+} from '@mui/icons-material';
 import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../static/types';
@@ -33,15 +39,15 @@ function Share() {
       <div className="shareWrapper">
         <div className="shareTop">
           <Link to={`profile/${user?.username}`}>
-          <img
-            className="shareProfileImg"
-            src={
-              user?.profilePicture
-                ? PF + user.profilePicture
-                : PF + 'person/noAvatar.png'
-            }
-            alt=""
-          />
+            <img
+              className="shareProfileImg"
+              src={
+                user?.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + 'person/noAvatar.png'
+              }
+              alt=""
+            />
           </Link>
           <input
             placeholder={
@@ -54,6 +60,12 @@ function Share() {
           />
         </div>
         <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img src="{URL.createObjectURL(file)}" alt="" />
+            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+          </div>
+        )}
         <form className="shareBottom" onSubmit={submitHandler}>
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
