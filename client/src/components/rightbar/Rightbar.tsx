@@ -81,7 +81,7 @@ export default function Rightbar({ user }: RightbarProps) {
             <h4 className="rightbarTitle">User friends</h4>
             <div className="rightbarFollowings">
               {friends.map((friend: IFriends) => (
-                <Link to={`profile/${friend.username}`} style={{textDecoration: 'none'}}>
+                <Link to={`/profile/${friend.username}`} style={{textDecoration: 'none'}}>
                   <div className="rightbarFollowing">
                     <img
                       src={friend.profilePicture ? friend.profilePicture :`${publicFolder}person/1.jpg`}
