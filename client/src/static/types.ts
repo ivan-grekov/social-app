@@ -36,6 +36,7 @@ export interface IUser {
   city?: string;
   from?: string;
   relationship?: number;
+  _id: number;
 }
 
 export interface FeedProps {
@@ -43,7 +44,8 @@ export interface FeedProps {
 }
 
 export interface UserContext {
-  user: IUser | null;
+  user?: IUser | null;
   isFetching: boolean;
   error: boolean;
+  files?: boolean | null;
 }
