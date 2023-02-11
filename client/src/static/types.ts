@@ -47,5 +47,5 @@ export interface UserContext {
   user?: IUser | null;
   isFetching: boolean;
   error: boolean;
-  files?: boolean | null;
+  files?: string | null;
 }
