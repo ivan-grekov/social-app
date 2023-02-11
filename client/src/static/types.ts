@@ -11,7 +11,7 @@ export interface IPost {
   userId: string;
   desc?: string;
   img: string;
-  likes: [];
+  likes: string[];
   createdAt: string;
 }
 export interface PostProps {
@@ -24,6 +24,7 @@ export interface propsFormAuth {
 }
 
 export interface IUser {
+  _id: string;
   username: string;
   email: string;
   password: string;
@@ -40,4 +41,10 @@ export interface IUser {
 
 export interface FeedProps {
   username?: string;
+}
+
+export interface UserContext {
+  user: IUser | null;
+  isFetching: boolean;
+  error: boolean;
 }
