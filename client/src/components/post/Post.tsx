@@ -6,17 +6,17 @@ import axios from 'axios';
 import { IUser } from '../../static/types';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from '../../context/AuthContext';
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [like, setLike] = useState<Number>(post.likes.length);
   const [isLiked, setIsLiked] = useState<boolean>(false);
-  const [user, setUser] = useState<IUser>(Object);
-  const { user:currentUser } = React.useContext(AuthContext) as UserContext;
+  const [user, setUser] = useState(Object);
+  const { user: currentUser } = React.useContext(AuthContext) as UserContext;
 
   useEffect(() => {
-    setIsLiked(post.likes.includes(currentUser?._id as string))
+    setIsLiked(post.likes.includes(currentUser?._id!));
   }, [currentUser?._id, post.likes]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
 
   const likeHandler = () => {
     try {
-      axios.put(`/api/posts/${post._id}/like`, {userId: currentUser?._id})
+      axios.put(`/api/posts/${post._id}/like`, { userId: currentUser?._id });
     } catch (err) {}
 
     setLike(isLiked ? Number(like) - 1 : Number(like) + 1);
@@ -74,13 +74,15 @@ const Post: React.FC<PostProps> = ({ post }) => {
               src={`${publicFolder}like.png`}
               alt="like"
             />
-             <img
+            <img
               onClick={likeHandler}
               className="likeIcon"
               src={`${publicFolder}heart.png`}
               alt="heart"
             />
-            <span className="postLikeCounter">{Number(like)} people liked it</span>
+            <span className="postLikeCounter">
+              {Number(like)} people liked it
+            </span>
           </div>
           <div className="posrBottomRight">
             <span className="postCommentText">comments</span>
