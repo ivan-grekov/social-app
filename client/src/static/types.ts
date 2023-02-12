@@ -30,8 +30,8 @@ export interface IUser {
   password?: string;
   profilePicture?: string;
   coverPicture?: string;
-  followers: [];
-  followings: [];
+  followers: string[];
+  followings: string[];
   isAdmin: boolean;
   desc?: string;
   city?: string;
@@ -43,7 +43,7 @@ export interface FeedProps {
   username?: string;
 }
 
-export interface IFriends {
+export interface IFriend {
   _id: string;
   username: string;
   profilePicture: string;
