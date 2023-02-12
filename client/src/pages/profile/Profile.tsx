@@ -29,12 +29,20 @@ export default function Profile(): JSX.Element {
         <div className="profileBlock">
           <div className="profileBlockTop">
             <img
-              src={user.coverPicture || publicFolder + 'person/noCover.png'}
+              src={
+                user.coverPicture
+                  ? publicFolder + user.coverPicture
+                  : publicFolder + 'person/noCover.png'
+              }
               className="profileFonImg"
               alt="cover view"
             />
             <img
-              src={user.profilePicture || publicFolder + 'person/noAvatar.png'}
+              src={
+                user.profilePicture
+                  ? publicFolder + user.profilePicture
+                  : publicFolder + 'person/noAvatar.png'
+              }
               className="profileUserImg"
               alt="user ava"
             />
