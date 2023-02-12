@@ -55,6 +55,7 @@ export interface UserContext {
   error: boolean;
   dispatch: any;
   files?: string | null;
+  
 }
 
 export interface RightbarProps {

@@ -23,12 +23,29 @@ function Share() {
     const newPost = {
       userId: user?._id,
       desc: desc?.current?.value,
-      img: file,
     };
+
+
+    if (file) {
+      const data = new FormData();
+// @ts-ignore
+      const fileName = Date.now() + file.name;
+      data.append('file', file);
+      // @ts-ignore
+      data.append('name', fileName);
+      // @ts-ignore
+      newPost.img = fileName;
+      try {
+        await axios.post('/upload', data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
     try {
       console.log(newPost);
       await axios.post('api/posts', newPost);
+      window.location.reload();
     } catch (err) {
       console.log(err);
     }
@@ -62,7 +79,7 @@ function Share() {
         <hr className="shareHr" />
         {file && (
           <div className="shareImgContainer">
-            <img src="{URL.createObjectURL(file)}" alt="" />
+            <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
             <Cancel
               className="shareCancelImg"
               onClick={() => setFile(undefined)}
