@@ -12,12 +12,12 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user:currentUser, dispatch } = React.useContext(AuthContext) as UserContext;
-  const [followed, setFollowed] = useState(currentUser?.followings.includes(user?._id));
+  const [followed, setFollowed] = useState(currentUser?.followings.includes(user?._id as string));
 
   console.log(user?._id);
 
   useEffect(() => {
-    setFollowed(currentUser?.followings.includes(user?._id));
+    setFollowed(currentUser?.followings.includes(user?._id as string));
   }, [currentUser, user?._id]);
 
   useEffect(() => {
