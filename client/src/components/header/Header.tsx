@@ -1,6 +1,6 @@
 import './header.scss';
 import { Search, Person, Chat, Notifications } from '@mui/icons-material';
-import React  from 'react';
+import React from 'react';
 import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -9,7 +9,6 @@ import { UserContext } from '../../static/types';
 export default function Header(): JSX.Element {
   const { user } = React.useContext(AuthContext) as UserContext;
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
-  console.log('Header user', user);
 
   return (
     <div className="header">
