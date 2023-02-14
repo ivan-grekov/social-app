@@ -3,7 +3,6 @@ import { MoreVert } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
 import { PostProps, UserContext } from '../../static/types';
 import axios from 'axios';
-import { IUser } from '../../static/types';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
@@ -41,7 +40,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <Link to={`profile/${user.username}`}>
+            <Link to={`/profile/${user.username}`}>
               <img
                 src={
                   user.profilePicture
