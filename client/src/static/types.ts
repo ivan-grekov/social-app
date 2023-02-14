@@ -31,7 +31,7 @@ export interface IUser {
   profilePicture?: string;
   coverPicture?: string;
   followers: [];
-  followings: [];
+  followings: string[];
   isAdmin: boolean;
   desc?: string;
   city?: string;
@@ -57,5 +57,5 @@ export interface UserContext {
 }
 
 export interface RightbarProps {
-  user?: IUser | null;
+  user?: IUser;
 }
