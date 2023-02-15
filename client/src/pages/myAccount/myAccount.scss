@@ -1,0 +1,12 @@
+.my-account {
+  display: flex;
+
+
+  .myAccountBlock {
+    color: green;
+    flex: 9;
+    .profileBlockTop {
+      border: 2px solid red;
+    }
+  }
+}

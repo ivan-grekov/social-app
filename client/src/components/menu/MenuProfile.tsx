@@ -5,9 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import {Link} from "react-router-dom";
 import {UserContext} from "../../static/types";
 import {AuthContext} from "../../context/AuthContext";
+import {logoutCall} from "../../apiCalls";
 
 export default function MenuProfile() {
-  const { user } = React.useContext(AuthContext) as UserContext;
+  const { user, dispatch} = React.useContext(AuthContext) as UserContext;
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -16,6 +17,13 @@ export default function MenuProfile() {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = async () => {
+    setAnchorEl(null);
+    // localStorage.setItem('user', JSON.stringify(null));
+    localStorage.clear();
+    logoutCall(dispatch);
   };
 
   return (
@@ -60,10 +68,12 @@ export default function MenuProfile() {
         <Link to={`/profile/${user?.username}`}>
           <MenuItem onClick={handleClose}>Profile</MenuItem>
         </Link>
-        <Link to={`/profile/${user?.username}`}>
+        <Link to={`/account`}>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         </Link>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <Link to={`/login`}>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        </Link>
       </Menu>
     </div>
   );

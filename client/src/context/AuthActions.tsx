@@ -7,6 +7,11 @@ export const LoginStart = (userCredential: {
   type: 'LOGIN_START',
 });
 
+export const Logout = (user: IUser) => ({
+  type: 'LOGOUT',
+  payload: !user,
+});
+
 export const LoginSuccess = (user: IUser) => ({
   type: 'LOGIN_SUCCESS',
   payload: user,

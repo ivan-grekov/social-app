@@ -16,3 +16,9 @@ export const loginCall = async (
     dispatch({ type: 'LOGIN_FAILURE', payload: err });
   }
 };
+
+export const logoutCall = async (
+  dispatch: Dispatch<any>
+) => {
+  dispatch({ type: 'LOGOUT' });
+}
