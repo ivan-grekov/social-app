@@ -1,5 +1,6 @@
 import './header.scss';
-import { Search, Person, Chat, Notifications } from '@mui/icons-material';
+import { Person, Chat, Notifications } from '@mui/icons-material';
+import SearchBar from '../search/Search';
 import React from 'react';
 import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
@@ -20,19 +21,20 @@ export default function Header(): JSX.Element {
             </Link>
           </div>
           <div className="headerCenter">
-            <div className="searchbar">
+            <SearchBar />
+            {/* <div className="searchbar">
               <Search className="searchIcon" />
               <input
                 placeholder="Search for friend, post or video"
                 className="searchInput"
               />
-            </div>
+            </div> */}
           </div>
           <div className="headerRight">
-            <div className="headerLinks">
+            {/* <div className="headerLinks">
               <span className="headerLink">Homepage</span>
               <span className="headerLink">Timeline</span>
-            </div>
+            </div> */}
             <div className="headerIcons">
               <div className="headerIconItem">
                 <Person />
