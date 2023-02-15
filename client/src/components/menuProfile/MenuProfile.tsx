@@ -21,8 +21,8 @@ export default function MenuProfile() {
 
   const handleLogout = async () => {
     setAnchorEl(null);
-    // localStorage.setItem('user', JSON.stringify(null));
-    localStorage.clear();
+    localStorage.setItem('user', JSON.stringify(null));
+    // localStorage.clear();
     logoutCall(dispatch);
   };
 
@@ -40,7 +40,7 @@ export default function MenuProfile() {
           backgroundPosition: 'center',
           backgroundSize: 'cover'}}
               id="basic-button"
-              aria-controls={open ? 'basic-menu' : undefined}
+              aria-controls={open ? 'basic-menuProfile' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}
               onClick={handleClick}

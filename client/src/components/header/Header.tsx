@@ -5,7 +5,7 @@ import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../static/types';
-import MenuProfile from "../menu/MenuProfile";
+import MenuProfile from "../menuProfile/MenuProfile";
 
 export default function Header(): JSX.Element {
   const { user } = React.useContext(AuthContext) as UserContext;
@@ -48,22 +48,7 @@ export default function Header(): JSX.Element {
                 <span className="headerIconBadge">1</span>
               </div>
             </div>
-
             <MenuProfile />
-
-            {/*<Link to={`/profile/${user?.username}`}>*/}
-            {/*  <img*/}
-            {/*    src={*/}
-            {/*      user?.profilePicture*/}
-            {/*        ? publicFolder + user.profilePicture*/}
-            {/*        : publicFolder + 'person/noAvatar.png'*/}
-            {/*    }*/}
-            {/*    className="headerUserImg"*/}
-            {/*    alt="user ava"*/}
-            {/*  />*/}
-            {/*</Link>*/}
-
-
           </div>
         </div>
       </div>

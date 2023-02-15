@@ -1,11 +1,11 @@
 import './post.scss';
-import { MoreVert } from '@mui/icons-material';
 import React, { useState, useEffect } from 'react';
 import { PostProps, UserContext } from '../../static/types';
 import axios from 'axios';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
+import MenuPost from "../menuPost/MenuPost";
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -55,7 +55,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
-            <MoreVert />
+            <MenuPost/>
+            {/*<MoreVert />*/}
           </div>
         </div>
         <div className="postCenter">
