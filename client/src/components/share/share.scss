@@ -54,6 +54,9 @@
 }
 .shareOptionText {
   @include font-shareOptionText;
+  @media (max-width: 560px) {
+    display: none;
+  }
 }
 .shareButton {
   @include font-shareBotton;

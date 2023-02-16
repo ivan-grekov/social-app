@@ -7,6 +7,10 @@
   border-radius: 30px;
   display: flex;
   align-items: center;
+  @media (max-width: 460px) {
+    display: none;
+    background-color: $color-white;
+  }
 }
 .searchIcon {
   font-size: 20px !important;
@@ -14,7 +18,7 @@
 }
 .searchInput {
   border: none;
-  width: 70%;
+  width: 90%;
 }
 
 .searchInput:focus {
