@@ -6,7 +6,7 @@ const open = document.querySelector('.burgerMenuIconOpen');
 const close = document.querySelector('.burgerMenuIconClose');
 const sidebar = document.querySelector('.sidebar');
 
-console.log(sidebar); 
+console.log(sidebar);
 
 const activeMenu = () => {
   if (open!.classList.contains('active')) {

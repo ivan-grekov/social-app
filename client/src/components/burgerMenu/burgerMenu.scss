@@ -24,5 +24,15 @@
   .active {
     display: flex !important;
   }
-
+  .sidebarActive {
+    display: flex !important;
+    position: absolute !important;
+    width: 100%;
+    z-index: 5;
+    top: 70px;
+    right: 100%;
+    left: 0!important;
+    transition: all 0.5s !important;
+    background: $color-white;
+  }
 }

@@ -6,6 +6,13 @@
   overflow-y: scroll;
   position: sticky;
   top: 70px;
+  @media (max-width: 768px) {
+    // display: none;
+    flex: 1;
+    position: absolute !important;
+    left: -100%;
+    background-color: $color-white;
+  }
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -30,6 +37,7 @@
   display: flex;
   align-items: center;
   margin: 0 0 20px 0;
+  cursor: pointer;
 }
 .sidebarIcon {
   margin: 0 15px 0 0;
