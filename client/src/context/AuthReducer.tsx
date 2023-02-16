@@ -43,6 +43,12 @@ export const AuthReducer = (
         isFetching: false,
         error: false,
       };
+    case 'UPDATE_USER':
+      return {
+        user: action.payload,
+        isFetching: false,
+        error: false,
+      };
     case 'FOLLOW':
       return {
         ...state,

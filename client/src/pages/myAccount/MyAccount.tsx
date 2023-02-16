@@ -1,37 +1,32 @@
 import './myAccount.scss';
 import Header from '../../components/header/Header';
 import Sidebar from '../../components/sidebar/Sidebar';
-import React, {useRef, useState} from "react";
-import {Cancel, PermMedia} from "@mui/icons-material";
-import {AuthContext} from "../../context/AuthContext";
-import {UserContext} from "../../static/types";
+import React, { useState } from "react";
+import { Cancel, PermMedia } from "@mui/icons-material";
+import { AuthContext } from "../../context/AuthContext";
+import { UserContext } from "../../static/types";
 import axios from "axios";
 import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
+import {useNavigate} from "react-router-dom";
 
 export default function MyAccount(): JSX.Element {
-  const username = React.useRef<HTMLInputElement>(null);
-  const emailAddress = React.useRef<HTMLInputElement>(null);
-  const password = React.useRef<HTMLInputElement>(null);
-  const city = React.useRef<HTMLInputElement>(null);
-  const from = React.useRef<HTMLInputElement>(null);
-  const relationship = React.useRef<HTMLInputElement>(null);
   const {user} = React.useContext(AuthContext) as UserContext;
-  const desc = useRef<HTMLInputElement | null>(null);
+  const [username, setUserName] = React.useState<string | null>(user?.username!);
+  const [emailAddress, setEmailAddress] = React.useState<string | null>(user?.email!);
+  const [password, setPassword] = React.useState<string | null>(null);
+  const [city, setCity] = React.useState<string | null>(user?.city!);
+  const [from, setFrom] = React.useState<string | null>(user?.from!);
+  const [desc, setDesc] = React.useState<string | null>(user?.desc!);
+  const [relationship, setRelationship] = React.useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [fileCover, setFileCover] = useState<File | null>(null);
+  const navigate = useNavigate();
 
   const submitHandler = async (e: React.FormEvent) => {
-
-    // console.log(username?.current?.value);
-    // console.log(emailAddress?.current.value);
-    // console.log(password?.current.value);
-    // console.log(desc.value);
-    // console.log(city.value);
-    // console.log(from.value);
-    // console.log(relationship.value);
     e.preventDefault();
     const updatedUser = {
+      userId: user?._id,
       username: username,
       email: emailAddress,
       password: password,
@@ -40,7 +35,7 @@ export default function MyAccount(): JSX.Element {
       desc: desc,
       city: city,
       from: from,
-      relationship: relationship,
+      relationship: Number(relationship),
     };
     if (file) {
       const data = new FormData();
@@ -67,9 +62,9 @@ export default function MyAccount(): JSX.Element {
       }
     }
     try {
-      await axios.put(`/api/${user?._id}`, updatedUser);
-      window.location.reload();
-      console.log('Update sucs');
+      await axios.put(`/api/users/${user?._id}`, updatedUser);
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      navigate(`/profile/${username}`);
     } catch (error) {
       console.log(error);
     }
@@ -102,52 +97,70 @@ export default function MyAccount(): JSX.Element {
                        className='textField'
                        required
                        fullWidth
-                       ref={username}
+                       value={username}
                        placeholder="Enter your name"
                        label="Name"
                        variant="outlined"
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                         setUserName(event.target.value);
+                       }}
             />
             <TextField id="outlined-required"
                        className='textField'
                        required
                        fullWidth
-                       ref={emailAddress}
+                       value={emailAddress}
                        placeholder="Enter your email"
                        label="E-mail"
                        variant="outlined"
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                         setEmailAddress(event.target.value);
+                       }}
             />
             <TextField id="outlined-required"
                        className='textField'
                        fullWidth
-                       ref={password}
+                       value={password}
                        placeholder="Enter your password"
                        label="Password"
                        variant="outlined"
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                         setPassword(event.target.value);
+                       }}
             />
             <TextField id="outlined-required"
                        className='textField'
                        placeholder="Enter your description"
-                       ref={desc}
+                       value={desc}
                        fullWidth
                        label="Description"
                        variant="outlined"
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                         setDesc(event.target.value);
+                       }}
             />
             <TextField id="outlined-required"
                        className='textField'
                        placeholder="Enter city"
                        type="text"
-                       ref={city}
+                       value={city}
                        fullWidth
                        label="City"
                        variant="outlined"
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                         setCity(event.target.value);
+                       }}
             />
             <TextField id='outlined-required'
                        className='textField'
                        fullWidth
-                       ref={from}
+                       value={from}
                        placeholder='Where are you from'
                        label='From'
                        variant='outlined'
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                         setFrom(event.target.value);
+                       }}
             />
             <TextField className='textField'
                        id="outlined-select-currency"
@@ -156,6 +169,9 @@ export default function MyAccount(): JSX.Element {
                        label="Relationship"
                        defaultValue="0"
                        helperText="Please select your relationship"
+                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                         setRelationship(event.target.value);
+                       }}
             >
               {currencies.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
