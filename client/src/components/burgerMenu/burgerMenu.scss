@@ -1,0 +1,38 @@
+@import '../../scss/main.scss';
+.burgerMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .burgerMenu {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .burgerMenuIconOpen {
+    display: none;
+  }
+  .burgerMenuIcon {
+    font-size: 40px !important;
+  }
+  .burgerMenuIconClose {
+    display: none;
+  }
+  .active {
+    display: flex !important;
+  }
+  .sidebarActive {
+    display: flex !important;
+    position: absolute !important;
+    width: 100%;
+    z-index: 5;
+    top: 70px;
+    right: 100%;
+    left: 0!important;
+    transition: all 0.5s !important;
+    background: $color-white;
+  }
+}

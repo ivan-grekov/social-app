@@ -1,10 +1,12 @@
 import './header.scss';
-import { Search, Person, Chat, Notifications } from '@mui/icons-material';
+import { Person, Chat, Notifications } from '@mui/icons-material';
+import SearchBar from '../search/Search';
 import React from 'react';
 import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../static/types';
+import BurgerMenu from '../burgerMenu/BurgerMenu';
 
 export default function Header(): JSX.Element {
   const { user } = React.useContext(AuthContext) as UserContext;
@@ -20,13 +22,7 @@ export default function Header(): JSX.Element {
             </Link>
           </div>
           <div className="headerCenter">
-            <div className="searchbar">
-              <Search className="searchIcon" />
-              <input
-                placeholder="Search for friend, post or video"
-                className="searchInput"
-              />
-            </div>
+            <SearchBar />
           </div>
           <div className="headerRight">
             <div className="headerLinks">
@@ -58,6 +54,7 @@ export default function Header(): JSX.Element {
                 alt="user ava"
               />
             </Link>
+            <BurgerMenu />
           </div>
         </div>
       </div>
