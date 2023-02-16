@@ -10,7 +10,7 @@
 }
 
 @mixin font-logo {
-  @include font(2.0rem, bold, $base-font, normal);
+  @include font(2rem, bold, $base-font, normal);
   line-height: 91.666667%;
   text-transform: uppercase;
 }
@@ -47,4 +47,16 @@
   @include font(0.9375rem, 300, $base-font, normal);
   line-height: 91.666667%;
   color: $color-black;
+}
+
+@mixin flex-colomn($justify-content: space-between) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify-content;
+}
+
+@mixin flex-row($justify-content: start, $align-items: center) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
 }
