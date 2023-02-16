@@ -84,6 +84,11 @@
   margin: 0 10px 0 0;
   cursor: pointer;
   position: relative;
+  transition: all 0.3s;
+
+  &:hover {
+    color: darken($color-white, 10%);
+  }
 }
 
 .headerIconBadge {
