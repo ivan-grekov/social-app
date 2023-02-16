@@ -38,10 +38,12 @@ export default function Header(): JSX.Element {
                 <Person />
                 <span className="headerIconBadge">1</span>
               </div>
-              <div className="headerIconItem">
-                <Chat />
-                <span className="headerIconBadge">1</span>
-              </div>
+              <Link to={'messenger/'} style={{ color: 'inherit' }}>
+                <div className="headerIconItem">
+                  <Chat />
+                  <span className="headerIconBadge">1</span>
+                </div>
+              </Link>
               <div className="headerIconItem">
                 <Notifications />
                 <span className="headerIconBadge">1</span>
