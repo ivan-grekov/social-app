@@ -1,0 +1,28 @@
+@import '../../scss/main.scss';
+.burgerMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .burgerMenu {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .burgerMenuIconOpen {
+    display: none;
+  }
+  .burgerMenuIcon {
+    font-size: 40px !important;
+  }
+  .burgerMenuIconClose {
+    display: none;
+  }
+  .active {
+    display: flex !important;
+  }
+
+}
