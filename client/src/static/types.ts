@@ -59,3 +59,27 @@ export interface UserContext {
 export interface RightbarProps {
   user?: IUser | null;
 }
+
+export interface IConversation {
+  members: string[];
+  _id: string;
+}
+
+export interface ConversationProps {
+  conversation: IConversation;
+  currentUser: IUser | null;
+}
+
+export interface IMessage {
+  conversationId?: string;
+  sender: string;
+  text: string;
+  _id?: string;
+  createdAt: string;
+}
+
+export interface IArrivalMessage {
+  sender: string;
+  text: string;
+  createdAt: string;
+}
