@@ -6,6 +6,7 @@ import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../static/types';
+import BurgerMenu from '../burgerMenu/BurgerMenu';
 
 export default function Header(): JSX.Element {
   const { user } = React.useContext(AuthContext) as UserContext;
@@ -22,19 +23,12 @@ export default function Header(): JSX.Element {
           </div>
           <div className="headerCenter">
             <SearchBar />
-            {/* <div className="searchbar">
-              <Search className="searchIcon" />
-              <input
-                placeholder="Search for friend, post or video"
-                className="searchInput"
-              />
-            </div> */}
           </div>
           <div className="headerRight">
-            {/* <div className="headerLinks">
+            <div className="headerLinks">
               <span className="headerLink">Homepage</span>
               <span className="headerLink">Timeline</span>
-            </div> */}
+            </div>
             <div className="headerIcons">
               <div className="headerIconItem">
                 <Person />
@@ -60,6 +54,7 @@ export default function Header(): JSX.Element {
                 alt="user ava"
               />
             </Link>
+            <BurgerMenu />
           </div>
         </div>
       </div>

@@ -41,14 +41,19 @@
   flex: 5;
 }
 
-
-
 .headerRight {
   flex: 4;
   display: flex;
   align-items: center;
   justify-content: space-around;
   color: $color-white;
+}
+
+.headerLink {
+  cursor: pointer;
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .headerLink {
