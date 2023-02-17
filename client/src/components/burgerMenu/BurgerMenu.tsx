@@ -5,6 +5,7 @@ const burgerMenu = document.querySelector('.burgerMenu');
 const open = document.querySelector('.burgerMenuIconOpen');
 const close = document.querySelector('.burgerMenuIconClose');
 const sidebar = document.querySelector('.sidebar');
+const container = document.querySelector('.sidebarContainer');
 
 const activeMenu = () => {
   if (open!.classList.contains('active')) {
@@ -19,7 +20,7 @@ const activeMenu = () => {
 };
 
 burgerMenu?.addEventListener('click', activeMenu);
-sidebar?.addEventListener('click', activeMenu);
+container?.addEventListener('click', activeMenu);
 
 export default function BurgerMenu() {
   return (

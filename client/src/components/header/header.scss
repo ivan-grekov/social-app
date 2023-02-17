@@ -28,6 +28,9 @@
     font-weight: bold;
     line-height: 28px;
     cursor: pointer;
+    @media (max-width: 390px) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -35,6 +38,7 @@
   @include font-logo;
   color: $color-white;
   cursor: pointer;
+
 }
 
 .headerCenter {
@@ -104,4 +108,8 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  @media (max-width: 390px) {
+    width: 24px;
+    height: 24px;
+  }
 }

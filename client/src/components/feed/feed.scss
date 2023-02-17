@@ -5,4 +5,7 @@
 }
 .feedWrapper {
   margin: 20px;
+  @media (max-width: 480px){
+    margin: 20px 0;
+  }
 }

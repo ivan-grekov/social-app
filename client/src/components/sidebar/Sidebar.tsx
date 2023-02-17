@@ -12,11 +12,19 @@ import {
 } from '@mui/icons-material';
 import { Users } from '../../static/Data';
 import CloseFriend from '../closeFriend/CloseFriend';
+import SearchBar from '../search/Search';
 
 export default function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="sideWrapper">
+
+      <div className="sidebarWrapper">
+      <div className="sidebarSearch">
+          <SearchBar />
+        </div>
+        <div className="sidebarContainer">
+
+
         <ul className="sidebarList">
           <li className="sidebarListItem">
             <RssFeed className="sidebarIcon" />
@@ -62,6 +70,7 @@ export default function Sidebar() {
             <CloseFriend key={u.id} user={u} />
           ))}
         </ul>
+        </div>
       </div>
     </div>
   );
