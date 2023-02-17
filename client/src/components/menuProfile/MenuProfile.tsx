@@ -68,7 +68,7 @@ export default function MenuProfile() {
         <Link to={`/profile/${user?.username}`}>
           <MenuItem onClick={handleClose}>Profile</MenuItem>
         </Link>
-        <Link to={`/account`}>
+        <Link to={`/account/${user?.username}`}>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         </Link>
         <Link to={`/login`}>

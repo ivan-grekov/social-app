@@ -21,7 +21,7 @@ function App(): JSX.Element {
         element={user ? <Navigate to="/" replace /> : <Register />}
       />
       <Route path="/profile/:username" element={user ? <Profile /> : <Navigate to="/login" replace />} />
-      <Route path="/account" element={user ? <MyAccount /> : <Navigate to="/login" replace />} />
+      <Route path="/account/:username" element={user ? <MyAccount /> : <Navigate to="/login" replace />} />
     </Routes>
   );
 }

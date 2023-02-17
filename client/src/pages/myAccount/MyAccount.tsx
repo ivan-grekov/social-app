@@ -1,19 +1,31 @@
 import './myAccount.scss';
 import Header from '../../components/header/Header';
 import Sidebar from '../../components/sidebar/Sidebar';
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Cancel, PermMedia } from "@mui/icons-material";
-import { AuthContext } from "../../context/AuthContext";
-import { UserContext } from "../../static/types";
+import { IUser } from "../../static/types";
 import axios from "axios";
 import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import {useNavigate} from "react-router-dom";
+ import {useParams} from "react-router";
 
 export default function MyAccount(): JSX.Element {
-  const {user} = React.useContext(AuthContext) as UserContext;
-  const [username, setUserName] = React.useState<string | null>(user?.username!);
-  const [emailAddress, setEmailAddress] = React.useState<string | null>(user?.email!);
+  const [user, setUser] = useState<IUser>(Object);
+  const { username } = useParams();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/api/users?username=${username}`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [username]);
+  console.log(user);
+
+  // const {user} = React.useContext(AuthContext) as UserContext;
+  const [userName, setUserName] = React.useState<string | null>(user.username);
+  const [emailAddress, setEmailAddress] = React.useState<string | null>(user.email);
   const [password, setPassword] = React.useState<string | null>(null);
   const [city, setCity] = React.useState<string | null>(user?.city!);
   const [from, setFrom] = React.useState<string | null>(user?.from!);
@@ -30,14 +42,15 @@ export default function MyAccount(): JSX.Element {
       username: username,
       email: emailAddress,
       password: password,
-      profilePicture: '',
-      coverPicture: '',
+      profilePicture: user?.profilePicture,
+      coverPicture: user?.coverPicture,
       desc: desc,
       city: city,
       from: from,
       relationship: Number(relationship),
     };
     if (file) {
+      console.log('file:', file);
       const data = new FormData();
       const fileName = Date.now() + file.name;
       data.append('name', fileName);
@@ -61,9 +74,14 @@ export default function MyAccount(): JSX.Element {
         console.log(err);
       }
     }
+    console.log('profilePicture', updatedUser.profilePicture);
     try {
       await axios.put(`/api/users/${user?._id}`, updatedUser);
-      localStorage.setItem('user', JSON.stringify(updatedUser));
+      // localStorage.setItem('user', JSON.stringify(updatedUser));
+      // updateUser(
+      //   { email: emailAddress, password: password },
+      //   dispatch
+      // );
       navigate(`/profile/${username}`);
     } catch (error) {
       console.log(error);
@@ -81,7 +99,7 @@ export default function MyAccount(): JSX.Element {
     },
     {
       value: '0',
-      label: '',
+      label: '-',
     },
   ];
 
@@ -93,11 +111,11 @@ export default function MyAccount(): JSX.Element {
         <div className="myAccountBlock">
           <form className="editProfileForm" onSubmit={submitHandler}>
             <h2 className='accountTitle'>My account</h2>
-            <TextField id="outlined-required"
+            <TextField id="outlined-controlled"
                        className='textField'
                        required
                        fullWidth
-                       value={username}
+                       value={userName}
                        placeholder="Enter your name"
                        label="Name"
                        variant="outlined"
@@ -105,7 +123,7 @@ export default function MyAccount(): JSX.Element {
                          setUserName(event.target.value);
                        }}
             />
-            <TextField id="outlined-required"
+            <TextField id="outlined-controlled"
                        className='textField'
                        required
                        fullWidth
@@ -117,10 +135,10 @@ export default function MyAccount(): JSX.Element {
                          setEmailAddress(event.target.value);
                        }}
             />
-            <TextField id="outlined-required"
+            <TextField id="outlined-controlled"
                        className='textField'
                        fullWidth
-                       value={password}
+                       value={password === null || password === undefined ? '' : password}
                        placeholder="Enter your password"
                        label="Password"
                        variant="outlined"
@@ -128,10 +146,10 @@ export default function MyAccount(): JSX.Element {
                          setPassword(event.target.value);
                        }}
             />
-            <TextField id="outlined-required"
+            <TextField id="outlined-controlled"
                        className='textField'
                        placeholder="Enter your description"
-                       value={desc}
+                       value={desc === null|| desc === undefined ? '' : desc}
                        fullWidth
                        label="Description"
                        variant="outlined"
@@ -139,11 +157,11 @@ export default function MyAccount(): JSX.Element {
                          setDesc(event.target.value);
                        }}
             />
-            <TextField id="outlined-required"
+            <TextField id="outlined-controlled"
                        className='textField'
                        placeholder="Enter city"
                        type="text"
-                       value={city}
+                       value={city === null || city === undefined ? '' : city}
                        fullWidth
                        label="City"
                        variant="outlined"
@@ -151,10 +169,10 @@ export default function MyAccount(): JSX.Element {
                          setCity(event.target.value);
                        }}
             />
-            <TextField id='outlined-required'
+            <TextField id='outlined-controlled'
                        className='textField'
                        fullWidth
-                       value={from}
+                       value={from === null || from === undefined ? '' : from}
                        placeholder='Where are you from'
                        label='From'
                        variant='outlined'
