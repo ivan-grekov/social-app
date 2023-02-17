@@ -41,33 +41,19 @@
   flex: 5;
 }
 
-.searchbar {
-  width: 100%;
-  height: 30px;
-  background-color: $color-white;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-}
-.searchIcon {
-  font-size: 20px !important;
-  margin: 0 0 0 10px;
-}
-.searchInput {
-  border: none;
-  width: 70%;
-}
-
-.searchInput:focus {
-  outline: none;
-}
-
 .headerRight {
   flex: 4;
   display: flex;
   align-items: center;
   justify-content: space-around;
   color: $color-white;
+}
+
+.headerLink {
+  cursor: pointer;
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .headerLink {
