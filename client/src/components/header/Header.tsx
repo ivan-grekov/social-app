@@ -6,6 +6,7 @@ import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../static/types';
+import MenuProfile from "../menuProfile/MenuProfile";
 import BurgerMenu from '../burgerMenu/BurgerMenu';
 
 export default function Header(): JSX.Element {
@@ -43,17 +44,7 @@ export default function Header(): JSX.Element {
                 <span className="headerIconBadge">1</span>
               </div>
             </div>
-            <Link to={`/profile/${user?.username}`}>
-              <img
-                src={
-                  user?.profilePicture
-                    ? publicFolder + user.profilePicture
-                    : publicFolder + 'person/noAvatar.png'
-                }
-                className="headerUserImg"
-                alt="user ava"
-              />
-            </Link>
+            <MenuProfile />
             <BurgerMenu />
           </div>
         </div>
