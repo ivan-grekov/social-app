@@ -83,3 +83,16 @@ export interface IArrivalMessage {
   text: string;
   createdAt: string;
 }
+
+export interface IUpdateUser {
+  userId?: string;
+  username?: string;
+  email?: string;
+  password?: string;
+  profilePicture?: string;
+  coverPicture?: string;
+  desc?: string;
+  city?: string;
+  from?: string;
+  relationship?: number;
+}
