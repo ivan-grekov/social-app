@@ -8,7 +8,7 @@ import axios from "axios";
 import { TextField } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import {useNavigate} from "react-router-dom";
- import {useParams} from "react-router";
+import {useParams} from "react-router";
 
 export default function MyAccount(): JSX.Element {
   const [user, setUser] = useState<IUser>(Object);

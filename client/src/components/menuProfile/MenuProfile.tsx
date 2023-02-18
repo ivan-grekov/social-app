@@ -33,6 +33,7 @@ export default function MenuProfile() {
           minWidth: '30px',
           height: '45px',
           borderRadius: '50%',
+          border: '2px solid white',
           backgroundImage: `url(${user?.profilePicture
               ? publicFolder + user.profilePicture
               : publicFolder + 'person/noAvatar.png'})`,
