@@ -1,3 +1,4 @@
+import '../../scss/main.scss';
 import './sidebar.scss';
 import {
   RssFeed,
@@ -12,6 +13,7 @@ import {
 } from '@mui/icons-material';
 import { Users } from '../../static/Data';
 import CloseFriend from '../closeFriend/CloseFriend';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
@@ -27,10 +29,12 @@ export default function Sidebar() {
             <RssFeed className="sidebarIcon" />
             <span className="sidebarListItemText">Feed</span>
           </li>
-          <li className="sidebarListItem">
-            <Chat className="sidebarIcon" />
-            <span className="sidebarListItemText">Chats</span>
-          </li>
+          <Link to={'messenger/'} style={{ color: 'inherit' }}>
+            <li className="sidebarListItem">
+              <Chat className="sidebarIcon" />
+              <span className="sidebarListItemText">Chats</span>
+            </li>
+          </Link>
           <li className="sidebarListItem">
             <VideoLibrary className="sidebarIcon" />
             <span className="sidebarListItemText">Videos</span>

@@ -20,8 +20,12 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendsList = await axios.get(`/api/users/friends/${user?._id}`);
-        setFriends(friendsList.data);
+        if (user?._id) {
+          const friendsList = await axios.get(
+            `/api/users/friends/${user?._id}`
+          );
+          setFriends(friendsList.data);
+        }
       } catch (err) {}
     };
     getFriends();

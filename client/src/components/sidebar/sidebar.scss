@@ -41,7 +41,14 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  transition: all 0.3s;
+
+  & li:hover {
+    cursor: pointer;
+    color: lighten(black, 20%);
+  }
 }
+
 .sidebarListItem {
   display: flex;
   align-items: center;
