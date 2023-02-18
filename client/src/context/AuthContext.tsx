@@ -3,8 +3,7 @@ import { AuthReducer } from './AuthReducer';
 import { type Dispatch } from 'react';
 
 export const INITIAL_STATE = {
-  // user: JSON.parse(localStorage.getItem('user') || '') || null,
-  user: null,
+  user: JSON.parse(localStorage.getItem('user') || '') || null,
   isFetching: false,
   error: false,
   dispatch: (() => undefined) as Dispatch<any>,
