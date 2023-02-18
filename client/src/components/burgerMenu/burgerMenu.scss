@@ -1,6 +1,10 @@
 @import '../../scss/main.scss';
 .burgerMenu {
   display: none;
+  margin-left: 20px;
+  @media (max-width: 390px){
+margin-left: 5px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -17,6 +21,9 @@
   }
   .burgerMenuIcon {
     font-size: 40px !important;
+    @media (max-width: 390px) {
+      font-size: 30px !important;
+    }
   }
   .burgerMenuIconClose {
     display: none;
@@ -31,7 +38,7 @@
     z-index: 5;
     top: 70px;
     right: 100%;
-    left: 0!important;
+    left: 0 !important;
     transition: all 0.5s !important;
     background: $color-white;
   }
