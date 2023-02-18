@@ -18,7 +18,12 @@ import { Link } from 'react-router-dom';
 export default function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="sideWrapper">
+
+      <div className="sidebarWrapper">
+
+        <div className="sidebarContainer">
+
+
         <ul className="sidebarList">
           <li className="sidebarListItem">
             <RssFeed className="sidebarIcon" />
@@ -66,6 +71,7 @@ export default function Sidebar() {
             <CloseFriend key={u.id} user={u} />
           ))}
         </ul>
+        </div>
       </div>
     </div>
   );

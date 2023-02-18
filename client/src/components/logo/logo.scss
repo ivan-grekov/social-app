@@ -1,8 +1,9 @@
 @import '../../scss/main.scss';
 
 @font-face {
-  font-family: "MontserratAlt1";
-  src: local("MontserratAlt1"), url("../../assets/fonts/MontserratAlt1-Regular.ttf") format("truetype");
+  font-family: 'MontserratAlt1';
+  src: local('MontserratAlt1'),
+    url('../../assets/fonts/MontserratAlt1-Regular.ttf') format('truetype');
 }
 
 .loginLogo {

@@ -6,6 +6,7 @@ import Promo from '../../components/promoAuth/Promo';
 const Register: React.FC = () => {
   const titleName = 'Register';
   const isLogin = false;
+  localStorage.setItem('user', JSON.stringify(null));
 
   return (
     <div className="login">

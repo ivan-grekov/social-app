@@ -7,6 +7,11 @@ export const LoginStart = (userCredential: {
   type: 'LOGIN_START',
 });
 
+export const Logout = (user: IUser) => ({
+  type: 'LOGOUT',
+  payload: !user,
+});
+
 export const LoginSuccess = (user: IUser) => ({
   type: 'LOGIN_SUCCESS',
   payload: user,
@@ -14,6 +19,10 @@ export const LoginSuccess = (user: IUser) => ({
 
 export const LoginFailure = (error: Error) => ({
   type: 'LOGIN_FAILURE',
+});
+
+export const UpdateUser = (user: IUser) => ({
+  type: 'UPDATE_USER',
 });
 
 export const Follow = (userId: string) => ({

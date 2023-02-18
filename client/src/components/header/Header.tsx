@@ -1,14 +1,21 @@
 import './header.scss';
-import { Search, Person, Chat, Notifications } from '@mui/icons-material';
-import React from 'react';
+import { Person, Chat, Notifications } from '@mui/icons-material';
+import SearchBar from '../search/Search';
+import React, { useState } from 'react';
 import Logo from '../logo/logo';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../static/types';
+import MenuProfile from '../menuProfile/MenuProfile';
+import { Menu, Close } from '@mui/icons-material';
+import MobileMenu from '../menu/MobileMenu';
 
 export default function Header(): JSX.Element {
   const { user } = React.useContext(AuthContext) as UserContext;
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [nav, setNav] = useState(false);
+  const menuActive = 'menu active';
+  const menu = 'menu';
 
   return (
     <div className="header">
@@ -20,13 +27,7 @@ export default function Header(): JSX.Element {
             </Link>
           </div>
           <div className="headerCenter">
-            <div className="searchbar">
-              <Search className="searchIcon" />
-              <input
-                placeholder="Search for friend, post or video"
-                className="searchInput"
-              />
-            </div>
+            <SearchBar />
           </div>
           <div className="headerRight">
             <div className="headerLinks">
@@ -49,17 +50,13 @@ export default function Header(): JSX.Element {
                 <span className="headerIconBadge">1</span>
               </div>
             </div>
-            <Link to={`/profile/${user?.username}`}>
-              <img
-                src={
-                  user?.profilePicture
-                    ? publicFolder + user.profilePicture
-                    : publicFolder + 'person/noAvatar.png'
-                }
-                className="headerUserImg"
-                alt="user ava"
-              />
-            </Link>
+            <MenuProfile />
+            <div onClick={() => setNav(!nav)} className="mobilBtn">
+              {nav ? <Close className='menuIcon' /> : <Menu className='menuIcon' />}
+            </div>
+            <div className={nav ? `${menuActive}` : `${menu}`}>
+              <MobileMenu />
+            </div>
           </div>
         </div>
       </div>
