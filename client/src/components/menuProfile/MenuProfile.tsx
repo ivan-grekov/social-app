@@ -22,7 +22,6 @@ export default function MenuProfile() {
   const handleLogout = async () => {
     setAnchorEl(null);
     localStorage.setItem('user', JSON.stringify(null));
-    // localStorage.clear();
     logoutCall(dispatch);
   };
 
@@ -33,6 +32,7 @@ export default function MenuProfile() {
           minWidth: '30px',
           height: '45px',
           borderRadius: '50%',
+          border: '2px solid white',
           backgroundImage: `url(${user?.profilePicture
               ? publicFolder + user.profilePicture
               : publicFolder + 'person/noAvatar.png'})`,

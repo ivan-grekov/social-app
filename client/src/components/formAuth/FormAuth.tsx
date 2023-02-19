@@ -14,15 +14,19 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
   const emailAddress = React.useRef<HTMLInputElement>(null);
   const password = React.useRef<HTMLInputElement>(null);
   const passwordAgain = React.useRef<HTMLInputElement>(null);
-  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
   const history = useNavigate();
 
   const handleClickLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    loginCall(
-      { email: emailAddress.current?.value, password: password.current?.value },
-      dispatch
-    );
+    try {
+      loginCall(
+        { email: emailAddress.current?.value, password: password.current?.value },
+        dispatch
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleClickRegister = async (e: React.FormEvent) => {
