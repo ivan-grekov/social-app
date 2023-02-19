@@ -23,6 +23,7 @@ export const LoginFailure = (error: Error) => ({
 
 export const UpdateUser = (user: IUser) => ({
   type: 'UPDATE_USER',
+  payload: user,
 });
 
 export const Follow = (userId: string) => ({

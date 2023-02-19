@@ -2,8 +2,17 @@ import { createContext, useReducer, useEffect } from 'react';
 import { AuthReducer } from './AuthReducer';
 import { type Dispatch } from 'react';
 
+//@ts-ignore
+const local = JSON.parse(localStorage.getItem('user'));
+
+const userState = !local
+  ? //@ts-ignore
+    localStorage.setItem('user', JSON.stringify(null))
+  : //@ts-ignore
+    local;
+
 export const INITIAL_STATE = {
-  user: JSON.parse(localStorage.getItem('user') || '') || null,
+  user: userState,
   isFetching: false,
   error: false,
   dispatch: (() => undefined) as Dispatch<any>,
@@ -20,6 +29,7 @@ export const AuthContextProvider = ({ children }: PropsAuthContextProvider) => {
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(state.user));
   }, [state.user]);
+
   return (
     <AuthContext.Provider
       value={{

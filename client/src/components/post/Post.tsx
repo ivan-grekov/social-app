@@ -63,7 +63,11 @@ const Post: React.FC<PostProps> = ({ post }) => {
           <span className="postText">{post.desc}</span>
           <img
             className="postImg"
-            src={publicFolder + post.img}
+            src={
+              post.img
+                ? publicFolder + post.img
+                : publicFolder + 'post/noPost.jpg'
+            }
             alt="post overview"
           />
         </div>

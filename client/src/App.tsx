@@ -5,7 +5,8 @@ import Home from './pages/home/Home';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
-import MyAccount from "./pages/myAccount/MyAccount";
+import Messenger from './pages/messenger/Messenger';
+import MyAccount from './pages/myAccount/MyAccount';
 
 function App(): JSX.Element {
   const { user } = useContext(AuthContext);
@@ -20,8 +21,18 @@ function App(): JSX.Element {
         path="/register"
         element={user ? <Navigate to="/" replace /> : <Register />}
       />
-      <Route path="/profile/:username" element={user ? <Profile /> : <Navigate to="/login" replace />} />
-      <Route path="/account/:username" element={user ? <MyAccount /> : <Navigate to="/login" replace />} />
+      <Route
+        path="/messenger"
+        element={!user ? <Navigate to="/" replace /> : <Messenger />}
+      />
+      <Route
+        path="/profile/:username"
+        element={user ? <Profile /> : <Navigate to="/login" replace />}
+      />
+      <Route
+        path="/account/:username"
+        element={user ? <MyAccount /> : <Navigate to="/login" replace />}
+      />
     </Routes>
   );
 }
