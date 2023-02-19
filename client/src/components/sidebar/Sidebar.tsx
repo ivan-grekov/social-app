@@ -29,7 +29,7 @@ export default function Sidebar() {
             <RssFeed className="sidebarIcon" />
             <span className="sidebarListItemText">Feed</span>
           </li>
-          <Link to={'messenger/'} style={{ color: 'inherit' }}>
+          <Link to={'/messenger'} style={{ color: 'inherit' }}>
             <li className="sidebarListItem">
               <Chat className="sidebarIcon" />
               <span className="sidebarListItemText">Chats</span>
