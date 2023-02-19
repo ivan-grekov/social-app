@@ -1,9 +1,9 @@
 import './myAccount.scss';
 import Header from '../../components/header/Header';
 import Sidebar from '../../components/sidebar/Sidebar';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Cancel, PermMedia } from '@mui/icons-material';
-import { IUser } from '../../static/types';
+import { UserContext } from '../../static/types';
 import axios from 'axios';
 import { TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,21 +15,21 @@ import { IUpdateUser } from '../../static/types';
 
 export default function MyAccount(): JSX.Element {
   const { dispatch } = useContext(AuthContext);
-  const [user, setUser] = useState<IUser>(Object);
+  // const [user, setUser] = useState<IUser>(Object);
   const { username } = useParams();
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`/api/users?username=${username}`);
-      setUser(res.data);
-    };
-    fetchUser();
-  }, [username]);
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const res = await axios.get(`/api/users?username=${username}`);
+  //     setUser(res.data);
+  //   };
+  //   fetchUser();
+  // }, [username]);
 
-  // const {user} = React.useContext(AuthContext) as UserContext;
-  const [userName, setUserName] = React.useState<string | null>(user.username);
+  const {user} = React.useContext(AuthContext) as UserContext;
+  const [userName, setUserName] = React.useState<string | null>(user?.username!);
   const [emailAddress, setEmailAddress] = React.useState<string | null>(
-    user.email
+    user?.email!
   );
   const [password, setPassword] = React.useState<string | null>(null);
   const [city, setCity] = React.useState<string | null>(user?.city!);
@@ -44,9 +44,9 @@ export default function MyAccount(): JSX.Element {
     e.preventDefault();
     const updatedUser = {
       userId: user?._id,
-      username: username,
+      username: userName,
       email: emailAddress,
-      password: password,
+      password: user?.password,
       profilePicture: user?.profilePicture,
       coverPicture: user?.coverPicture,
       desc: desc,
@@ -54,6 +54,11 @@ export default function MyAccount(): JSX.Element {
       from: from,
       relationship: Number(relationship),
     };
+    if (password) {
+      updatedUser.password = password;
+    } else {
+      updatedUser.password = user?.password;
+    }
     if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
@@ -93,7 +98,7 @@ export default function MyAccount(): JSX.Element {
       };
       // @ts-ignore
       updateUser(updatedUser, dispatch);
-      navigate(`/profile/${username}`);
+      navigate(`/profile/${updatedUser.username}`);
     } catch (error) {
       console.log(error);
     }
@@ -122,39 +127,39 @@ export default function MyAccount(): JSX.Element {
         <div className="myAccountBlock">
           <form className="editProfileForm" onSubmit={submitHandler}>
             <h2 className="accountTitle">My account</h2>
+            {/*<TextField*/}
+            {/*  id="outlined-controlled"*/}
+            {/*  className="textField"*/}
+            {/*  required*/}
+            {/*  fullWidth*/}
+            {/*  value={userName}*/}
+            {/*  placeholder="Enter your name"*/}
+            {/*  label="Name"*/}
+            {/*  variant="outlined"*/}
+            {/*  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {*/}
+            {/*    setUserName(event.target.value);*/}
+            {/*  }}*/}
+            {/*/>*/}
+            {/*<TextField*/}
+            {/*  id="outlined-controlled"*/}
+            {/*  className="textField"*/}
+            {/*  disabled*/}
+            {/*  required*/}
+            {/*  fullWidth*/}
+            {/*  value={emailAddress}*/}
+            {/*  placeholder="Enter your email"*/}
+            {/*  label="E-mail"*/}
+            {/*  variant="outlined"*/}
+            {/*  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {*/}
+            {/*    setEmailAddress(event.target.value);*/}
+            {/*  }}*/}
+            {/*/>*/}
             <TextField
               id="outlined-controlled"
               className="textField"
+              fullWidth
               required
-              fullWidth
-              value={userName}
-              placeholder="Enter your name"
-              label="Name"
-              variant="outlined"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setUserName(event.target.value);
-              }}
-            />
-            <TextField
-              id="outlined-controlled"
-              className="textField"
-              required
-              fullWidth
-              value={emailAddress}
-              placeholder="Enter your email"
-              label="E-mail"
-              variant="outlined"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setEmailAddress(event.target.value);
-              }}
-            />
-            <TextField
-              id="outlined-controlled"
-              className="textField"
-              fullWidth
-              value={
-                password === null || password === undefined ? '' : password
-              }
+              value={ password === null ? '' : password }
               placeholder="Enter your password"
               label="Password"
               variant="outlined"

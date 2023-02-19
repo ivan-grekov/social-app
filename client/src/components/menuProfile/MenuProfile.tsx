@@ -22,7 +22,6 @@ export default function MenuProfile() {
   const handleLogout = async () => {
     setAnchorEl(null);
     localStorage.setItem('user', JSON.stringify(null));
-    // localStorage.clear();
     logoutCall(dispatch);
   };
 
