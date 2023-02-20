@@ -63,14 +63,23 @@ export default function MenuProfile() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link to={`/profile/${user?.username}`} className='menuProfileLink'>
-          <MenuItem onClick={handleClose}><Person className='menuprofileIcon' />Profile</MenuItem>
+        <Link to={`/profile/${user?.username}`} className="menuProfileLink">
+          <MenuItem onClick={handleClose}>
+            <Person className="menuProfileIcon" />
+            Profile
+          </MenuItem>
         </Link>
-        <Link to={`/account/${user?.username}`} className='menuProfileLink'>
-          <MenuItem onClick={handleClose}><ManageAccounts className='menuprofileIcon' />My account</MenuItem>
+        <Link to={`/account/${user?.username}`} className="menuProfileLink">
+          <MenuItem onClick={handleClose}>
+            <ManageAccounts className="menuProfileIcon" />
+            My account
+          </MenuItem>
         </Link>
-        <Link to={`/login`} className='menuProfileLink' >
-         <MenuItem onClick={handleLogout}><Logout className='menuprofileIcon'/>Logout</MenuItem>
+        <Link to={`/login`} className="menuProfileLink">
+          <MenuItem onClick={handleLogout}>
+            <Logout className="menuProfileIcon" />
+            Logout
+          </MenuItem>
         </Link>
       </Menu>
     </div>

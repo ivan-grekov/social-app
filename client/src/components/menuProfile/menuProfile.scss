@@ -19,11 +19,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: $color-grey !important;
   & li {
     width: 100% !important;
   }
 }
-.menuprofileIcon {
+.menuProfileIcon {
   font-size: 20px !important;
   color: $color-grey;
   margin: 0px 10px 0px 0px;
