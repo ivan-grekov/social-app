@@ -23,6 +23,17 @@ export interface propsFormAuth {
   isLogin: boolean;
 }
 
+export interface propsMenuPost {
+  postId: string | null;
+  postUserId: string;
+}
+
+export interface propsShare {
+  postId: string | null;
+  file: File | null;
+  desc: string | null;
+}
+
 export interface IUser {
   _id: string;
   username: string;

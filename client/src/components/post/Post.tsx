@@ -55,7 +55,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
-            <MenuPost/>
+            <MenuPost postId={post._id} postUserId={post.userId}/>
             {/*<MoreVert />*/}
           </div>
         </div>

@@ -3,9 +3,12 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {Link} from "react-router-dom";
+import { propsMenuPost, UserContext } from "../../static/types";
+import axios from "axios";
+import {AuthContext} from "../../context/AuthContext";
 
-export default function MenuPost() {
+export default function MenuPost({postId, postUserId}: propsMenuPost) {
+  const {user} = React.useContext(AuthContext) as UserContext;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -14,6 +17,20 @@ export default function MenuPost() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleEditPost = async () => {
+    setAnchorEl(null);
+  };
+
+  const handleDeletePost = async () => {
+    setAnchorEl(null);
+    try {
+      await axios.delete(`/api/posts/${postId}`, {data: {userId: user?._id}});
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div>
@@ -25,7 +42,7 @@ export default function MenuPost() {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MoreVertIcon/>
       </IconButton>
       <Menu
         style={{}}
@@ -35,7 +52,7 @@ export default function MenuPost() {
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        disableScrollLock={ true }
+        disableScrollLock={true}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -46,12 +63,8 @@ export default function MenuPost() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link to={`/`}>
-          <MenuItem onClick={handleClose}>Edit post</MenuItem>
-        </Link>
-        <Link to={`/`}>
-          <MenuItem onClick={handleClose}>Delete post</MenuItem>
-        </Link>
+        <MenuItem onClick={handleEditPost}>{(user?._id === postUserId) ? 'Edit post' : 'No edit post'}</MenuItem>
+        <MenuItem onClick={handleDeletePost}>Delete post</MenuItem>
       </Menu>
     </div>
   );
