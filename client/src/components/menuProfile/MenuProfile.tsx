@@ -1,5 +1,6 @@
 import './menuProfile.scss';
 import * as React from 'react';
+import { Logout, ManageAccounts, Person } from '@mui/icons-material';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -28,7 +29,8 @@ export default function MenuProfile() {
 
   return (
     <div className="headerUserImg">
-      <Button className='headerUserBtn'
+      <Button
+        className="headerUserBtn"
         style={{
           backgroundImage: `url(${
             user?.profilePicture
@@ -61,14 +63,14 @@ export default function MenuProfile() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link to={`/profile/${user?.username}`}>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <Link to={`/profile/${user?.username}`} className='menuProfileLink'>
+          <MenuItem onClick={handleClose}><Person className='menuprofileIcon' />Profile</MenuItem>
         </Link>
-        <Link to={`/account/${user?.username}`}>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
+        <Link to={`/account/${user?.username}`} className='menuProfileLink'>
+          <MenuItem onClick={handleClose}><ManageAccounts className='menuprofileIcon' />My account</MenuItem>
         </Link>
-        <Link to={`/login`}>
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <Link to={`/login`} className='menuProfileLink' >
+         <MenuItem onClick={handleLogout}><Logout className='menuprofileIcon'/>Logout</MenuItem>
         </Link>
       </Menu>
     </div>
