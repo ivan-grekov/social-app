@@ -93,6 +93,7 @@
   align-items: center;
   justify-content: center;
   font-size: 12px;
+
 }
 
 .headerImg {
@@ -101,6 +102,7 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+
 }
 
 .headerRight .follower .followerImg {
@@ -108,15 +110,7 @@
   border-radius: 50%;
 }
 
-.headerUserImg {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  @media (max-width: 390px) {
-    width: 24px;
-    height: 24px;
-  }
-}
+
 .mobilBtn {
   display: none;
 }
@@ -129,7 +123,7 @@
     position: fixed;
     top: 70px;
     left: -100%;
-    transition: left .5s ease;
+    transition: left 0.5s ease;
     z-index: 10;
   }
   .active {
@@ -137,12 +131,17 @@
     left: 0 !important;
   }
   .mobilBtn {
-
     display: block;
     cursor: pointer;
     margin-left: 20px;
   }
-  .menuIcon{
+  .menuIcon {
     font-size: 1.875rem !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .mobilBtn {
+    margin-left: 10px;
   }
 }

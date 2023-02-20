@@ -52,7 +52,11 @@ export default function Header(): JSX.Element {
             </div>
             <MenuProfile />
             <div onClick={() => setNav(!nav)} className="mobilBtn">
-              {nav ? <Close className='menuIcon' /> : <Menu className='menuIcon' />}
+              {nav ? (
+                <Close className="menuIcon" />
+              ) : (
+                <Menu className="menuIcon" />
+              )}
             </div>
             <div className={nav ? `${menuActive}` : `${menu}`}>
               <MobileMenu />

@@ -1,0 +1,17 @@
+@import '../../scss/main.scss';
+
+.headerUserBtn {
+  width: 45px !important;
+  min-width: 30px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  border: 2px solid $color-white !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  @media (max-width: 350px) {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+  }
+}
