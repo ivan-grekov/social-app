@@ -56,6 +56,16 @@ app.use('/api/posts', postRoute);
 app.use('/api/conversations', conversationRoute);
 app.use('/api/messages', messageRoute);
 
+app.get('/api/search', (req, res) =>{
+  res.json('/api/users')
+
+  try {
+    return res.status(200).json('User found');
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 app.listen(8800, () => {
   console.log('Backeend server is runnning');
 });
