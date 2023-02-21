@@ -24,3 +24,12 @@ $padding-edge-screen: 15px !default;
   padding-right: $padding-edge-screen; /* 3 */
   width: 100%; /* 1 */
 }
+a {
+  color: $color-black;
+  &:hover {
+    text-decoration: underline;
+    // border-bottom
+    text-decoration-color: $color-grey;
+    // border-bottom: 1px solid $color-grey;
+  }
+}

@@ -20,7 +20,7 @@ export default function Header(): JSX.Element {
       <div className="container">
         <div className="headerWrapper">
           <div className="headerLeft">
-            <Link to="/">
+            <Link to="/" className='headerLogoLink'>
               <Logo color={'white'} />
             </Link>
           </div>

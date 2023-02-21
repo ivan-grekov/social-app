@@ -1,6 +1,6 @@
 import './search.scss';
+import React, { useEffect } from 'react';
 import { Search } from '@mui/icons-material';
-import React from 'react';
 import { AuthContext } from '../../context/AuthContext';
 
 export default function SearchBar() {

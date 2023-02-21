@@ -1,9 +1,11 @@
+import './menuPost.scss';
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { Delete, Edit } from '@mui/icons-material';
 
 export default function MenuPost() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -35,7 +37,7 @@ export default function MenuPost() {
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        disableScrollLock={ true }
+        disableScrollLock={true}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -46,11 +48,11 @@ export default function MenuPost() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link to={`/`}>
-          <MenuItem onClick={handleClose}>Edit post</MenuItem>
+        <Link to={`/`} className="menuPostLink">
+          <MenuItem onClick={handleClose}>Edit post <Edit className='menuPostIcon'/></MenuItem>
         </Link>
-        <Link to={`/`}>
-          <MenuItem onClick={handleClose}>Delete post</MenuItem>
+        <Link to={`/`} className="menuPostLink">
+          <MenuItem onClick={handleClose}>Delete post <Delete className='menuPostIcon'/></MenuItem>
         </Link>
       </Menu>
     </div>
