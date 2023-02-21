@@ -14,6 +14,14 @@ export interface IPost {
   likes: string[];
   createdAt: string;
 }
+
+export interface IUpdatedPost {
+  _id: string;
+  userId: string;
+  desc?: string;
+  img: string;
+}
+
 export interface PostProps {
   post: IPost;
 }
@@ -24,14 +32,7 @@ export interface propsFormAuth {
 }
 
 export interface propsMenuPost {
-  postId: string | null;
-  postUserId: string;
-}
-
-export interface propsShare {
-  postId: string | null;
-  file: File | null;
-  desc: string | null;
+  post: IPost;
 }
 
 export interface IUser {
@@ -62,6 +63,8 @@ export interface IFriend {
 
 export interface UserContext {
   user: IUser | null;
+  post: IPost | null;
+  isCreatePost: boolean;
   isFetching: boolean;
   error: boolean;
   dispatch: any;

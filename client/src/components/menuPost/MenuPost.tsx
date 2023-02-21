@@ -3,12 +3,13 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { propsMenuPost, UserContext } from "../../static/types";
+import {IUpdatedPost, propsMenuPost, UserContext} from "../../static/types";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
+import {Dispatch} from "react";
 
-export default function MenuPost({postId, postUserId}: propsMenuPost) {
-  const {user} = React.useContext(AuthContext) as UserContext;
+export default function MenuPost({post}: propsMenuPost) {
+  const { user, isCreatePost, dispatch } = React.useContext(AuthContext) as UserContext;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -20,16 +21,33 @@ export default function MenuPost({postId, postUserId}: propsMenuPost) {
 
   const handleEditPost = async () => {
     setAnchorEl(null);
+    const updatePost = async (
+      updatedPost: IUpdatedPost,
+      dispatch: Dispatch<any>
+    ) => {
+        dispatch({ type: 'UPDATE_POST', payload: post });
+      };
+    await updatePost(post, dispatch);
   };
+
+  const handleNoEditPost = () => {
+    setAnchorEl(null);
+  }
 
   const handleDeletePost = async () => {
     setAnchorEl(null);
     try {
-      await axios.delete(`/api/posts/${postId}`, {data: {userId: user?._id}});
-      window.location.reload();
+      await axios.delete(`/api/posts/${post._id}`, {data: {userId: user?._id}});
     } catch (error) {
       console.log(error);
     }
+    const deletePost = async (
+      isCreatedPost: boolean,
+      dispatch: Dispatch<any>
+    ) => {
+      dispatch({ type: 'CREATE_POST', payload: !isCreatedPost });
+    };
+    await deletePost(isCreatePost, dispatch);
   }
 
   return (
@@ -63,8 +81,8 @@ export default function MenuPost({postId, postUserId}: propsMenuPost) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleEditPost}>{(user?._id === postUserId) ? 'Edit post' : 'No edit post'}</MenuItem>
-        <MenuItem onClick={handleDeletePost}>Delete post</MenuItem>
+        <MenuItem onClick={(user?._id === post.userId) ? handleEditPost : handleNoEditPost}>{(user?._id === post.userId) ? 'Edit post' : 'No edit post'}</MenuItem>
+        {(user?._id === post.userId) ? <MenuItem onClick={handleDeletePost}>Delete post</MenuItem> : null}
       </Menu>
     </div>
   );

@@ -11,6 +11,8 @@ if (!local) {
 
 export const INITIAL_STATE = {
   user: userState,
+  post: null,
+  isCreatePost: false,
   isFetching: false,
   error: false,
   dispatch: (() => undefined) as Dispatch<any>,
@@ -31,6 +33,8 @@ export const AuthContextProvider = ({ children }: PropsAuthContextProvider) => {
     <AuthContext.Provider
       value={{
         user: state.user,
+        post: state.post,
+        isCreatePost: state.isCreatePost,
         isFetching: state.isFetching,
         error: state.error,
         dispatch,
