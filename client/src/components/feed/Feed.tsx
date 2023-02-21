@@ -8,13 +8,13 @@ import { AuthContext } from '../../context/AuthContext';
 
 const Feed: React.FC<FeedProps> = ({ username }) => {
   const [posts, setPosts] = useState([]);
-  const { user } = React.useContext(AuthContext) as UserContext;
+  const { user, query } = React.useContext(AuthContext) as UserContext;
 
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
-        ? await axios.get(`/api/posts/profile/${username}`)
-        : await axios.get(`/api/posts/timeline/${user?._id}`);
+        ? await axios.get(`/api/posts/profile/${username}?q=${query}`)
+        : await axios.get(`/api/posts/timeline/${user?._id}?q=${query}`);
       setPosts(
         res.data.sort((p1: IPost, p2: IPost) => {
           return (
@@ -23,8 +23,8 @@ const Feed: React.FC<FeedProps> = ({ username }) => {
         })
       );
     };
-    fetchPosts();
-  }, [username, user?._id]);
+    if (query.length === 0 || query.length > 2) fetchPosts();
+  }, [username, user?._id, query]);
 
   return (
     <div className="feed">
