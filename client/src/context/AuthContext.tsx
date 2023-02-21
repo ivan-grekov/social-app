@@ -7,12 +7,13 @@ const local = JSON.parse(localStorage.getItem('user') as string);
 if (!local) {
   localStorage.setItem('user', JSON.stringify(null));
 }
-  const userState = JSON.parse(localStorage.getItem('user') as string);
+const userState = JSON.parse(localStorage.getItem('user') as string);
 
 export const INITIAL_STATE = {
   user: userState,
   isFetching: false,
   error: false,
+  query: '',
   dispatch: (() => undefined) as Dispatch<any>,
 };
 
@@ -23,6 +24,7 @@ interface PropsAuthContextProvider {
 export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({ children }: PropsAuthContextProvider) => {
+  // @ts-ignore
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(state.user));
@@ -33,6 +35,7 @@ export const AuthContextProvider = ({ children }: PropsAuthContextProvider) => {
         user: state.user,
         isFetching: state.isFetching,
         error: state.error,
+        query: state.query,
         dispatch,
       }}
     >
