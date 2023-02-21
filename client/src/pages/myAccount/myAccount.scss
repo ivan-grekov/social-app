@@ -13,7 +13,10 @@
     justify-content: start;
 
     .editProfileForm {
-
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
       .accountTitle {
         margin-bottom: 30px;
         text-align: center;
@@ -38,6 +41,7 @@
       }
 
       .imgContainer {
+        width: 250px;
         padding: 0 20px 10px 20px;
         position: relative;
       }
