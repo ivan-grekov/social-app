@@ -15,7 +15,7 @@ import { IUser } from '../static/types';
 // type UnfollowAction = Action<'UNFOLLOW', {}>;
 
 export const AuthReducer = (
-  state: { user: IUser; isFetching: boolean; error: boolean },
+  state: { user: IUser; isFetching: boolean; error: boolean; query: string },
   action: any
 ) => {
   switch (action.type) {
@@ -42,6 +42,11 @@ export const AuthReducer = (
         user: null,
         isFetching: false,
         error: false,
+      };
+    case 'SET_QUERY':
+      return {
+        ...state,
+        query: action.payload,
       };
     case 'UPDATE_USER':
       return {
