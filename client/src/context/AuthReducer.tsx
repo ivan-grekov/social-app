@@ -1,4 +1,4 @@
-import { IUser } from '../static/types';
+import { IPost, IUser } from '../static/types';
 // type AvailableActions =
 //   | LoginStartAction
 //   | LoginSuccessAction
@@ -15,30 +15,41 @@ import { IUser } from '../static/types';
 // type UnfollowAction = Action<'UNFOLLOW', {}>;
 
 export const AuthReducer = (
-  state: { user: IUser; isFetching: boolean; error: boolean; query: string },
+  state: {
+    user: IUser;
+    post: IPost;
+    isCreatePost: boolean;
+    isFetching: boolean;
+    error: boolean;
+    query: string;
+  },
   action: any
 ) => {
   switch (action.type) {
     case 'LOGIN_START':
       return {
+        ...state,
         user: null,
         isFetching: true,
         error: false,
       };
     case 'LOGIN_SUCCESS':
       return {
+        ...state,
         user: action.payload,
         isFetching: false,
         error: false,
       };
     case 'LOGIN_FAILURE':
       return {
+        ...state,
         user: null,
         isFetching: false,
         error: true,
       };
     case 'LOGOUT':
       return {
+        ...state,
         user: null,
         isFetching: false,
         error: false,
@@ -50,6 +61,7 @@ export const AuthReducer = (
       };
     case 'UPDATE_USER':
       return {
+        ...state,
         user: action.payload,
         isFetching: false,
         error: false,
@@ -71,6 +83,16 @@ export const AuthReducer = (
             (following: string) => following !== action.payload
           ),
         },
+      };
+    case 'UPDATE_POST':
+      return {
+        ...state,
+        post: action.payload,
+      };
+    case 'CREATE_POST':
+      return {
+        ...state,
+        isCreatePost: action.payload,
       };
     default:
       return state;

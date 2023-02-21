@@ -8,7 +8,9 @@ import { AuthContext } from '../../context/AuthContext';
 
 const Feed: React.FC<FeedProps> = ({ username }) => {
   const [posts, setPosts] = useState([]);
-  const { user, query } = React.useContext(AuthContext) as UserContext;
+  const { user, post, isCreatePost, query } = React.useContext(
+    AuthContext
+  ) as UserContext;
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -24,7 +26,7 @@ const Feed: React.FC<FeedProps> = ({ username }) => {
       );
     };
     if (query.length === 0 || query.length > 2) fetchPosts();
-  }, [username, user?._id, query]);
+  }, [username, user?._id, post?._id, isCreatePost, query]);
 
   return (
     <div className="feed">

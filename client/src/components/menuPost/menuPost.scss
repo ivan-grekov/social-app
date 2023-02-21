@@ -1,6 +1,6 @@
 @import '../../scss/main.scss';
 
-.menuPostLink{
+.menuPostLink {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -12,6 +12,5 @@
 .menuPostIcon {
   font-size: 18px !important;
   color: $color-grey;
-  margin: 0px 0px 0px 10px;
-  padding-right: auto;
+  margin: 0 0 0 10px;
 }

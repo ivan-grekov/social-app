@@ -11,6 +11,8 @@ const userState = JSON.parse(localStorage.getItem('user') as string);
 
 export const INITIAL_STATE = {
   user: userState,
+  post: null,
+  isCreatePost: false,
   isFetching: false,
   error: false,
   query: '',
@@ -33,6 +35,8 @@ export const AuthContextProvider = ({ children }: PropsAuthContextProvider) => {
     <AuthContext.Provider
       value={{
         user: state.user,
+        post: state.post,
+        isCreatePost: state.isCreatePost,
         isFetching: state.isFetching,
         error: state.error,
         query: state.query,

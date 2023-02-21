@@ -1,6 +1,6 @@
 import './menuProfile.scss';
 import * as React from 'react';
-import { Logout, ManageAccounts, Person } from '@mui/icons-material';
+import './menuProfile.scss';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../static/types';
 import { AuthContext } from '../../context/AuthContext';
 import { logoutCall } from '../../apiCalls';
+import { Logout, ManageAccounts, Person } from '@mui/icons-material';
 
 export default function MenuProfile() {
   const { user, dispatch } = React.useContext(AuthContext) as UserContext;
@@ -63,19 +64,19 @@ export default function MenuProfile() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link to={`/profile/${user?.username}`} className="menuProfileLink">
+        <Link to={`/profile/${user?.username}`}>
           <MenuItem onClick={handleClose}>
             <Person className="menuProfileIcon" />
             Profile
           </MenuItem>
         </Link>
-        <Link to={`/account/${user?.username}`} className="menuProfileLink">
+        <Link to={`/account/${user?.username}`}>
           <MenuItem onClick={handleClose}>
             <ManageAccounts className="menuProfileIcon" />
             My account
           </MenuItem>
         </Link>
-        <Link to={`/login`} className="menuProfileLink">
+        <Link to={`/login`}>
           <MenuItem onClick={handleLogout}>
             <Logout className="menuProfileIcon" />
             Logout
