@@ -35,3 +35,8 @@ export const Unfollow = (userId: string) => ({
   type: 'UNFOLLOW',
   payload: userId,
 });
+
+export const setQuery = (query: string) => ({
+  type: 'SET_QUERY',
+  payload: query,
+});
