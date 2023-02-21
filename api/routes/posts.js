@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Post = require('../models/Post');
 const User = require('../models/User');
+const search = require('../utils/searchPosts');
 
 // create a post
 router.post('/', async (req, res) => {
@@ -73,6 +74,7 @@ router.get('/:id', async (req, res) => {
 
 router.get('/timeline/:userId', async (req, res) => {
   try {
+    const { q } = req.query;
     const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id });
     const friendPosts = await Promise.all(
@@ -80,7 +82,11 @@ router.get('/timeline/:userId', async (req, res) => {
         return Post.find({ userId: friendId });
       })
     );
-    res.status(200).json(userPosts.concat(...friendPosts));
+    const allPosts = userPosts.concat(...friendPosts);
+    const keys = ['desc'];
+    q
+      ? res.status(200).json(search(allPosts, q, keys))
+      : res.status(200).json(allPosts);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -92,7 +98,11 @@ router.get('/profile/:username', async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
     const posts = await Post.find({ userId: user._id });
-    res.status(200).json(posts);
+    const keys = ['desc'];
+    const { q } = req.query;
+    q
+      ? res.status(200).json(search(posts, q, keys))
+      : res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
   }
