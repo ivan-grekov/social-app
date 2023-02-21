@@ -11,8 +11,6 @@ import { Menu, Close } from '@mui/icons-material';
 import MobileMenu from '../menu/MobileMenu';
 
 export default function Header(): JSX.Element {
-  const { user } = React.useContext(AuthContext) as UserContext;
-  const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [nav, setNav] = useState(false);
   const menuActive = 'menu active';
   const menu = 'menu';
@@ -52,7 +50,11 @@ export default function Header(): JSX.Element {
             </div>
             <MenuProfile />
             <div onClick={() => setNav(!nav)} className="mobilBtn">
-              {nav ? <Close className='menuIcon' /> : <Menu className='menuIcon' />}
+              {nav ? (
+                <Close className="menuIcon" />
+              ) : (
+                <Menu className="menuIcon" />
+              )}
             </div>
             <div className={nav ? `${menuActive}` : `${menu}`}>
               <MobileMenu />
