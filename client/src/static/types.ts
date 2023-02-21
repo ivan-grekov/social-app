@@ -53,6 +53,7 @@ export interface UserContext {
   user: IUser | null;
   isFetching: boolean;
   error: boolean;
+  query: string;
   dispatch: any;
 }
 
