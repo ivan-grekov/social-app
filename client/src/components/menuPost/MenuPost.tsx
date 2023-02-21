@@ -1,11 +1,17 @@
 import * as React from 'react';
+import './menuPost.scss';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {Link} from "react-router-dom";
+import {IUpdatedPost, propsMenuPost, UserContext} from "../../static/types";
+import axios from "axios";
+import {AuthContext} from "../../context/AuthContext";
+import {Dispatch} from "react";
+import { Delete, Edit, ErrorOutline } from "@mui/icons-material";
 
-export default function MenuPost() {
+export default function MenuPost({post}: propsMenuPost) {
+  const { user, isCreatePost, dispatch } = React.useContext(AuthContext) as UserContext;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -14,6 +20,37 @@ export default function MenuPost() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleEditPost = async () => {
+    setAnchorEl(null);
+    const updatePost = async (
+      updatedPost: IUpdatedPost,
+      dispatch: Dispatch<any>
+    ) => {
+        dispatch({ type: 'UPDATE_POST', payload: post });
+      };
+    await updatePost(post, dispatch);
+  };
+
+  const handleNoEditPost = () => {
+    setAnchorEl(null);
+  }
+
+  const handleDeletePost = async () => {
+    setAnchorEl(null);
+    try {
+      await axios.delete(`/api/posts/${post._id}`, {data: {userId: user?._id}});
+    } catch (error) {
+      console.log(error);
+    }
+    const deletePost = async (
+      isCreatedPost: boolean,
+      dispatch: Dispatch<any>
+    ) => {
+      dispatch({ type: 'CREATE_POST', payload: !isCreatedPost });
+    };
+    await deletePost(isCreatePost, dispatch);
+  }
 
   return (
     <div>
@@ -25,7 +62,7 @@ export default function MenuPost() {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon />
+        <MoreVertIcon/>
       </IconButton>
       <Menu
         style={{}}
@@ -35,7 +72,7 @@ export default function MenuPost() {
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        disableScrollLock={ true }
+        disableScrollLock={true}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -46,12 +83,14 @@ export default function MenuPost() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link to={`/`}>
-          <MenuItem onClick={handleClose}>Edit post</MenuItem>
-        </Link>
-        <Link to={`/`}>
-          <MenuItem onClick={handleClose}>Delete post</MenuItem>
-        </Link>
+        <MenuItem onClick={(user?._id === post.userId) ? handleEditPost : handleNoEditPost}>
+          {(user?._id === post.userId) ? 'Edit post' : `Edit only your's post`}
+          {(user?._id === post.userId) ? <Edit className='menuPostIcon'/> : <ErrorOutline className='menuPostIcon'/>}
+        </MenuItem>
+        {(user?._id === post.userId) ? <MenuItem onClick={handleDeletePost}>
+          Delete post
+          <Delete className='menuPostIcon'/>
+        </MenuItem> : null}
       </Menu>
     </div>
   );

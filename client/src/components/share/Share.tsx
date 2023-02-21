@@ -6,29 +6,33 @@ import {
   Room,
   Cancel,
 } from '@mui/icons-material';
-import React, { useRef, useState } from 'react';
+import React, {Dispatch, useEffect, useState} from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { UserContext } from '../../static/types';
+import { IUpdatedPost, UserContext } from '../../static/types';
 import axios from 'axios';
 
 function Share() {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
-  const { user } = React.useContext(AuthContext) as UserContext;
-  const desc = useRef<HTMLInputElement | null>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const { user, post, isCreatePost, dispatch } = React.useContext(AuthContext) as UserContext;
+  const [descInput, setDescInput] = React.useState<string | null>(post?.desc!);
+  const [fileInput, setFileInput] = useState<File | null>(null);
+
+  useEffect(() => {
+    setDescInput(post?.desc!);
+  }, [post]);
 
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     const newPost = {
       userId: user?._id,
-      desc: desc.current?.value,
-      img: '',
+      desc: descInput,
+      img: post?.img,
     };
-    if (file) {
+    if (fileInput) {
       const data = new FormData();
-      const fileName = Date.now() + file.name;
+      const fileName = Date.now() + fileInput.name;
       data.append('name', fileName);
-      data.append('file', file);
+      data.append('file', fileInput);
       newPost.img = fileName;
       try {
         await axios.post('/api/upload', data);
@@ -36,11 +40,38 @@ function Share() {
         console.log(err);
       }
     }
-    try {
-      await axios.post('/api/posts', newPost);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
+    if (post) {
+      try {
+        await axios.put(`/api/posts/${post._id}`, newPost);
+        setFileInput(null);
+        setDescInput(null);
+      } catch (error) {
+        console.log(error);
+      }
+
+      const updatePost = async (
+        updatedPost: IUpdatedPost,
+        dispatch: Dispatch<any>
+      ) => {
+        dispatch({ type: 'UPDATE_POST', payload: null });
+      };
+      await updatePost(post, dispatch);
+
+    } else {
+      try {
+        await axios.post('/api/posts', newPost);
+        setFileInput(null);
+        setDescInput(null);
+      } catch (error) {
+        console.log(error);
+      }
+      const createPost = async (
+        isCreatedPost: boolean,
+        dispatch: Dispatch<any>
+      ) => {
+        dispatch({ type: 'CREATE_POST', payload: !isCreatedPost });
+      };
+      await createPost(isCreatePost, dispatch);
     }
   };
 
@@ -60,18 +91,21 @@ function Share() {
           <input
             placeholder={`What's in your mind ${user?.username}?`}
             className="shareInput"
-            ref={desc}
+            value={descInput === null || descInput === undefined ? '' : descInput}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setDescInput(event.target.value);
+            }}
           />
         </div>
         <hr className="shareHr" />
-        {file && (
+        {fileInput && (
           <div className="shareImgContainer">
             <img
               className="shareImg"
-              src={URL.createObjectURL(file)}
+              src={URL.createObjectURL(fileInput)}
               alt="share picture"
             />
-            <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
+            <Cancel className="shareCancelImg" onClick={() => setFileInput(null)} />
           </div>
         )}
         <form className="shareBottom" onSubmit={submitHandler}>
@@ -86,7 +120,7 @@ function Share() {
                 accept=".png, .jpeg, .jpg"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   if (!e.target.files) return;
-                  setFile(e.target.files[0]);
+                  setFileInput(e.target.files[0]);
                 }}
               />
             </label>

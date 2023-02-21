@@ -15,16 +15,7 @@ import { IUpdateUser } from '../../static/types';
 
 export default function MyAccount(): JSX.Element {
   const { dispatch } = useContext(AuthContext);
-  // const [user, setUser] = useState<IUser>(Object);
   const { username } = useParams();
-
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const res = await axios.get(`/api/users?username=${username}`);
-  //     setUser(res.data);
-  //   };
-  //   fetchUser();
-  // }, [username]);
 
   const {user} = React.useContext(AuthContext) as UserContext;
   const [userName, setUserName] = React.useState<string | null>(user?.username!);

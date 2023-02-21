@@ -1,0 +1,31 @@
+@import '../../scss/main.scss';
+
+.headerUserBtn {
+  width: 45px !important;
+  min-width: 30px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  border: 2px solid $color-white !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  @media (max-width: 350px) {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+  }
+}
+.menuProfileLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $color-grey !important;
+  & li {
+    width: 100% !important;
+  }
+}
+.menuProfileIcon {
+  font-size: 20px !important;
+  color: $color-grey;
+  margin: 0 10px 0 0;
+}

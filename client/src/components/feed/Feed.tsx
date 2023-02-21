@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/AuthContext';
 
 const Feed: React.FC<FeedProps> = ({ username }) => {
   const [posts, setPosts] = useState([]);
-  const { user } = React.useContext(AuthContext) as UserContext;
+  const { user, post, isCreatePost } = React.useContext(AuthContext) as UserContext;
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -24,7 +24,7 @@ const Feed: React.FC<FeedProps> = ({ username }) => {
       );
     };
     fetchPosts();
-  }, [username, user?._id]);
+  }, [username, user?._id, post?._id, isCreatePost]);
 
   return (
     <div className="feed">

@@ -1,0 +1,16 @@
+@import '../../scss/main.scss';
+
+.menuPostLink{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: $color-grey !important;
+  & li {
+    width: 100% !important;
+  }
+}
+.menuPostIcon {
+  font-size: 18px !important;
+  color: $color-grey;
+  margin: 0 0 0 10px;
+}

@@ -1,4 +1,4 @@
-import { IUser } from '../static/types';
+import {IPost, IUser} from '../static/types';
 
 export const LoginStart = (userCredential: {
   email: string;
@@ -24,6 +24,16 @@ export const LoginFailure = (error: Error) => ({
 export const UpdateUser = (user: IUser) => ({
   type: 'UPDATE_USER',
   payload: user,
+});
+
+export const CreatePost = (isCreatePost: boolean) => ({
+  type: 'CREATE_POST',
+  payload: isCreatePost,
+});
+
+export const UpdatePost = (post: IPost) => ({
+  type: 'UPDATE_POST',
+  payload: post,
 });
 
 export const Follow = (userId: string) => ({
