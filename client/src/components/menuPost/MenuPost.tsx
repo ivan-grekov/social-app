@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './menuPost.scss';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,6 +8,7 @@ import {IUpdatedPost, propsMenuPost, UserContext} from "../../static/types";
 import axios from "axios";
 import {AuthContext} from "../../context/AuthContext";
 import {Dispatch} from "react";
+import { Delete, Edit, ErrorOutline } from "@mui/icons-material";
 
 export default function MenuPost({post}: propsMenuPost) {
   const { user, isCreatePost, dispatch } = React.useContext(AuthContext) as UserContext;
@@ -81,8 +83,14 @@ export default function MenuPost({post}: propsMenuPost) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={(user?._id === post.userId) ? handleEditPost : handleNoEditPost}>{(user?._id === post.userId) ? 'Edit post' : 'No edit post'}</MenuItem>
-        {(user?._id === post.userId) ? <MenuItem onClick={handleDeletePost}>Delete post</MenuItem> : null}
+        <MenuItem onClick={(user?._id === post.userId) ? handleEditPost : handleNoEditPost}>
+          {(user?._id === post.userId) ? 'Edit post' : `Edit only your's post`}
+          {(user?._id === post.userId) ? <Edit className='menuPostIcon'/> : <ErrorOutline className='menuPostIcon'/>}
+        </MenuItem>
+        {(user?._id === post.userId) ? <MenuItem onClick={handleDeletePost}>
+          Delete post
+          <Delete className='menuPostIcon'/>
+        </MenuItem> : null}
       </Menu>
     </div>
   );
