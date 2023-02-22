@@ -43,6 +43,11 @@ const UserSchema = new mongoose.Schema(
       default: [],
     },
 
+    birthday: {
+      type: String,
+      max: 50,
+    },
+
     isAdmin: {
       type: Boolean,
       default: false,

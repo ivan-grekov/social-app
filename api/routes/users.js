@@ -67,8 +67,8 @@ try {
   )
   let friendList = [];
   friends.map(friend => {
-    const { _id, username, profilePicture } = friend;
-    friendList.push({ _id, username, profilePicture })
+    const { _id, username, profilePicture, birthday } = friend;
+    friendList.push({ _id, username, profilePicture, birthday })
     });
   res.status(200).json(friendList);
 } catch (err) {

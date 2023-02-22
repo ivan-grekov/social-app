@@ -49,6 +49,7 @@ export interface IUser {
   city?: string;
   from?: string;
   relationship?: number;
+  birthday?: string;
 }
 
 export interface FeedProps {
@@ -59,6 +60,7 @@ export interface IFriend {
   _id: string;
   username: string;
   profilePicture: string;
+  birthday: string;
 }
 
 export interface UserContext {
