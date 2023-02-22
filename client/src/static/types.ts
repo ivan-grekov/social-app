@@ -60,6 +60,7 @@ export interface IFriend {
   _id: string;
   username: string;
   profilePicture: string;
+  birthday: string;
 }
 
 export interface UserContext {

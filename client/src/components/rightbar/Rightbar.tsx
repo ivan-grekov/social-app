@@ -1,22 +1,31 @@
 import './rightbar.scss';
-import { Users } from '../../static/Data';
+import {Users} from '../../static/Data';
 import OnlineFriend from '../onlineFriend/OnlineFriend';
-import { IFriend, UserContext, RightbarProps } from '../../static/types';
-import React, { useEffect, useState } from 'react';
+import {IFriend, RightbarProps, UserContext} from '../../static/types';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
-import { Add, Remove } from '@mui/icons-material';
+import {Link} from 'react-router-dom';
+import {AuthContext} from '../../context/AuthContext';
+import {Add, Remove} from '@mui/icons-material';
+import {useParams} from "react-router";
 
-export default function Rightbar({ user }: RightbarProps): JSX.Element {
-  const { user: currentUser, dispatch } = React.useContext(
+export default function Rightbar({user}: RightbarProps): JSX.Element {
+  const {user: currentUser, dispatch} = React.useContext(
     AuthContext
   ) as UserContext;
+  const {username} = useParams();
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const [followed, setFollowed] = useState(
     currentUser?.followings.includes(user?._id!)
   );
+  let today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dateToday = mm + '-' + dd;
+
+  const friendsBirthday: IFriend[] = [];
+
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -26,10 +35,21 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
           );
           setFriends(friendsList.data);
         }
-      } catch (err) {}
+      } catch (err) {
+      }
     };
     getFriends();
   }, [user]);
+
+  if (!username && friends.length !== 0) {
+    friends.forEach((friend: IFriend) => {
+      if (friend.birthday) {
+        if (friend.birthday.slice(5, 10) === dateToday) {
+          friendsBirthday.push(friend);
+        }
+      }
+    })
+  }
 
   useEffect(() => {
     setFollowed(currentUser?.followings.includes(user?._id!));
@@ -41,35 +61,64 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
         await axios.put(`/api/users/${user?._id}/unfollow`, {
           userId: currentUser?._id,
         });
-        dispatch({ type: 'UNFOLLOW', payload: user?._id });
+        dispatch({type: 'UNFOLLOW', payload: user?._id});
       } else {
         await axios.put(`/api/users/${user?._id}/follow`, {
           userId: currentUser?._id,
         });
-        dispatch({ type: 'FOLLOW', payload: user?._id });
+        dispatch({type: 'FOLLOW', payload: user?._id});
       }
       setFollowed(!followed);
-    } catch (err) {}
+    } catch (err) {
+    }
   };
 
   const HomeRightbar = () => {
     return (
       <>
+        {friendsBirthday.length !== 0 &&
         <div className="birthdayContainer">
-          <img
-            className="birthdayImg"
-            src="./assets/images/podarok_0.png"
-            alt="gift icon"
-          />
-          <span className="birthdayText">
-            <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
-          </span>
+          <div className='birthdayContainerIntro'>
+            <img
+              className="birthdayImg"
+              src="./assets/images/podarok_0.png"
+              alt="gift icon"
+            />
+            <span className="birthdayText">
+            Have a birthday today:
+            </span>
+          </div>
+          <div className='rightbarBDBlock'>
+            {friendsBirthday.map((friend: IFriend) => (
+              <Link
+                to={`/profile/${friend.username}`}
+                style={{textDecoration: 'none', color: 'inherit'}}
+                key={friend._id}
+              >
+                <div className='friendBlock'>
+                  <img
+                    src={
+                      friend.profilePicture
+                        ? publicFolder + friend.profilePicture
+                        : publicFolder + 'person/noAvatar.png'
+                    }
+                    alt="person"
+                    className="bDBImg"
+                  />
+                  <span className="rightbarFriendName">
+                      {friend.username}
+                    </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        <img className="rightbarAd" src="./assets/images/js.jpg" alt="view" />
+        }
+        <img className="rightbarAd" src="./assets/images/js.jpg" alt="view"/>
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
           {Users.map((u) => (
-            <OnlineFriend key={u.id} user={u} />
+            <OnlineFriend key={u.id} user={u}/>
           ))}
         </ul>
       </>
@@ -89,7 +138,7 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
           {user?.username !== currentUser?.username && (
             <button className="button addFollow" onClick={handleClick}>
               {followed ? 'Unfollow' : 'Follow'}
-              {followed ? <Remove /> : <Add />}
+              {followed ? <Remove/> : <Add/>}
             </button>
           )}
           <div className="profileDescriptions">
@@ -104,6 +153,10 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
                 <span className="rightbarInfoValue">{user?.from}</span>
               </div>
               <div className="rightbarInfoItem">
+                <span className="rightbarInfoKey">Birthday:</span>
+                <span className="rightbarInfoValue">{user?.birthday}</span>
+              </div>
+              <div className="rightbarInfoItem">
                 <span className="rightbarInfoKey">Relationship:</span>
                 <span className="rightbarInfoValue">{relationStatus}</span>
               </div>
@@ -115,7 +168,7 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
               {friends.map((friend: IFriend) => (
                 <Link
                   to={`/profile/${friend.username}`}
-                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  style={{textDecoration: 'none', color: 'inherit'}}
                   key={friend._id}
                 >
                   <div className="rightbarFollowing">
@@ -144,7 +197,7 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {user ? <ProfileRightbar /> : <HomeRightbar />}
+        {username ? <ProfileRightbar/> : <HomeRightbar/>}
       </div>
     </div>
   );
