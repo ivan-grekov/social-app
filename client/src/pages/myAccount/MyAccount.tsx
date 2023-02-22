@@ -26,6 +26,7 @@ export default function MyAccount(): JSX.Element {
   const [city, setCity] = React.useState<string | null>(user?.city!);
   const [from, setFrom] = React.useState<string | null>(user?.from!);
   const [desc, setDesc] = React.useState<string | null>(user?.desc!);
+  const [bd, setBd] = React.useState<string | null>(user?.birthday!);
   const [relationship, setRelationship] = React.useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [fileCover, setFileCover] = useState<File | null>(null);
@@ -44,6 +45,7 @@ export default function MyAccount(): JSX.Element {
       city: city,
       from: from,
       relationship: Number(relationship),
+      birthday: bd,
     };
     if (password) {
       updatedUser.password = password;
@@ -195,6 +197,29 @@ export default function MyAccount(): JSX.Element {
                 setFrom(event.target.value);
               }}
             />
+            <TextField
+              name="Birthday"
+              className="textField"
+              label="Birthday"
+              InputLabelProps={{ shrink: true, required: true }}
+              type="date"
+              defaultValue={bd}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setBd(event.target.value);
+              }}
+            />
+            {/*<TextField*/}
+            {/*  id="outlined-controlled"*/}
+            {/*  className="textField"*/}
+            {/*  placeholder="Enter your birthday"*/}
+            {/*  value={bd === null || bd === undefined ? '' : bd}*/}
+            {/*  fullWidth*/}
+            {/*  label="Description"*/}
+            {/*  variant="outlined"*/}
+            {/*  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {*/}
+            {/*    setBd(event.target.value);*/}
+            {/*  }}*/}
+            {/*/>*/}
             <TextField
               className="textField"
               id="outlined-select-currency"

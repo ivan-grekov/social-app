@@ -49,6 +49,7 @@ export interface IUser {
   city?: string;
   from?: string;
   relationship?: number;
+  birthday?: string;
 }
 
 export interface FeedProps {
