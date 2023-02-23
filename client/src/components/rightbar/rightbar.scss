@@ -12,18 +12,41 @@
 }
 
 .birthdayContainer {
-  display: flex;
-  align-items: center;
   margin-bottom: 18px;
 
-  .birthdayImg {
-    width: 40px;
-    height: 40px;
-    margin: 0 10px 0 0;
+  .birthdayContainerIntro {
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+
+    .birthdayText {
+      @include font-birthdayText;
+      font-size: 20px;
+    }
+
+    .birthdayImg {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px 0 0;
+    }
   }
 
-  .birthdayText {
-    @include font-birthdayText;
+  .rightbarBDBlock {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .friendBlock {
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .bDBImg {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -57,6 +80,7 @@
 
 .rightbarInfo {
   margin-bottom: 30px;
+
   .rightbarInfoItem {
     margin-bottom: 10px;
   }
