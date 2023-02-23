@@ -4,6 +4,7 @@ import {
   RssFeed,
   Chat,
   VideoLibrary,
+  LibraryMusic,
   Groups,
   Bookmark,
   QuestionMark,
@@ -25,26 +26,23 @@ export default function Sidebar() {
               <RssFeed className="sidebarIcon" />
               <span className="sidebarListItemText">Feed</span>
             </li>
-            <Link to={'/messenger'} style={{ color: 'inherit' }} />
-            <li className="sidebarListItem">
-              <RssFeed className="sidebarIcon" />
-              <span className="sidebarListItemText">Feed</span>
-            </li>
-            <Link to={'/messenger'} style={{ color: 'inherit' }} />
-            <li className="sidebarListItem">
-              <RssFeed className="sidebarIcon" />
-              <span className="sidebarListItemText">Feed</span>
-            </li>
-            <Link to={'/messenger'} style={{ color: 'inherit' }}>
+            <Link
+              to={'/messenger'}
+              style={{ color: 'inherit', textDecoration: 'none' }}
+            >
               <li className="sidebarListItem">
                 <Chat className="sidebarIcon" />
                 <span className="sidebarListItemText">Chats</span>
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <VideoLibrary className="sidebarIcon" />
-              <span className="sidebarListItemText">Videos</span>
-            </li>
+            <Link
+              to={'/music'}
+              style={{ textDecoration: 'none' }}
+              className="sidebarListItem"
+            >
+              <LibraryMusic className="sidebarIcon" />
+              <span className="sidebarListItemText">Music</span>
+            </Link>
             <li className="sidebarListItem">
               <Groups className="sidebarIcon" />
               <span className="sidebarListItemText">Groups</span>
