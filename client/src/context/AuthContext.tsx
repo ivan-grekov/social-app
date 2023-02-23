@@ -1,6 +1,7 @@
 import { createContext, useReducer, useEffect } from 'react';
 import { AuthReducer } from './AuthReducer';
 import { type Dispatch } from 'react';
+import { IComment } from '../static/types';
 
 const local = JSON.parse(localStorage.getItem('user') as string);
 
@@ -16,6 +17,7 @@ export const INITIAL_STATE = {
   isFetching: false,
   error: false,
   query: '',
+  comments: [] as IComment[],
   dispatch: (() => undefined) as Dispatch<any>,
 };
 
@@ -40,6 +42,7 @@ export const AuthContextProvider = ({ children }: PropsAuthContextProvider) => {
         isFetching: state.isFetching,
         error: state.error,
         query: state.query,
+        comments: state.comments,
         dispatch,
       }}
     >
