@@ -1,17 +1,20 @@
+import './menuPost.scss';
 import * as React from 'react';
 import './menuPost.scss';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {IUpdatedPost, propsMenuPost, UserContext} from "../../static/types";
-import axios from "axios";
-import {AuthContext} from "../../context/AuthContext";
-import {Dispatch} from "react";
-import { Delete, Edit, ErrorOutline } from "@mui/icons-material";
+import { IUpdatedPost, propsMenuPost, UserContext } from '../../static/types';
+import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
+import { Dispatch } from 'react';
+import { Delete, Edit, ErrorOutline } from '@mui/icons-material';
 
-export default function MenuPost({post}: propsMenuPost) {
-  const { user, isCreatePost, dispatch } = React.useContext(AuthContext) as UserContext;
+export default function MenuPost({ post }: propsMenuPost) {
+  const { user, isCreatePost, dispatch } = React.useContext(
+    AuthContext
+  ) as UserContext;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -27,19 +30,21 @@ export default function MenuPost({post}: propsMenuPost) {
       updatedPost: IUpdatedPost,
       dispatch: Dispatch<any>
     ) => {
-        dispatch({ type: 'UPDATE_POST', payload: post });
-      };
+      dispatch({ type: 'UPDATE_POST', payload: post });
+    };
     await updatePost(post, dispatch);
   };
 
   const handleNoEditPost = () => {
     setAnchorEl(null);
-  }
+  };
 
   const handleDeletePost = async () => {
     setAnchorEl(null);
     try {
-      await axios.delete(`/api/posts/${post._id}`, {data: {userId: user?._id}});
+      await axios.delete(`/api/posts/${post._id}`, {
+        data: { userId: user?._id },
+      });
     } catch (error) {
       console.log(error);
     }
@@ -50,7 +55,7 @@ export default function MenuPost({post}: propsMenuPost) {
       dispatch({ type: 'CREATE_POST', payload: !isCreatedPost });
     };
     await deletePost(isCreatePost, dispatch);
-  }
+  };
 
   return (
     <div>
@@ -62,7 +67,7 @@ export default function MenuPost({post}: propsMenuPost) {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <MoreVertIcon/>
+        <MoreVertIcon />
       </IconButton>
       <Menu
         style={{}}
@@ -83,14 +88,24 @@ export default function MenuPost({post}: propsMenuPost) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={(user?._id === post.userId) ? handleEditPost : handleNoEditPost}>
-          {(user?._id === post.userId) ? 'Edit post' : `Edit only your's post`}
-          {(user?._id === post.userId) ? <Edit className='menuPostIcon'/> : <ErrorOutline className='menuPostIcon'/>}
+        <MenuItem
+          onClick={
+            user?._id === post.userId ? handleEditPost : handleNoEditPost
+          }
+        >
+          {user?._id === post.userId ? 'Edit post' : `Edit only your's post`}
+          {user?._id === post.userId ? (
+            <Edit className="menuPostIcon" />
+          ) : (
+            <ErrorOutline className="menuPostIcon" />
+          )}
         </MenuItem>
-        {(user?._id === post.userId) ? <MenuItem onClick={handleDeletePost}>
-          Delete post
-          <Delete className='menuPostIcon'/>
-        </MenuItem> : null}
+        {user?._id === post.userId ? (
+          <MenuItem onClick={handleDeletePost}>
+            Delete post
+            <Delete className="menuPostIcon" />
+          </MenuItem>
+        ) : null}
       </Menu>
     </div>
   );

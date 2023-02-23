@@ -1,4 +1,4 @@
-import {IPost, IUser} from '../static/types';
+import { IComment, IPost, IUser } from '../static/types';
 // type AvailableActions =
 //   | LoginStartAction
 //   | LoginSuccessAction
@@ -15,7 +15,15 @@ import {IPost, IUser} from '../static/types';
 // type UnfollowAction = Action<'UNFOLLOW', {}>;
 
 export const AuthReducer = (
-  state: { user: IUser; post: IPost; isCreatePost: boolean; isFetching: boolean; error: boolean },
+  state: {
+    user: IUser;
+    post: IPost;
+    isCreatePost: boolean;
+    isFetching: boolean;
+    error: boolean;
+    query: string;
+    comments: IComment[];
+  },
   action: any
 ) => {
   switch (action.type) {
@@ -46,6 +54,11 @@ export const AuthReducer = (
         user: null,
         isFetching: false,
         error: false,
+      };
+    case 'SET_QUERY':
+      return {
+        ...state,
+        query: action.payload,
       };
     case 'UPDATE_USER':
       return {
@@ -81,6 +94,16 @@ export const AuthReducer = (
       return {
         ...state,
         isCreatePost: action.payload,
+      };
+    case 'SET_COMMENTS':
+      return {
+        ...state,
+        comments: action.payload,
+      };
+    case 'ADD_COMMENT':
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
       };
     default:
       return state;

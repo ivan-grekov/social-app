@@ -1,16 +1,17 @@
+import './menuProfile.scss';
 import * as React from 'react';
 import './menuProfile.scss';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import {Link} from "react-router-dom";
-import {UserContext} from "../../static/types";
-import {AuthContext} from "../../context/AuthContext";
-import {logoutCall} from "../../apiCalls";
-import { Logout, ManageAccounts, Person } from "@mui/icons-material";
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../static/types';
+import { AuthContext } from '../../context/AuthContext';
+import { logoutCall } from '../../apiCalls';
+import { Logout, ManageAccounts, Person } from '@mui/icons-material';
 
 export default function MenuProfile() {
-  const { user, dispatch} = React.useContext(AuthContext) as UserContext;
+  const { user, dispatch } = React.useContext(AuthContext) as UserContext;
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -28,26 +29,22 @@ export default function MenuProfile() {
   };
 
   return (
-    <div>
+    <div className="headerUserImg">
       <Button
-        style={{width: '45px',
-          minWidth: '30px',
-          height: '45px',
-          borderRadius: '50%',
-          border: '2px solid white',
-          backgroundImage: `url(${user?.profilePicture
+        className="headerUserBtn"
+        style={{
+          backgroundImage: `url(${
+            user?.profilePicture
               ? publicFolder + user.profilePicture
-              : publicFolder + 'person/noAvatar.png'})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover'}}
-              id="basic-button"
-              aria-controls={open ? 'basic-menuProfile' : undefined}
-              aria-haspopup="true"
-              aria-expanded={open ? 'true' : undefined}
-              onClick={handleClick}
-      >
-      </Button>
+              : publicFolder + 'person/noAvatar.png'
+          })`,
+        }}
+        id="basic-button"
+        aria-controls={open ? 'basic-menuProfile' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+      ></Button>
       <Menu
         style={{}}
         id="basic-menu"
@@ -56,7 +53,7 @@ export default function MenuProfile() {
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        disableScrollLock={ true }
+        disableScrollLock={true}
         transformOrigin={{
           vertical: 'top',
           horizontal: 'right',
@@ -74,16 +71,16 @@ export default function MenuProfile() {
           </MenuItem>
         </Link>
         <Link to={`/account/${user?.username}`}>
-        <MenuItem onClick={handleClose}>
-          <ManageAccounts className="menuProfileIcon" />
-          My account
-        </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <ManageAccounts className="menuProfileIcon" />
+            My account
+          </MenuItem>
         </Link>
         <Link to={`/login`}>
-        <MenuItem onClick={handleLogout}>
-          <Logout className="menuProfileIcon" />
-          Logout
-        </MenuItem>
+          <MenuItem onClick={handleLogout}>
+            <Logout className="menuProfileIcon" />
+            Logout
+          </MenuItem>
         </Link>
       </Menu>
     </div>

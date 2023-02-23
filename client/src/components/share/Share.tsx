@@ -6,14 +6,16 @@ import {
   Room,
   Cancel,
 } from '@mui/icons-material';
-import React, {Dispatch, useEffect, useState} from 'react';
+import React, { Dispatch, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { IUpdatedPost, UserContext } from '../../static/types';
 import axios from 'axios';
 
 function Share() {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
-  const { user, post, isCreatePost, dispatch } = React.useContext(AuthContext) as UserContext;
+  const { user, post, isCreatePost, dispatch } = React.useContext(
+    AuthContext
+  ) as UserContext;
   const [descInput, setDescInput] = React.useState<string | null>(post?.desc!);
   const [fileInput, setFileInput] = useState<File | null>(null);
 
@@ -56,7 +58,6 @@ function Share() {
         dispatch({ type: 'UPDATE_POST', payload: null });
       };
       await updatePost(post, dispatch);
-
     } else {
       try {
         await axios.post('/api/posts', newPost);
@@ -91,7 +92,9 @@ function Share() {
           <input
             placeholder={`What's in your mind ${user?.username}?`}
             className="shareInput"
-            value={descInput === null || descInput === undefined ? '' : descInput}
+            value={
+              descInput === null || descInput === undefined ? '' : descInput
+            }
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
               setDescInput(event.target.value);
             }}
@@ -105,7 +108,10 @@ function Share() {
               src={URL.createObjectURL(fileInput)}
               alt="share picture"
             />
-            <Cancel className="shareCancelImg" onClick={() => setFileInput(null)} />
+            <Cancel
+              className="shareCancelImg"
+              onClick={() => setFileInput(null)}
+            />
           </div>
         )}
         <form className="shareBottom" onSubmit={submitHandler}>

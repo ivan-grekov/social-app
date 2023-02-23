@@ -69,6 +69,8 @@ export interface UserContext {
   isCreatePost: boolean;
   isFetching: boolean;
   error: boolean;
+  query: string;
+  comments: IComment[];
   dispatch: any;
 }
 
@@ -111,4 +113,14 @@ export interface IUpdateUser {
   city?: string;
   from?: string;
   relationship?: number;
+}
+
+export interface IComment {
+  _id: string;
+  userId: string;
+  userImg: string;
+  postId: string;
+  username: string;
+  desc: string;
+  createdAt: string;
 }
