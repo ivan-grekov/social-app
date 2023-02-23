@@ -1,0 +1,74 @@
+@import '../../scss/main.scss';
+
+.comments {
+  .write {
+    @include flex-row($justify-content: space-between, $align-items: center);
+    gap: 10px;
+    margin: 20px 0px;
+
+    input {
+      flex: 5;
+      padding: 10px;
+      border: 1px solid gray;
+      border-radius: 20px;
+      outline: none;
+      background-color: transparent;
+    }
+
+    button {
+      border: none;
+      background-color: $color-logo-logo;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+  }
+  .comment {
+    position: relative;
+    margin: 30px 0px;
+    @include flex-row($justify-content: space-between, $align-items: center);
+    gap: 20px;
+    font-size: 12px;
+
+    .closeBtn {
+      color: lighten($color: #000000, $amount: 50%);
+      transform: scale(0.8);
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        color: darken($color: #000000, $amount: 5%);
+      }
+    }
+
+    .closeBtnOff {
+      color: lighten($color: #000000, $amount: 50%);
+      transform: scale(0.7);
+    }
+
+    .info {
+      display: flex;
+      flex: 5;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+
+      span {
+        font-weight: 500;
+      }
+    }
+    .date {
+      flex: 1;
+      align-self: center;
+    }
+  }
+
+  .userImg,
+  .commentImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
