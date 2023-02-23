@@ -5,12 +5,14 @@ import axios from 'axios';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import MenuPost from "../menuPost/MenuPost";
+import MenuPost from '../menuPost/MenuPost';
+import Comments from '../comments/Comments';
 
-const Post: React.FC<PostProps> = ({ post}) => {
+const Post: React.FC<PostProps> = ({ post }) => {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [like, setLike] = useState<Number>(post.likes.length);
   const [isLiked, setIsLiked] = useState<boolean>(false);
+  const [commentOpen, setCommentOpen] = useState(false);
   const [user, setUser] = useState(Object);
   const { user: currentUser } = React.useContext(AuthContext) as UserContext;
 
@@ -55,7 +57,7 @@ const Post: React.FC<PostProps> = ({ post}) => {
             <span className="postDate">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
-            <MenuPost post={post}/>
+            <MenuPost post={post} />
             {/*<MoreVert />*/}
           </div>
         </div>
@@ -88,10 +90,18 @@ const Post: React.FC<PostProps> = ({ post}) => {
               {Number(like)} people liked it
             </span>
           </div>
-          <div className="posrBottomRight">
-            <span className="postCommentText">comments</span>
+          <div className="postBottomRight">
+            <span
+              className="postCommentText"
+              onClick={() => setCommentOpen(!commentOpen)}
+            >
+              comments
+            </span>
           </div>
         </div>
+        {commentOpen && (
+          <Comments postId={post._id} commentOpen={commentOpen} />
+        )}
       </div>
     </div>
   );
