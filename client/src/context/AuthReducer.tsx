@@ -1,4 +1,4 @@
-import { IPost, IUser } from '../static/types';
+import { IComment, IPost, IUser } from '../static/types';
 // type AvailableActions =
 //   | LoginStartAction
 //   | LoginSuccessAction
@@ -22,6 +22,7 @@ export const AuthReducer = (
     isFetching: boolean;
     error: boolean;
     query: string;
+    comments: IComment[];
   },
   action: any
 ) => {
@@ -93,6 +94,16 @@ export const AuthReducer = (
       return {
         ...state,
         isCreatePost: action.payload,
+      };
+    case 'SET_COMMENTS':
+      return {
+        ...state,
+        comments: action.payload,
+      };
+    case 'ADD_COMMENT':
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
       };
     default:
       return state;
