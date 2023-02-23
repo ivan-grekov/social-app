@@ -1,4 +1,4 @@
-import {IPost, IUser} from '../static/types';
+import { IPost, IUser, IComment } from '../static/types';
 
 export const LoginStart = (userCredential: {
   email: string;
@@ -49,4 +49,14 @@ export const Unfollow = (userId: string) => ({
 export const setQuery = (query: string) => ({
   type: 'SET_QUERY',
   payload: query,
+});
+
+export const setComments = (comments: IComment[]) => ({
+  type: 'SET_COMMENTS',
+  payload: comments,
+});
+
+export const addComment = (comment: IComment) => ({
+  type: 'ADD_COMMENT',
+  payload: comment,
 });
