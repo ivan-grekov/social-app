@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const userRoute = require('./routes/users');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/posts');
+const commentRoute = require('./routes/comments');
 const multer = require('multer');
 const path = require('path');
 const conversationRoute = require('./routes/conversation');
@@ -55,9 +56,10 @@ app.use('/api/auth', authRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/conversations', conversationRoute);
 app.use('/api/messages', messageRoute);
+app.use('/api/comments', commentRoute);
 
-app.get('/api/search', (req, res) =>{
-  res.json('/api/users')
+app.get('/api/search', (req, res) => {
+  res.json('/api/users');
 
   try {
     return res.status(200).json('User found');
