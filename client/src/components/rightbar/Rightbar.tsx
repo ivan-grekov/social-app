@@ -61,7 +61,9 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
     const getOnlineUsers = async () => {
       const { data } = await axios.get('/api/users/all');
       const randomUsers = data
-        .filter((user: IUser) => !user.profilePicture)
+        .filter(
+          (user: IUser) => !user.profilePicture && user._id !== currentUser?._id
+        )
         .sort(() => 0.5 - Math.random())
         .slice(0, 5);
       setOnlineFriends(randomUsers);
@@ -184,7 +186,7 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
           <div className="followersBlock">
             <h4 className="rightbarTitle">User friends</h4>
             <div className="rightbarFollowings">
-              {friends.length > 0 ? (
+              {friends.length > 0 &&
                 friends.map((friend: IFriend) => (
                   <Link
                     to={`/profile/${friend.username}`}
@@ -206,12 +208,7 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
                       </span>
                     </div>
                   </Link>
-                ))
-              ) : (
-                <div>
-                  <CircularProgress />
-                </div>
-              )}
+                ))}
             </div>
           </div>
         </div>
