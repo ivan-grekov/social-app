@@ -63,10 +63,18 @@ export default function Sidebar() {
               <Event className="sidebarIcon" />
               <span className="sidebarListItemText">Events</span>
             </li>
-            <li className="sidebarListItem">
+            <Link
+              to={'/courses'}
+              className="sidebarListItem"
+              style={{ textDecoration: 'none' }}
+            >
               <School className="sidebarIcon" />
               <span className="sidebarListItemText">Courses</span>
-            </li>
+            </Link>
+            {/* <li className="sidebarListItem">
+              <School className="sidebarIcon" />
+              <span className="sidebarListItemText">Courses</span>
+            </li> */}
           </ul>
           <button className="sidebarButton">Show More</button>
           <hr className="sidebarHr" />
