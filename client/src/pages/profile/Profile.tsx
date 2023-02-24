@@ -4,11 +4,11 @@ import Feed from '../../components/feed/Feed';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Rightbar from '../../components/rightbar/Rightbar';
 import React, { useState, useEffect } from 'react';
-import {IUser, UserContext} from '../../static/types';
+import { IUser, UserContext } from '../../static/types';
 import axios from 'axios';
 import { useParams } from 'react-router';
-import {AuthContext} from "../../context/AuthContext";
-import {Add, Remove} from "@mui/icons-material";
+import { AuthContext } from '../../context/AuthContext';
+import { Add, Remove } from '@mui/icons-material';
 
 export default function Profile(): JSX.Element {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -54,7 +54,7 @@ export default function Profile(): JSX.Element {
     <>
       <Header />
       <div className="profile">
-        <Sidebar />
+        <Sidebar profilePage={true} />
         <div className="profileBlock">
           <div className="profileBlockTop">
             <img
