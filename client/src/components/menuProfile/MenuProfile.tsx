@@ -1,6 +1,5 @@
 import './menuProfile.scss';
 import * as React from 'react';
-import './menuProfile.scss';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -64,19 +63,25 @@ export default function MenuProfile() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <Link to={`/profile/${user?.username}`}>
+        <Link
+          to={`/profile/${user?.username}`}
+          style={{ textDecoration: 'none' }}
+        >
           <MenuItem onClick={handleClose}>
             <Person className="menuProfileIcon" />
             Profile
           </MenuItem>
         </Link>
-        <Link to={`/account/${user?.username}`}>
+        <Link
+          to={`/account/${user?.username}`}
+          style={{ textDecoration: 'none' }}
+        >
           <MenuItem onClick={handleClose}>
             <ManageAccounts className="menuProfileIcon" />
             My account
           </MenuItem>
         </Link>
-        <Link to={`/login`}>
+        <Link to={`/login`} style={{ textDecoration: 'none' }}>
           <MenuItem onClick={handleLogout}>
             <Logout className="menuProfileIcon" />
             Logout

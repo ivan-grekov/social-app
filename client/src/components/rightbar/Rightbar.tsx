@@ -1,20 +1,21 @@
 import './rightbar.scss';
-import {Users} from '../../static/Data';
 import OnlineFriend from '../onlineFriend/OnlineFriend';
-import {IFriend, RightbarProps, UserContext} from '../../static/types';
-import React, {useEffect, useState} from 'react';
+import { IFriend, RightbarProps, UserContext, IUser } from '../../static/types';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-import {AuthContext} from '../../context/AuthContext';
-import {Add, Remove} from '@mui/icons-material';
-import {useParams} from "react-router";
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { Add, Remove } from '@mui/icons-material';
+import { useParams } from 'react-router';
+import { CircularProgress } from '@mui/material';
 
-export default function Rightbar({user}: RightbarProps): JSX.Element {
-  const {user: currentUser, dispatch} = React.useContext(
+export default function Rightbar({ user }: RightbarProps): JSX.Element {
+  const { user: currentUser, dispatch } = React.useContext(
     AuthContext
   ) as UserContext;
-  const {username} = useParams();
+  const { username } = useParams();
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [onlineFriends, setOnlineFriends] = useState<IUser[]>([]);
   const [friends, setFriends] = useState([]);
   const [followed, setFollowed] = useState(
     currentUser?.followings.includes(user?._id!)
@@ -36,6 +37,7 @@ export default function Rightbar({user}: RightbarProps): JSX.Element {
           setFriends(friendsList.data);
         }
       } catch (err) {
+        console.log(err);
       }
     };
     getFriends();
@@ -48,12 +50,26 @@ export default function Rightbar({user}: RightbarProps): JSX.Element {
           friendsBirthday.push(friend);
         }
       }
-    })
+    });
   }
 
   useEffect(() => {
     setFollowed(currentUser?.followings.includes(user?._id!));
   }, [currentUser, user?._id]);
+
+  useEffect(() => {
+    const getOnlineUsers = async () => {
+      const { data } = await axios.get('/api/users/all');
+      const randomUsers = data
+        .filter(
+          (user: IUser) => !user.profilePicture && user._id !== currentUser?._id
+        )
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 5);
+      setOnlineFriends(randomUsers);
+    };
+    getOnlineUsers();
+  }, []);
 
   const handleClick = async () => {
     try {
@@ -61,64 +77,69 @@ export default function Rightbar({user}: RightbarProps): JSX.Element {
         await axios.put(`/api/users/${user?._id}/unfollow`, {
           userId: currentUser?._id,
         });
-        dispatch({type: 'UNFOLLOW', payload: user?._id});
+        dispatch({ type: 'UNFOLLOW', payload: user?._id });
       } else {
         await axios.put(`/api/users/${user?._id}/follow`, {
           userId: currentUser?._id,
         });
-        dispatch({type: 'FOLLOW', payload: user?._id});
+        dispatch({ type: 'FOLLOW', payload: user?._id });
       }
       setFollowed(!followed);
     } catch (err) {
+      console.log(err);
     }
   };
 
   const HomeRightbar = () => {
     return (
       <>
-        {friendsBirthday.length !== 0 &&
-        <div className="birthdayContainer">
-          <div className='birthdayContainerIntro'>
-            <img
-              className="birthdayImg"
-              src="./assets/images/podarok_0.png"
-              alt="gift icon"
-            />
-            <span className="birthdayText">
-            Have a birthday today:
-            </span>
-          </div>
-          <div className='rightbarBDBlock'>
-            {friendsBirthday.map((friend: IFriend) => (
-              <Link
-                to={`/profile/${friend.username}`}
-                style={{textDecoration: 'none', color: 'inherit'}}
-                key={friend._id}
-              >
-                <div className='friendBlock'>
-                  <img
-                    src={
-                      friend.profilePicture
-                        ? publicFolder + friend.profilePicture
-                        : publicFolder + 'person/noAvatar.png'
-                    }
-                    alt="person"
-                    className="bDBImg"
-                  />
-                  <span className="rightbarFriendName">
+        {friendsBirthday.length !== 0 && (
+          <div className="birthdayContainer">
+            <div className="birthdayContainerIntro">
+              <img
+                className="birthdayImg"
+                src="./assets/images/podarok_0.png"
+                alt="gift icon"
+              />
+              <span className="birthdayText">Have a birthday today:</span>
+            </div>
+            <div className="rightbarBDBlock">
+              {friendsBirthday.map((friend: IFriend) => (
+                <Link
+                  to={`/profile/${friend.username}`}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  key={friend._id}
+                >
+                  <div className="friendBlock">
+                    <img
+                      src={
+                        friend.profilePicture
+                          ? publicFolder + friend.profilePicture
+                          : publicFolder + 'person/noAvatar.png'
+                      }
+                      alt="person"
+                      className="bDBImg"
+                    />
+                    <span className="rightbarFriendName">
                       {friend.username}
                     </span>
-                </div>
-              </Link>
-            ))}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-        }
-        <img className="rightbarAd" src="./assets/images/js.jpg" alt="view"/>
+        )}
+        <img className="rightbarAd" src="./assets/images/js.jpg" alt="view" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map((u) => (
-            <OnlineFriend key={u.id} user={u}/>
+          {onlineFriends.map((u) => (
+            <Link
+              to={`/profile/${u.username}`}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+              key={u._id}
+            >
+              <OnlineFriend user={u} />
+            </Link>
           ))}
         </ul>
       </>
@@ -138,7 +159,7 @@ export default function Rightbar({user}: RightbarProps): JSX.Element {
           {user?.username !== currentUser?.username && (
             <button className="button addFollow" onClick={handleClick}>
               {followed ? 'Unfollow' : 'Follow'}
-              {followed ? <Remove/> : <Add/>}
+              {followed ? <Remove /> : <Add />}
             </button>
           )}
           <div className="profileDescriptions">
@@ -165,28 +186,29 @@ export default function Rightbar({user}: RightbarProps): JSX.Element {
           <div className="followersBlock">
             <h4 className="rightbarTitle">User friends</h4>
             <div className="rightbarFollowings">
-              {friends.map((friend: IFriend) => (
-                <Link
-                  to={`/profile/${friend.username}`}
-                  style={{textDecoration: 'none', color: 'inherit'}}
-                  key={friend._id}
-                >
-                  <div className="rightbarFollowing">
-                    <img
-                      src={
-                        friend.profilePicture
-                          ? publicFolder + friend.profilePicture
-                          : publicFolder + 'person/noAvatar.png'
-                      }
-                      alt="person"
-                      className="rightbarFollowingImg"
-                    />
-                    <span className="rightbarFollowingName">
-                      {friend.username}
-                    </span>
-                  </div>
-                </Link>
-              ))}
+              {friends.length > 0 &&
+                friends.map((friend: IFriend) => (
+                  <Link
+                    to={`/profile/${friend.username}`}
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                    key={friend._id}
+                  >
+                    <div className="rightbarFollowing">
+                      <img
+                        src={
+                          friend.profilePicture
+                            ? publicFolder + friend.profilePicture
+                            : publicFolder + 'person/noAvatar.png'
+                        }
+                        alt="person"
+                        className="rightbarFollowingImg"
+                      />
+                      <span className="rightbarFollowingName">
+                        {friend.username}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>
@@ -197,7 +219,7 @@ export default function Rightbar({user}: RightbarProps): JSX.Element {
   return (
     <div className="rightbar">
       <div className="rightbarWrapper">
-        {username ? <ProfileRightbar/> : <HomeRightbar/>}
+        {username ? <ProfileRightbar /> : <HomeRightbar />}
       </div>
     </div>
   );

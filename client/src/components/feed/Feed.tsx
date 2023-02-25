@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { IPost, FeedProps, UserContext } from '../../static/types';
 import { AuthContext } from '../../context/AuthContext';
+import Skeleton from '../skeleton/Skeleton';
 
 const Feed: React.FC<FeedProps> = ({ username }) => {
   const [posts, setPosts] = useState([]);
@@ -33,9 +34,13 @@ const Feed: React.FC<FeedProps> = ({ username }) => {
       <div className="feedWrapper">
         <>
           {(!username || username === user?.username) && <Share />}
-          {posts.map((p: IPost) => (
-            <Post key={p._id} post={p} />
-          ))}
+          {posts.length > 0 ? (
+            posts.map((p: IPost) => <Post key={p._id} post={p} />)
+          ) : (
+            <div className="skeleton">
+              <Skeleton />
+            </div>
+          )}
         </>
       </div>
     </div>
