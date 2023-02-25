@@ -7,7 +7,7 @@ import Login from './pages/login/Login';
 import Profile from './pages/profile/Profile';
 import Messenger from './pages/messenger/Messenger';
 import MyAccount from './pages/myAccount/MyAccount';
-import Courses from './pages/courses/Courses';
+import CoursesPage from './pages/courses/Courses';
 
 function App(): JSX.Element {
   const { user } = useContext(AuthContext);
@@ -36,7 +36,7 @@ function App(): JSX.Element {
       />
       <Route
         path="/courses"
-        element={!user ? <Navigate to="/" replace /> : <Courses />}
+        element={!user ? <Navigate to="/" replace /> : <CoursesPage />}
       />
     </Routes>
   );
