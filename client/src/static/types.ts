@@ -10,6 +10,7 @@ export interface IPost {
   _id: string;
   userId: string;
   desc?: string;
+  tags?: string;
   img: string;
   likes: string[];
   createdAt: string;

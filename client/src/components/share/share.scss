@@ -36,7 +36,8 @@
 }
 .shareBottom {
   display: flex;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
   justify-content: space-between;
 }
 .shareOptions {

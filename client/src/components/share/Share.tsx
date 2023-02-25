@@ -17,6 +17,7 @@ function Share() {
     AuthContext
   ) as UserContext;
   const [descInput, setDescInput] = React.useState<string | null>(post?.desc!);
+  const [tagsInput, setTagsInput] = React.useState<string | null>(post?.tags!);
   const [fileInput, setFileInput] = useState<File | null>(null);
 
   useEffect(() => {
@@ -142,10 +143,22 @@ function Share() {
               <EmojiEmotions htmlColor="goldenrod" className="shareIcon" />
               <span className="shareOptionText">Feelings</span>
             </div>
+            <button className="shareButton" type="submit">
+              Share
+            </button>
           </div>
-          <button className="shareButton" type="submit">
-            Share
-          </button>
+          <div>
+            <input
+              placeholder={'Enter tags'}
+              className="shareInput"
+              value={
+                tagsInput === null || tagsInput === undefined ? '' : tagsInput
+              }
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                setTagsInput(event.target.value);
+              }}
+            />
+          </div>
         </form>
       </div>
     </div>
