@@ -15,6 +15,7 @@ import {
 import { Users } from '../../static/Data';
 import CloseFriend from '../closeFriend/CloseFriend';
 import { Link } from 'react-router-dom';
+import SidebarFooter from '../sidebarFooter/SidebarFooter';
 
 export default function Sidebar() {
   return (
@@ -71,6 +72,9 @@ export default function Sidebar() {
               <CloseFriend key={u.id} user={u} />
             ))}
           </ul>
+        </div>
+        <div className="sidebarBottom">
+          <SidebarFooter />
         </div>
       </div>
     </div>
