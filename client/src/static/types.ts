@@ -1,9 +1,5 @@
 export interface UserProps {
-  user: {
-    id: number;
-    profilePicture: string;
-    username: string;
-  };
+  user: IUser;
 }
 
 export interface IPost {

@@ -1,5 +1,9 @@
 import '../../scss/main.scss';
 import './sidebar.scss';
+import React from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { IUser, UserContext } from '../../static/types';
+import axios from 'axios';
 import {
   RssFeed,
   Chat,
@@ -12,11 +16,26 @@ import {
   Event,
   School,
 } from '@mui/icons-material';
-import { Users } from '../../static/Data';
 import CloseFriend from '../closeFriend/CloseFriend';
 import { Link } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 
-export default function Sidebar() {
+export default function Sidebar({ profilePage }: { profilePage?: boolean }) {
+  const { user } = React.useContext(AuthContext) as UserContext;
+  const [friends, setFriends] = React.useState<IUser[]>([]);
+  React.useEffect(() => {
+    const getFriends = async () => {
+      try {
+        if (user?._id) {
+          const { data } = await axios.get(`/api/users/friends/${user?._id}`);
+          setFriends(data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getFriends();
+  }, [user]);
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
@@ -71,9 +90,17 @@ export default function Sidebar() {
           <button className="sidebarButton">Show More</button>
           <hr className="sidebarHr" />
           <ul className="sidebarFriendList">
-            {Users.map((u) => (
-              <CloseFriend key={u.id} user={u} />
-            ))}
+            {!profilePage &&
+              friends.length > 0 &&
+              friends.map((u) => (
+                <Link
+                  to={`/profile/${u.username}`}
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                  key={u._id}
+                >
+                  <CloseFriend user={u} />
+                </Link>
+              ))}
           </ul>
         </div>
       </div>

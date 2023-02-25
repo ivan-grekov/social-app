@@ -9,7 +9,11 @@ const OnlineFriend: React.FC<UserProps> = ({ user }) => {
       <div className="rightbarProfileImgContainer">
         <img
           className="rightbarProfileImg"
-          src={publicFolder + user.profilePicture}
+          src={
+            user.profilePicture
+              ? publicFolder + user.profilePicture
+              : publicFolder + 'person/noAvatar.png'
+          }
           alt="user icon"
         />
         <span className="rightbarOnline"></span>
