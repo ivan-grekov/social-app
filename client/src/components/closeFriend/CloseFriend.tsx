@@ -7,7 +7,11 @@ const CloseFriend: React.FC<UserProps> = ({ user }) => {
     <li className="sidebarFriend">
       <img
         className="sidebarFriendImg"
-        src={publicFolder + user.profilePicture}
+        src={
+          user.profilePicture
+            ? publicFolder + user.profilePicture
+            : publicFolder + 'person/noAvatar.png'
+        }
         alt="profile icon"
       />
       <span className="sidebarFriendName">{user.username}</span>
