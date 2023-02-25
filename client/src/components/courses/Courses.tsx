@@ -124,7 +124,7 @@ export default function Courses() {
             </div>
             <div className="cardBody">
               <RoomIcon className="locationIcon" />
-              Online
+              Online (<span>Lithuania & Latvia</span>)
             </div>
             <div className="cardFooter">
               <p className="cardDate">Start date:</p>

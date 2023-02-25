@@ -75,12 +75,18 @@
 .cardBody {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   flex: 1 1 auto;
   min-height: 0.0625rem;
   padding: 1.25rem;
   align-items: center;
   font-size: 1.25rem;
   color: $color-lime-green;
+  & span{
+    font-weight: bold;
+    margin: 0px 0px 0px 5px;
+    color: $color-black;
+  }
 }
 .locationIcon {
   font-size: 1.125rem !important;
