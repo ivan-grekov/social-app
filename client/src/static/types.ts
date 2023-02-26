@@ -75,6 +75,10 @@ export interface RightbarProps {
   user?: IUser | null;
 }
 
+export interface TagsProps {
+  tags: string[];
+}
+
 export interface IConversation {
   members: string[];
   _id: string;
