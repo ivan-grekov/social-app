@@ -37,7 +37,6 @@ function Share() {
 
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-    // if (fileInput !== null && descInput !== '') {
       setShowMessage(false);
       const newPost = {
         userId: user?._id,

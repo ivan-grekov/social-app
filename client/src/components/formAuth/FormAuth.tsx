@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, {useContext, useState} from 'react';
 import './formAuth.scss';
 import { propsFormAuth } from '../../static/types';
 import { loginCall } from '../../apiCalls';
@@ -15,6 +15,8 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
   const password = React.useRef<HTMLInputElement>(null);
   const passwordAgain = React.useRef<HTMLInputElement>(null);
   const { isFetching, dispatch } = useContext(AuthContext);
+  const [showMessageTaken, setShowMessageTaken] = useState<boolean>(false);
+  const [showMessageIncorrect, setShowMessageIncorrect] = useState<boolean>(false);
   const history = useNavigate();
 
   const handleClickLogin = async (e: React.FormEvent) => {
@@ -25,6 +27,7 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
         dispatch
       );
     } catch (err) {
+      setShowMessageIncorrect(true);
       console.log(err);
     }
   };
@@ -43,7 +46,14 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
         await axios.post('/api/auth/register', userRegister);
         history('/login');
       } catch (err) {
-        console.log(err);
+        if (err instanceof Error) {
+          if (err.message === 'Request failed with status code 500') {
+            setShowMessageTaken(true);
+          }
+        } else {
+          console.log('Unexpected error', err);
+        }
+        // console.log(err);
       }
     }
   };
@@ -70,6 +80,10 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
           required
           ref={emailAddress}
         />
+        <div className='messageError emailTaken'
+             style={ !showMessageTaken ? { display: 'none' } : { display: 'block' }}>
+          This email is already taken
+        </div>
         <input
           className="input"
           placeholder="Enter your password"
@@ -78,6 +92,10 @@ const FormAuth = ({ title, isLogin }: propsFormAuth): JSX.Element => {
           minLength={minLengthOfLoginPassword}
           ref={password}
         />
+        <div className='messageError messageIncorrect'
+             style={ !showMessageIncorrect ? { display: 'none' } : { display: 'block' }}>
+          Incorrect login or password
+        </div>
         {!isLogin ? (
           <input
             className="input"
