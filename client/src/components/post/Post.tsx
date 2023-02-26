@@ -73,6 +73,15 @@ const Post: React.FC<PostProps> = ({ post }) => {
             alt="post overview"
           />
         </div>
+
+        <div className='tagBlock'>
+          {post.tags && post.tags.split(';').map((tag: string) => (
+            <div className='tagItem'>
+              {tag}
+            </div>
+          ))}
+        </div>
+
         <div className="postBottom">
           <div className="postBottomLeft">
             <img

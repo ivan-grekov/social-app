@@ -6,6 +6,7 @@ export interface IPost {
   _id: string;
   userId: string;
   desc?: string;
+  tags?: string;
   img: string;
   likes: string[];
   createdAt: string;
@@ -72,6 +73,10 @@ export interface UserContext {
 
 export interface RightbarProps {
   user?: IUser | null;
+}
+
+export interface TagsProps {
+  tags: string[];
 }
 
 export interface IConversation {
