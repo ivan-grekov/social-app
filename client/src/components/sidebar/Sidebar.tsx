@@ -19,6 +19,7 @@ import {
 import CloseFriend from '../closeFriend/CloseFriend';
 import { Link } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
+import SidebarFooter from '../sidebarFooter/SidebarFooter';
 
 export default function Sidebar({ profilePage }: { profilePage?: boolean }) {
   const { user } = React.useContext(AuthContext) as UserContext;
@@ -63,14 +64,6 @@ export default function Sidebar({ profilePage }: { profilePage?: boolean }) {
               <span className="sidebarListItemText">Music</span>
             </Link>
             <li className="sidebarListItem">
-              <Groups className="sidebarIcon" />
-              <span className="sidebarListItemText">Groups</span>
-            </li>
-            <li className="sidebarListItem">
-              <Bookmark className="sidebarIcon" />
-              <span className="sidebarListItemText">Bookmarcs</span>
-            </li>
-            <li className="sidebarListItem">
               <QuestionMark className="sidebarIcon" />
               <span className="sidebarListItemText">Questions</span>
             </li>
@@ -82,12 +75,16 @@ export default function Sidebar({ profilePage }: { profilePage?: boolean }) {
               <Event className="sidebarIcon" />
               <span className="sidebarListItemText">Events</span>
             </li>
-            <li className="sidebarListItem">
+            <Link
+              to={'/courses'}
+              className="sidebarListItem"
+              style={{ textDecoration: 'none' }}
+            >
               <School className="sidebarIcon" />
               <span className="sidebarListItemText">Courses</span>
-            </li>
+            </Link>
           </ul>
-          <button className="sidebarButton">Show More</button>
+          {/* <button className="sidebarButton">Show More</button> */}
           <hr className="sidebarHr" />
           <ul className="sidebarFriendList">
             {!profilePage &&
@@ -102,6 +99,9 @@ export default function Sidebar({ profilePage }: { profilePage?: boolean }) {
                 </Link>
               ))}
           </ul>
+        </div>
+        <div className="sidebarBottom">
+          <SidebarFooter />
         </div>
       </div>
     </div>
