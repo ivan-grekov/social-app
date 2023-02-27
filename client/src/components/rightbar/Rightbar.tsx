@@ -25,7 +25,6 @@ export default function Rightbar({ user }: RightbarProps): JSX.Element {
   const dateToday = mm + '-' + dd;
 
   const friendsBirthday: IFriend[] = [];
-  console.log(friends);
 
   useEffect(() => {
     const getFriends = async () => {
