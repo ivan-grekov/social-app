@@ -8,10 +8,18 @@ import { AuthContext } from '../../context/AuthContext';
 import Skeleton from '../skeleton/Skeleton';
 
 const Feed: React.FC<FeedProps> = ({ username }) => {
+  const [timeAgo, setTimeago] = React.useState(false);
   const [posts, setPosts] = useState([]);
   const { user, post, isCreatePost, query } = React.useContext(
     AuthContext
   ) as UserContext;
+
+  const checkData = () => {
+    setTimeout(() => {
+      setTimeago(true);
+    }, 3000);
+    return;
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -29,6 +37,8 @@ const Feed: React.FC<FeedProps> = ({ username }) => {
     if (query.length === 0 || query.length > 2) fetchPosts();
   }, [username, user?._id, post?._id, isCreatePost, query]);
 
+  checkData();
+
   return (
     <div className="feed">
       <div className="feedWrapper">
@@ -36,10 +46,12 @@ const Feed: React.FC<FeedProps> = ({ username }) => {
           {(!username || username === user?.username) && <Share />}
           {posts.length > 0 ? (
             posts.map((p: IPost) => <Post key={p._id} post={p} />)
-          ) : (
+          ) : !timeAgo ? (
             <div className="skeleton">
               <Skeleton />
             </div>
+          ) : (
+            'No posts yet.'
           )}
         </>
       </div>

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { Add, Remove } from '@mui/icons-material';
 import { useParams } from 'react-router';
-import { CircularProgress } from '@mui/material';
 
 export default function Rightbar({ user }: RightbarProps): JSX.Element {
   const { user: currentUser, dispatch } = React.useContext(

@@ -1,1 +1,10 @@
 //# Buttons
+.btn-calendar {
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: lighten($color: $color-grey, $amount: 45);
+  border: none;
+}

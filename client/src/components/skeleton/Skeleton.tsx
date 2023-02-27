@@ -5,9 +5,9 @@ import ContentLoader from 'react-content-loader';
 const Skeleton = () => (
   <ContentLoader
     speed={2}
-    width={864}
-    height={667}
-    viewBox="0 0 864 667"
+    width={843}
+    height={636}
+    viewBox="0 0 843 616"
     backgroundColor="#f3f3f3"
     foregroundColor="#ecebeb"
   >

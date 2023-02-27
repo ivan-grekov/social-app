@@ -1,0 +1,65 @@
+@import '../../scss/main.scss';
+
+.calendar-mini-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+
+.header-mini {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .currentMonthText {
+    color: lighten($color: $color-grey, $amount: 0);
+  }
+
+  .btn-calendar {
+    padding: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: lighten($color: $color-grey, $amount: 45);
+    border: none;
+
+    &.btn-right {
+      margin-right: 30px;
+    }
+  }
+}
+
+.calendar-mini {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  margin-top: 20px;
+
+  .nameOfDay {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .btn-currentDay {
+    padding: 8px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &.btn-currentDay_active {
+      background-color: $color-bacgraund-header;
+      color: white;
+      border-radius: 50%;
+    }
+
+    &.btn-currentDay_clicked {
+      background-color: lighten($color: $color-bacgraund-header, $amount: 40);
+      border-radius: 50%;
+      color: $color-bacgraund-header;
+    }
+  }
+}
