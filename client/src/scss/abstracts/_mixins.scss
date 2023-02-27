@@ -55,7 +55,7 @@
   justify-content: $justify-content;
 }
 
-@mixin flex-row($justify-content: start, $align-items: center) {
+@mixin flex-row($justify-content: flex-start, $align-items: center) {
   display: flex;
   align-items: $align-items;
   justify-content: $justify-content;
