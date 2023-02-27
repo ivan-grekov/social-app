@@ -1,0 +1,7 @@
+.monthContainer {
+  display: grid;
+  flex: 5;
+  justify-content: stretch;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
