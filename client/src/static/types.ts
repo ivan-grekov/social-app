@@ -120,3 +120,16 @@ export interface IComment {
   desc: string;
   createdAt: string;
 }
+
+export interface IEvent {
+  day: number;
+  id: number;
+  description: string;
+  label: string;
+  title: string;
+}
+
+export interface ILabel {
+  label: string;
+  checked: boolean;
+}
