@@ -1,0 +1,13 @@
+@import '../../scss/main.scss';
+
+.calendar {
+  font-family: 'Open Sans', sans-serif;
+}
+.calendarWrap {
+  display: flex;
+  padding: 30px 20px;
+  justify-content: space-between;
+  flex-direction: row;
+  max-width: 1360px;
+  margin: auto;
+}
