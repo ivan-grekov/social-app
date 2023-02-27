@@ -1,0 +1,69 @@
+@import '../../scss/main.scss';
+
+.sidebarFooter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 530px) {
+    flex-direction: column;
+  }
+}
+
+.sidebarFooterTop {
+  margin-bottom: 20px;
+}
+.sidebarFooterBody {
+  margin: 0px 0px 20px 0px;
+}
+.sidebarFooterItems {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-left: 0;
+  padding-left: 0;
+  @media (max-width: 400px) {
+    justify-content: center;
+  }
+}
+.sidebarFooterItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  text-align: left;
+  &:last-child {
+    margin: 0px 0px 0px 0px;
+  }
+  & a {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.gitHubIcon {
+  margin-right: 5px;
+  font-size: 1rem !important;
+}
+.rsschoolIcon {
+  width: 50px;
+}
+
+.copiryng {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
+.sidebarFooterFooter {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  margin: 0px 0px 20px 0px;
+}

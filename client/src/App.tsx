@@ -8,6 +8,7 @@ import Profile from './pages/profile/Profile';
 import Messenger from './pages/messenger/Messenger';
 import MyAccount from './pages/myAccount/MyAccount';
 import Calendar from './pages/calendar/Calendar';
+import CoursesPage from './pages/courses/Courses';
 
 function App(): JSX.Element {
   const { user } = useContext(AuthContext);
@@ -37,6 +38,10 @@ function App(): JSX.Element {
       <Route
         path="/calendar"
         element={user ? <Calendar /> : <Navigate to="/login" replace />}
+      />
+      <Route
+        path="/courses"
+        element={!user ? <Navigate to="/" replace /> : <CoursesPage />}
       />
     </Routes>
   );

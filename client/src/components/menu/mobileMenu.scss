@@ -1,21 +1,25 @@
 @import '../../scss/main.scss';
 
-.mobilMenu{
+.mobilMenu {
   padding: 20px;
   display: none;
 }
 
-@media (max-width: 768px){
-  .mobilMenu{
+@media (max-width: 768px) {
+  .mobilMenu {
     padding: 20px;
     display: block;
   }
 
-.mobilMenu .sidebar{
-  display: block !important;
-  color: $color-black;
-  overflow-y: auto;
-}
+  .mobilMenu .sidebar {
+    display: block !important;
+    color: $color-black;
+    overflow-y: auto;
+    height: calc(100vh - 65px);
+    @media (max-width: 460px) {
+      height: calc(100vh - 135px);
+    }
+  }
 }
 
 @media (max-width: 460px) {

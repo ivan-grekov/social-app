@@ -31,18 +31,78 @@
     outline: none;
   }
 }
+
+.tagInput {
+  margin-left: 15px;
+  margin-top: 10px;
+  border: none;
+  font-size: 14px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.shareTagButton {
+  @include font-shareBotton;
+  border: none;
+  border-radius: 5px;
+  padding: 7px;
+  background-color: $color-green;
+  cursor: pointer;
+  margin: 0 20px 0 0;
+}
+
+.tagPreviewBlock {
+  font-size: 14px;
+  margin: 0 0 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tagsInputBlock {
+  //margin-top: 5px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+}
+
+.shareTagContainer {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shareCancelTag {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 .shareHr {
   margin: 20px;
 }
 .shareBottom {
   display: flex;
-  align-items: center;
+  align-items: start;
+  flex-direction: column;
   justify-content: space-between;
 }
 .shareOptions {
   display: flex;
   margin: 0 0 0 20px;
 }
+
+.showMessage {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: red;
+  margin: 0 20px 15px 0;
+}
+
 .shareOption {
   display: flex;
   align-items: center;

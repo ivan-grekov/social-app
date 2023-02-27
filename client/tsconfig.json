@@ -16,5 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/static/custom.d.ts"]
+
+  "include": ["src", "src/static/custom.d.ts"],
+  "exclude": ["node_modules"]
 }
