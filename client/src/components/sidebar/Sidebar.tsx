@@ -55,7 +55,7 @@ export default function Sidebar({ profilePage }: { profilePage?: boolean }) {
               </li>
             </Link>
             <Link
-              to={'/music'}
+              to={'/'}
               style={{ textDecoration: 'none' }}
               className="sidebarListItem"
             >
@@ -78,10 +78,14 @@ export default function Sidebar({ profilePage }: { profilePage?: boolean }) {
               <Work className="sidebarIcon" />
               <span className="sidebarListItemText">Jobs</span>
             </li>
-            <li className="sidebarListItem">
+            <Link
+              to={'/calendar'}
+              className="sidebarListItem"
+              style={{ textDecoration: 'none' }}
+            >
               <Event className="sidebarIcon" />
               <span className="sidebarListItemText">Events</span>
-            </li>
+            </Link>
             <li className="sidebarListItem">
               <School className="sidebarIcon" />
               <span className="sidebarListItemText">Courses</span>
