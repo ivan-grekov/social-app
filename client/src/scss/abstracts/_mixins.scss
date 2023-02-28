@@ -48,6 +48,11 @@
   line-height: 91.666667%;
   color: $color-black;
 }
+@mixin font-h3 {
+  @include font(2rem, 500, $base-font, normal);
+  line-height: 100%;
+  color: $color-black;
+}
 
 @mixin flex-colomn($justify-content: space-between) {
   display: flex;
@@ -55,7 +60,7 @@
   justify-content: $justify-content;
 }
 
-@mixin flex-row($justify-content: start, $align-items: center) {
+@mixin flex-row($justify-content: flex-start, $align-items: center) {
   display: flex;
   align-items: $align-items;
   justify-content: $justify-content;

@@ -1,0 +1,45 @@
+@import '../../scss/main.scss';
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .label-item {
+    cursor: pointer;
+  }
+}
+
+.labelTitle {
+  color: lighten($color: $color-grey, $amount: 0);
+  padding-bottom: 20px;
+}
+
+.label-input {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.labelColor-red {
+  accent-color: lighten($color: red, $amount: 40);
+}
+
+.labelColor-gray {
+  accent-color: lighten($color: gray, $amount: 40);
+}
+
+.labelColor-green {
+  accent-color: lighten($color: green, $amount: 40);
+}
+
+.labelColor-blue {
+  accent-color: lighten($color: blue, $amount: 40);
+}
+
+.labelColor-purple {
+  accent-color: lighten($color: purple, $amount: 40);
+}
+
+.labelColor-indigo {
+  accent-color: lighten($color: indigo, $amount: 40);
+}

@@ -83,23 +83,10 @@ const Comments = ({
         />
         <button onClick={onClickSendComment}>Send</button>
       </div>
-      {comments.length > 0 ? (
+      {comments &&
         comments.map((comment) => (
           <Comment comment={comment} postId={postId} key={comment._id} />
-        ))
-      ) : !timeAgo ? (
-        checkData()
-      ) : (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          No comment yet.
-        </div>
-      )}
+        ))}
     </div>
   );
 };

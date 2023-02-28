@@ -1,0 +1,45 @@
+@import '../../scss/main.scss';
+
+.calendarHeader {
+  display: flex;
+  padding: 20px 40px;
+  align-items: center;
+  justify-content: flex-start;
+
+  .calendarLogoImg {
+    width: 36px;
+    height: 36px;
+    margin: 5px;
+  }
+
+  .logoTitle {
+    color: $color-grey;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  .btn-calendar {
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: lighten($color: $color-grey, $amount: 45);
+    border: none;
+  }
+
+  .btn-calendar.btn-chevron {
+    padding: 2px;
+  }
+
+  .btn-chevron-left {
+    margin-right: 20px;
+  }
+
+  .nameMonth {
+    font-size: 16px;
+  }
+}
+
+.homeIcon {
+  margin-left: auto;
+}

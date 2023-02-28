@@ -28,7 +28,6 @@ interface PropsAuthContextProvider {
 export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({ children }: PropsAuthContextProvider) => {
-  // @ts-ignore
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(state.user));
