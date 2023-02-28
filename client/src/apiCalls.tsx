@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { type Dispatch } from 'react';
-import { IUser } from './static/types';
 
 export const loginCall = async (
   userCredential: {

@@ -32,15 +32,13 @@ const Comment = ({
   };
   return (
     <div className="comment" key={comment._id}>
-      <img
-        className="commentImg"
-        src={
-          comment?.userImg
-            ? publicFolder + comment.userImg
-            : publicFolder + 'person/noAvatar.png'
-        }
-        alt="profile picture"
-      ></img>
+      <img className="commentImg"
+           src={
+             comment?.userImg
+               ? publicFolder + comment.userImg
+               : publicFolder + 'person/noAvatar.png'
+           }
+           alt="profile"/>
       <div className="info">
         <span>{comment.username}</span>
         <p>{comment.desc}</p>

@@ -7,10 +7,7 @@ import axios from 'axios';
 import {
   RssFeed,
   Chat,
-  VideoLibrary,
   LibraryMusic,
-  Groups,
-  Bookmark,
   QuestionMark,
   Work,
   Event,
@@ -18,7 +15,6 @@ import {
 } from '@mui/icons-material';
 import CloseFriend from '../closeFriend/CloseFriend';
 import { Link } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
 import SidebarFooter from '../sidebarFooter/SidebarFooter';
 
 export default function Sidebar({ profilePage }: { profilePage?: boolean }) {

@@ -113,7 +113,7 @@ function Share() {
                 ? publicFolder + user.profilePicture
                 : publicFolder + 'person/noAvatar.png'
             }
-            alt="share profile picture"
+            alt="share profile"
           />
           <input
             placeholder={`What's in your mind ${user?.username}?`}
@@ -136,7 +136,7 @@ function Share() {
             <img
               className="shareImg"
               src={URL.createObjectURL(fileInput)}
-              alt="share picture"
+              alt="share"
             />
             <Cancel
               className="shareCancelImg"

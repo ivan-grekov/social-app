@@ -120,33 +120,6 @@ export default function MyAccount(): JSX.Element {
         <div className="myAccountBlock">
           <form className="editProfileForm" onSubmit={submitHandler}>
             <h2 className="accountTitle">My account</h2>
-            {/*<TextField*/}
-            {/*  id="outlined-controlled"*/}
-            {/*  className="textField"*/}
-            {/*  required*/}
-            {/*  fullWidth*/}
-            {/*  value={userName}*/}
-            {/*  placeholder="Enter your name"*/}
-            {/*  label="Name"*/}
-            {/*  variant="outlined"*/}
-            {/*  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {*/}
-            {/*    setUserName(event.target.value);*/}
-            {/*  }}*/}
-            {/*/>*/}
-            {/*<TextField*/}
-            {/*  id="outlined-controlled"*/}
-            {/*  className="textField"*/}
-            {/*  disabled*/}
-            {/*  required*/}
-            {/*  fullWidth*/}
-            {/*  value={emailAddress}*/}
-            {/*  placeholder="Enter your email"*/}
-            {/*  label="E-mail"*/}
-            {/*  variant="outlined"*/}
-            {/*  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {*/}
-            {/*    setEmailAddress(event.target.value);*/}
-            {/*  }}*/}
-            {/*/>*/}
             <TextField
               id="outlined-controlled"
               className="textField"
@@ -208,18 +181,6 @@ export default function MyAccount(): JSX.Element {
                 setBd(event.target.value);
               }}
             />
-            {/*<TextField*/}
-            {/*  id="outlined-controlled"*/}
-            {/*  className="textField"*/}
-            {/*  placeholder="Enter your birthday"*/}
-            {/*  value={bd === null || bd === undefined ? '' : bd}*/}
-            {/*  fullWidth*/}
-            {/*  label="Description"*/}
-            {/*  variant="outlined"*/}
-            {/*  onChange={(event: React.ChangeEvent<HTMLInputElement>) => {*/}
-            {/*    setBd(event.target.value);*/}
-            {/*  }}*/}
-            {/*/>*/}
             <TextField
               className="textField"
               id="outlined-select-currency"
@@ -244,7 +205,7 @@ export default function MyAccount(): JSX.Element {
                 <img
                   className="fileImg"
                   src={URL.createObjectURL(file)}
-                  alt="profile picture"
+                  alt="profile"
                 />
                 <Cancel className="cancelImg" onClick={() => setFile(null)} />
               </div>
@@ -272,7 +233,7 @@ export default function MyAccount(): JSX.Element {
                 <img
                   className="fileImg"
                   src={URL.createObjectURL(fileCover)}
-                  alt="cover picture"
+                  alt="cover"
                 />
                 <Cancel
                   className="cancelImg"

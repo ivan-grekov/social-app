@@ -71,7 +71,7 @@ const Comments = ({
               ? publicFolder + user.profilePicture
               : publicFolder + 'person/noAvatar.png'
           }
-          alt="user profile picture"
+          alt="user profile"
         />
         <input
           type="text"

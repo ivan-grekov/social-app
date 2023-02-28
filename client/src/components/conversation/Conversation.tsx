@@ -1,5 +1,4 @@
 import './conversation.scss';
-import { IConversation } from '../../static/types';
 import { ConversationProps } from '../../static/types';
 import React from 'react';
 import axios from 'axios';
@@ -24,15 +23,13 @@ const Conversation = ({ conversation, currentUser }: ConversationProps) => {
   }, [currentUser, conversation]);
   return (
     <div className="conversation">
-      <img
-        className="conversationImg"
-        alt="conversation picture"
-        src={
-          user?.profilePicture
+      <img className="conversationImg"
+           alt="conversation"
+           src={
+             user?.profilePicture
             ? publicFolder + user.profilePicture
             : publicFolder + 'person/noAvatar.png'
-        }
-      ></img>
+           }/>
       <span className="conversationName">{user?.username}</span>
     </div>
   );
