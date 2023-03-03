@@ -11,7 +11,7 @@ Deploy: https://social-client-xi.vercel.app/
 ---
 
  ### 🔨 Stack of using technologies: 
-React.js, Node.js, Express.js, TypeScript, MongoDB, Material-UI. Деплой сервера на railway.app. Front на vercel.
+React.js, Node.js, Express.js, TypeScript, MongoDB, Material-UI. Deploy api on railway.app. Front-end on Vercel.
 
 ---
 
