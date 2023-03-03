@@ -1,0 +1,35 @@
+@import '../../scss/main.scss';
+
+.login {
+  background-color: $color-bacground-auth;
+  font-family: Nunito, sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .loginWrap {
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 60%;
+    display: flex;
+
+    .formAuth,
+    .loginPromo {
+      width: 100%;
+      flex: 1;
+    }
+
+    .formAuth {
+      background-color: $color-white;
+      border-radius: 15px;
+      padding: 10px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

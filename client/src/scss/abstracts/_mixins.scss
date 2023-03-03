@@ -1,0 +1,67 @@
+// Sass Mixins
+
+@mixin font($size: 1.8rem, $weight: 400, $family: $base-font, $style: normal) {
+  font: {
+    family: $family;
+    style: $style;
+    weight: $weight;
+    size: $size;
+  }
+}
+
+@mixin font-logo {
+  @include font(2rem, bold, $base-font, normal);
+  line-height: 91.666667%;
+  text-transform: uppercase;
+}
+@mixin font-shareOptionText {
+  @include font(0.875rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+}
+@mixin font-shareBotton {
+  @include font(0.875rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-white;
+}
+@mixin font-postName {
+  @include font(0.9375rem, 500, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-black;
+}
+@mixin font-postData {
+  @include font(0.9375rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-black;
+}
+@mixin font-postLikeCounter {
+  @include font(0.75rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-black;
+}
+@mixin font-postComment {
+  @include font(0.9375rem, 400, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-black;
+}
+@mixin font-birthdayText {
+  @include font(0.9375rem, 300, $base-font, normal);
+  line-height: 91.666667%;
+  color: $color-black;
+}
+@mixin font-h3 {
+  @include font(2rem, 500, $base-font, normal);
+  line-height: 100%;
+  color: $color-black;
+}
+
+@mixin flex-colomn($justify-content: space-between) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify-content;
+}
+
+@mixin flex-row($justify-content: flex-start, $align-items: center) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}

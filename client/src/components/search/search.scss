@@ -1,0 +1,35 @@
+@import '../../scss/main.scss';
+
+.searchbar {
+  width: 100%;
+  height: 30px;
+  background-color: $color-white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  @media (max-width: 460px) {
+    display: none;
+    background-color: $color-white;
+  }
+}
+.searchIcon {
+  font-size: 20px !important;
+  margin: 0 0 0 10px;
+}
+.searchInput {
+  border: none;
+  width: 80%;
+  @media (max-width: 525px){
+    width: 70%;
+  }
+  @media (max-width: 475px){
+    width: 55%;
+  }
+  @media (max-width: 460px){
+    width: 80%;
+  }
+}
+
+.searchInput:focus {
+  outline: none;
+}

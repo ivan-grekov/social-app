@@ -1,0 +1,31 @@
+@import '../../scss/main.scss';
+
+.chatOnlineFriend {
+  @include flex-row($align-items: center);
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.chatOnlineImgContainer {
+  position: relative;
+  margin-right: 10px;
+}
+
+.chatOnlineImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid $color-white;
+}
+
+.chatOnlineBadge {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $color-lime-green;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}

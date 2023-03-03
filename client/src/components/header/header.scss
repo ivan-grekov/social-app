@@ -1,0 +1,151 @@
+@import '../../scss/main.scss';
+
+.header {
+  font-family: Nunito, sans-serif;
+  height: 70px;
+  display: flex;
+  background-color: $color-bacgraund-header;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.headerWrapper {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.headerLeft {
+  flex: 3;
+  display: flex;
+  & .loginLogo {
+    font-family: 'MontserratAlt1', cursive;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 28px;
+    cursor: pointer;
+    @media (max-width: 390px) {
+      font-size: 20px;
+    }
+  }
+}
+
+.logo {
+  @include font-logo;
+  color: $color-white;
+  cursor: pointer;
+}
+
+.headerLogoLink{
+  text-decoration: none !important;
+}
+
+.headerCenter {
+  flex: 5;
+}
+
+.headerRight {
+  flex: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: $color-white;
+}
+
+.headerLink {
+  cursor: pointer;
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.headerLink {
+  margin: 0 10px 0 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.headerIcons {
+  display: flex;
+}
+
+.headerIconItem {
+  margin: 0 10px 0 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+
+  &:hover {
+    color: darken($color-white, 10%);
+  }
+}
+
+.headerIconBadge {
+  width: 15px;
+  height: 15px;
+  background-color: $color-red;
+  border-radius: 50%;
+  color: $color-white;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+
+}
+
+.headerImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+
+}
+
+.headerRight .follower .followerImg {
+  width: 30px;
+  border-radius: 50%;
+}
+
+
+.mobilBtn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    width: 100%;
+    height: 100vh;
+    background-color: $color-bacground-auth;
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    transition: left 0.5s ease;
+    z-index: 10;
+  }
+  .active {
+    height: 100vh;
+    left: 0 !important;
+  }
+  .mobilBtn {
+    display: block;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  .menuIcon {
+    font-size: 1.875rem !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .mobilBtn {
+    margin-left: 10px;
+  }
+}

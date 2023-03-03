@@ -1,0 +1,80 @@
+@import '../../scss/main.scss';
+.profile {
+  display: flex;
+
+  .profileBlock {
+    flex: 9;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addFollowProfile {
+    @media (max-width: 1650px) {
+      display: none;
+    }
+    @media (max-width: 880px) {
+      display: flex;
+    }
+    cursor: pointer;
+    width: 120px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: $color-logo-logo;
+  }
+
+  .profileBlockTop {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .profileFonImg {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .profileUserImg {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: 0;
+      left: 0;
+      top: 150px;
+      border: 4px solid white;
+      margin: auto;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  .profileInfo {
+    margin-top: 60px;
+    margin-bottom: 15px;
+    text-align: center;
+
+    .profileName {
+      font-size: 24px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .profileStatus {
+      font-size: 16px;
+    }
+  }
+
+  .profileRightBottom {
+    display: flex;
+  }
+}

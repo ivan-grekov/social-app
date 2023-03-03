@@ -1,0 +1,203 @@
+@import '../../scss/main.scss';
+
+.rightbar {
+  flex: 3;
+  @media (max-width: 880px) {
+    display: none;
+  }
+}
+
+.rightbarWrapper {
+  padding: 20px 20px 0 0;
+}
+
+.birthdayContainer {
+  margin-bottom: 18px;
+
+  .birthdayContainerIntro {
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+
+    .birthdayText {
+      @include font-birthdayText;
+      font-size: 20px;
+    }
+
+    .birthdayImg {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px 0 0;
+    }
+  }
+
+  .rightbarBDBlock {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .friendBlock {
+      width: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .bDBImg {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.rightbarAd {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.rightbarAdImg {
+  width: 100%;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+.rightbarTitle {
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.rightbarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.rightbarTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.rightbarInfo {
+  margin-bottom: 30px;
+
+  .rightbarInfoItem {
+    margin-bottom: 10px;
+  }
+}
+
+.rightbarInfoKey {
+  font-weight: 500;
+  margin-right: 15px;
+  color: #555;
+}
+
+.rightbarInfoValue {
+  font-weight: 300;
+}
+
+.rightbarFollowings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .rightbarFollowing {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    cursor: pointer;
+    gap: 10px;
+  }
+}
+
+.rightbarFollowingImg {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.rightbarFollowButton {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #1872f2;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  @include font($size: 16px, $weight: 500);
+  cursor: pointer;
+}
+
+.rightbarFollowButton:focus {
+  outline: none;
+}
+
+.profileRightBlock {
+  margin: 0 10px 10px 0;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px 10px 10px;
+
+  .addFollow {
+    cursor: pointer;
+    width: 120px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: $color-logo-logo;
+  }
+
+  .profileDescriptionInfo {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+
+  .profileDescriptions {
+    height: 170px;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+
+    .profileDescription {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+
+      .profileDescriptionName {
+        color: cadetblue;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .followersBlock {
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    box-shadow: 0 0 16px -8px rgba(0, 0, 0, 0.68);
+    margin-top: 30px;
+    padding: 10px;
+
+    .followers {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+}

@@ -1,0 +1,129 @@
+@import '../../scss/main.scss';
+.event-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.event-form {
+  background-color: white;
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 8px 0px;
+  .form-header {
+    background-color: lighten($color: $color-grey, $amount: 45);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .closeModalBtn {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+}
+
+.modalBody-wrapper {
+  padding: 10px;
+}
+
+.eventModal-body {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  align-items: end;
+  column-gap: 10px;
+  row-gap: 20px;
+
+  .modal-titleInput {
+    height: 32px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+
+    &:focus {
+      border-bottom: 2px solid $color-logo-logo;
+    }
+  }
+}
+
+.schedule {
+  display: flex;
+  color: lighten($color: $color-grey, $amount: 25);
+}
+
+.modal-titleInput.description {
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.label-conatiner {
+  display: flex;
+  column-gap: 10px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  padding: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+}
+
+.label-red {
+  background-color: red;
+}
+
+.label-gray {
+  background-color: gray;
+}
+
+.label-green {
+  background-color: green;
+}
+
+.label-blue {
+  background-color: blue;
+}
+
+.label-purple {
+  background-color: purple;
+}
+
+.label-indigo {
+  background-color: indigo;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 2px solid #f3f3f3;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.btn-submit-modal {
+  background-color: $color-logo-logo;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: lighten($color: $color-logo-logo, $amount: 7);
+  }
+}
